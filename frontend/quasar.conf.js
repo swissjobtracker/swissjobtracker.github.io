@@ -12,9 +12,7 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (ctx) {
   return {
-    boot: [
-      'i18n'
-    ],
+   
     // https://v2.quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
@@ -25,6 +23,7 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
+      'i18n'
     ],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

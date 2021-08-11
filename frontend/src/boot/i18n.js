@@ -1,9 +1,12 @@
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import { createI18n } from 'vue-i18n'
 
 import messages from 'src/i18n'
 
-Vue.use(VueI18n)
+console.log("moooo")
+
+
+//Vue.use(VueI18n)
 
 const lang = 'de'
 
@@ -14,16 +17,17 @@ const locales = {
   en: 'en-gb'
 }
 
-const i18n = new VueI18n({
+
+
+const i18n = createI18n({
   locale: locales[lang],
   fallbackLocale: 'de-ch',
-  dateTimeFormats,
   messages
 })
 
 export default ({ app }) => {
   // Set i18n instance on app
-  app.i18n = i18n
+  app.use(i18n)
 }
 
 // if you need to import it from
