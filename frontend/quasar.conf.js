@@ -12,6 +12,9 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (ctx) {
   return {
+    boot: [
+      'i18n'
+    ],
     // https://v2.quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
