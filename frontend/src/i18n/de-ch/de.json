@@ -1,4 +1,9 @@
-{"common": {
-  "cow": "Kuh"
+{
+  "common": {
+    "cow": "Kuh"
+  },
+  "nav": {
+    "about": "Über das Projekt",
+    "blog": "Blog"
   }
 }

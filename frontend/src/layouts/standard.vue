@@ -10,6 +10,10 @@
            <rect x="5" y="10" width="15" height="5" style="fill:#fff;" />
         </svg>
     <div class="title-text">Labor Market Monitor</div>
+      <q-tabs>
+        <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
+      </q-tabs>
+
       </q-toolbar>
     </q-header>
 
@@ -29,4 +33,27 @@
   </q-layout>
 </template>
 
+<script>
 
+export default {
+  data () {
+    return {
+      drawer: true,
+      menuList: [
+        {
+          label: this.$t('nav.about'),
+          to: '/about'
+        },
+         {
+          label: this.$t('nav.blog'),
+          to: '/blog'
+        },
+      ],
+    }
+  },
+  computed: {
+  }
+}
+
+
+</script>
