@@ -4,12 +4,11 @@
     <div class="lmm-page">
       
       <comp-card
-        v-for="(card) in dashboard"
+        v-for="(card) in cards"
         :key="card.id"
-        :id="card.id"
        />
 
-     <q-btn  color="blue" class="full-width add_chart" @click="newChart">
+     <q-btn  color="blue" class="full-width add_chart" @click="newCard">
        {{ $t('common.add_chart')}}
       </q-btn>
 
@@ -28,21 +27,36 @@ import { defineComponent } from 'vue';
 import ComparisonCard from "../components/ComparisonCard";
 import { v4 as uuidv4 } from 'uuid';
 
-export default defineComponent({
+const cards = {
+  d1: (Vue) => [
+    {
+      id: uuidv4()
+    }
+  ],
+  d2: (Vue) => [
+    {
+      id: uuidv4()
+    }
+  ]
+}
+
+
+export default {
   name: 'PageIndex',
   components: {
     "comp-card": ComparisonCard
   },
-  data() {
-    return {
-      dashboard: [],
-    };
+  data(){
+    return{
+      cards: [],
+    }
   },
   methods: {
-    newChart: function(){
-      id: uuidv4()
-    }
-    }
-  
-})
+    newCard: function(){
+      this.cards.push({
+        id: uuidv4()
+      })
+    },
+  }  
+}
 </script>
