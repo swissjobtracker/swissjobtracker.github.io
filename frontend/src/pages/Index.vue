@@ -2,14 +2,20 @@
   <q-page>
 
     <div class="lmm-page">
-      <div class="row">
-        <div class="q-card col-12">
-          <div class="row">
-          <div class="col-4">Map</div>
-          <div class="col-8">Time Series</div>
-          </div>      
-        </div>
-      </div>
+      
+      <comp-card
+        v-for="(card) in dashboard"
+        :key="card.id"
+        :id="card.id"
+       />
+
+     <q-btn  color="blue" class="full-width add_chart" @click="newChart">
+       {{ $t('common.add_chart')}}
+      </q-btn>
+
+
+
+
     </div>
         
    
@@ -19,8 +25,24 @@
 
 <script>
 import { defineComponent } from 'vue';
+import ComparisonCard from "../components/ComparisonCard";
+import { v4 as uuidv4 } from 'uuid';
 
 export default defineComponent({
-  name: 'PageIndex'
+  name: 'PageIndex',
+  components: {
+    "comp-card": ComparisonCard
+  },
+  data() {
+    return {
+      dashboard: [],
+    };
+  },
+  methods: {
+    newChart: function(){
+      id: uuidv4()
+    }
+    }
+  
 })
 </script>

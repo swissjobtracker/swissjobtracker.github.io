@@ -1,9 +1,10 @@
 {
   "common": {
-    "cow": "Kuh"
+    "cow": "Kuh",
+    "add_chart": "Chart Vergleichskarte hinzufügen" 
   },
   "nav": {
     "about": "Über das Projekt",
-    "blog": "Blog"
+    "blog": "News"
   }
 }
