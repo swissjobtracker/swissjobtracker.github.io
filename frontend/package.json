@@ -13,6 +13,7 @@
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
+    "vue-echarts": "^6.0.0",
     "vue-i18n": "^9.1.7"
   },
   "devDependencies": {

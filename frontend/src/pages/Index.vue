@@ -25,6 +25,7 @@
 <script>
 import { defineComponent } from 'vue';
 import ComparisonCard from "../components/ComparisonCard";
+
 import { v4 as uuidv4 } from 'uuid';
 
 

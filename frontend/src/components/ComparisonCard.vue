@@ -2,8 +2,12 @@
      <div class="row">
         <q-card flat square bordered class="q-card q-mb-xl  col-12">
           <div class="row">
-          <div class="col-4">Map</div>
-          <div class="col-7">Time Series</div>
+          <div class="col-4">
+            <map-comp />
+          </div>
+          <div class="col-7">
+            <linechart />
+          </div>
           <div class="col-1">
               <div class="row">
                   <div class="col-10"></div>
@@ -32,8 +36,18 @@
 </template>
 
 <script>
+
+import Map from "../components/Map";
+import LineChart from "../components/LineChart";
+
+
 export default {
-    name: "comp-card"
+    name: "comp-card",
+    components: {
+      linechart: LineChart,
+     'map-comp': Map
+    }
+   
 };
 
 </script>
