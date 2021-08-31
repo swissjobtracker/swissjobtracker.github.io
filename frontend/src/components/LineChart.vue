@@ -1,9 +1,6 @@
 <template>
-    <echart
-                class="q-pt-lg q-pb-lg omg"
-                :options="lines"
-                autoresize
-              />
+  
+     <img width=600 src="dummy.png">         
 </template>
 
 <style scoped>
@@ -21,6 +18,7 @@ import "echarts/lib/component/legend";
 import "echarts/lib/component/title";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/timeline";
+import "echarts/lib/component/grid";
 
 
 
@@ -28,7 +26,7 @@ import "echarts/lib/component/timeline";
 export default {
    name: 'lineChart',
    components: {
-       echart: "Echart"
+       
    },
    data() {
        return{

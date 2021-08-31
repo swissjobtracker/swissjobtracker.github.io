@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fff">
 
     <q-header class="bg-primary text-white">
-      <q-toolbar>
+      <q-toolbar class="lmm-bar">
         <a class="title-link" href="/"><svg width="25" height="25" viewBox="0 0 25 25">
           <polygon points="12.5 0, 25 6.25, 25 18.75, 12.5 25.5, 0 18.75, 0 6.25" 
       		 fill="red" stroke-width="5" />
@@ -22,12 +22,22 @@
     </q-page-container>
 
     <q-footer>
-      <q-toolbar>
-        <div class="footer-text">
-        This and that cause this and that was missing.
+     <div class="row q-col-gutter-lg logo-row">
+      <div class="col-12 col-md-3"><a href="https://kof.ethz.ch"><img src="kof-neg.png" height=25></a></div>
+      <div class="col-12 col-md-3"><a href="https://ethz.ch"><img src="eth-neg.png" height=25></a></div>
+      <div class="col-12 col-md-3"><a href="https://unil.ch"><img src="unil-neg.png" height=25></a></div>
+      <div class="col-12 col-md-3"><a href="https://"><img src="x28-neg.png" height=25></a></div>
+      </div>
+      <hr>
+      <div class="row q-col-gutter-lg">
+        <div class="col-12 col-md-6">
+          <h6>Contact</h6>
         </div>
-      </q-toolbar>
+        <div class="col-12 col-md-6">
+          <h6>Quick Links</h6>
+        </div>
 
+      </div>
     </q-footer>
 
   </q-layout>
@@ -47,6 +57,10 @@ export default {
          {
           label: this.$t('nav.blog'),
           to: '/blog'
+        },
+          {
+          label: this.$t('nav.faq'),
+          to: '/faq'
         },
       ],
     }

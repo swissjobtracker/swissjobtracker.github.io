@@ -4,7 +4,8 @@
     "add_chart": "Chart Vergleichskarte hinzufügen" 
   },
   "nav": {
-    "about": "Über das Projekt",
-    "blog": "News"
+    "about": "About",
+    "blog": "News",
+    "faq": "FAQ"
   }
 }
