@@ -32,12 +32,31 @@
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-md-6">
           <h6>Contact</h6>
+          <b>ETH Zürich <br>
+          Konjunkturforschungsstelle</b> <br>
+          Sektion Schweizer Arbeitsmarkt <br>
+          <br>
+          <b>Dr. Michael Siegenthaler</b><br>
+          Anfragen zum Inhalt: labor [at] kof.ethz.ch<br>
+          technische Fragen: data [at] kof.ethz.ch<br>
         </div>
         <div class="col-12 col-md-6">
-          <h6>Quick Links</h6>
+          <h6>Links</h6>
+          <a href="https://kof.ethz.ch" target="_blank">KOF Hauptseite</a><br>
+          <a href="/about">{{ $t('nav.about') }}</a><br>
+          <a href="/blog">{{ $t('nav.blog') }}</a><br>
+          <a href="/faq">{{ $t('nav.faq') }}</a><br>
         </div>
-
       </div>
+      <br>
+      <br>
+      <hr>
+      <div class="row q-col-gutter-lg logo-row q-mt-md">
+        <div class="col-12">Dieses Dashboard entstand im Rahmen des Nationalen Forschungsprogramms NFP 77.</div>
+      
+      </div>
+      
+      
     </q-footer>
 
   </q-layout>

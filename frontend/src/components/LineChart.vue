@@ -1,6 +1,7 @@
 <template>
   
-     <img width=600 src="dummy.png">         
+        
+     <e-chart :option="lines"/>    
 </template>
 
 <style scoped>
@@ -12,28 +13,27 @@
 
 
 <script>
-import EChart from "vue-echarts";
-import "echarts/lib/chart/line";
-import "echarts/lib/component/legend";
-import "echarts/lib/component/title";
-import "echarts/lib/component/tooltip";
-import "echarts/lib/component/timeline";
-import "echarts/lib/component/grid";
+
+import echarts from 'vue-echarts'
+import {use} from 'echarts/core'
+import {CanvasRenderer} from 'echarts/renderers'
+import {LineChart} from 'echarts/charts'
+import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components'
 
 
-
+use([CanvasRenderer,LineChart,GridComponent, TitleComponent, TooltipComponent])
 
 export default {
    name: 'lineChart',
    components: {
-       
+       'e-chart': echarts
    },
    data() {
        return{
            lines: {
                 xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             },
             yAxis: {
                 type: 'value'
