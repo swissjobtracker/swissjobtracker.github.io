@@ -13,7 +13,7 @@
             <div class="col-12 col-md-6">
                 <h4> {{ $t('about.partner_title') }}</h4>
                 <p>
-                    {{ $t('about.project_text') }}
+                    {{ $t('about.partner_text') }}
                 </p>
             </div>
         </div>
