@@ -1,5 +1,8 @@
 {
     "common": {
     "cow" : "Kuh"
+    },
+    "about": {
+        "title" : "About"
     }
 }
