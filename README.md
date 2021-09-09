@@ -1,6 +1,6 @@
-# CH Labor Market Dashboard
+# Swiss Jobtracker
 
-Main Repository for CH Labor Market Index (NFP 77)
+Main Repository for Swiss Jobtracker Dashboard (NFP 77)
 
 
 ## Current Documentation / Protocols
