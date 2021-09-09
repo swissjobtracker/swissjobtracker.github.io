@@ -11,3 +11,7 @@ https://docs.google.com/document/d/17UaPEo0LKW2BZF6dyxSPG1E276QRxQcWFJlEyOIW4Dg/
 ## Computation Backend
 
 https://gitlab.ethz.ch/KOF/nrp77-computation
+
+
+
+## Workshop, Chance for a Preview / Promotion: December 2021
