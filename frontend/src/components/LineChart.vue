@@ -1,7 +1,5 @@
 <template>
-  
-        
-     <e-chart :option="lines"/>    
+     <e-chart :option="lines"/>
 </template>
 
 <style scoped>
