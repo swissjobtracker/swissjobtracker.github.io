@@ -2,7 +2,7 @@
   <q-page>
 
     <div class="lmm-page">
-      
+
       <comp-card
         v-for="(card) in cards"
         :key="card.id"
@@ -16,14 +16,13 @@
 
 
     </div>
-        
-   
-      
+
+
+
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
 import ComparisonCard from "../components/ComparisonCard";
 
 import { v4 as uuidv4 } from 'uuid';
@@ -46,6 +45,6 @@ export default {
         id: uuidv4()
       })
     },
-  }  
+  }
 }
 </script>
