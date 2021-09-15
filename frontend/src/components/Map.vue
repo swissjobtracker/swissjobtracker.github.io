@@ -12,43 +12,16 @@ import { VisualMapComponent } from 'echarts/components'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
-const datapoints = [
-              { name: 'AG', value: 1 },
-              { name: 'AI', value: 2 },
-              { name: 'AR', value: 3 },
-              { name: 'BE', value: 4 },
-              { name: 'BL', value: 5 },
-              { name: 'BS', value: 6 },
-              { name: 'FR', value: 8 },
-              { name: 'GE', value: 9 },
-              { name: 'GL', value: 10 },
-              { name: 'GR', value: 11 },
-              { name: 'JU', value: 12 },
-              { name: 'LU', value: 13 },
-              { name: 'NE', value: 14 },
-              { name: 'NW', value: 15 },
-              { name: 'OW', value: 16 },
-              { name: 'SG', value: 17 },
-              { name: 'SH', value: 18 },
-              { name: 'SO', value: 19 },
-              { name: 'SZ', value: 20 },
-              { name: 'TG', value: 21 },
-              { name: 'TI', value: 22 },
-              { name: 'UR', value: 23 },
-              { name: 'VD', value: 24 },
-              { name: 'VS', value: 25 },
-              { name: 'ZG', value: 26 },
-              { name: 'ZH', value: 27 }
-            ];
-
 export default {
     name: "Map",
     components: {
       'e-chart': echarts
     },
+    props: ['data'],
+    emite: ['selectCanton'],
     data() {
       return {
-        options: {
+        rawOptions: {
           visualMap: {
             left: 'center',
             bottom: '10%',
@@ -67,18 +40,25 @@ export default {
             type: 'map',
             map: 'el_schweiz',
             selectedMode: 'multiple',
-            data: datapoints // to be a prop/computed
+            data: []
           }]
         }
+      }
+    },
+    computed: {
+      options: function() {
+        let options = Object.assign({}, this.rawOptions)
+        options.series[0].data = this.data
+        return options
       }
     },
     mounted() {
       fetch('ch.svg')
       .then((r) => r.text())
       .then((svg) => {
+        // TODO: could this be done at some higher level and only once?
         registerMap('el_schweiz', { svg: svg })
         this.$refs.map.setOption(this.options)
-        console.log(this.$refs.map.chart)
       })
     },
     methods: {

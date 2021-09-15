@@ -3,5 +3,5 @@
 import ts from './fakeapi'
 
 export default {
-  ts
+  ...ts
 }

@@ -32,10 +32,13 @@ export default {
     "comp-card": ComparisonCard
   },
   mounted() {
+
   },
   data() {
     return{
-      cards: []
+      cards: [],
+      indicator: 'main',
+      mapData: []
     }
   },
   methods: {

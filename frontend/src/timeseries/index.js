@@ -1,5 +1,6 @@
 import * as d from 'debug'
-import { ts } from '../api'
+import ts from '../api'
+import cantons from '../util/cantons'
 import { getKeys } from '../util/keys'
 import { tsToMap, tsToLine } from './tsutils'
 
@@ -14,7 +15,7 @@ const getTimeseries = (cantons, indicators) => {
   const missing = keys.filter((k) => cached.indexOf(k) < 0)
   if(missing.length > 0) {
     debug('missed cache on %o', missing)
-    ts.getTimeseries(missing)
+    return ts.getTimeseries(missing)
       .then((ts) => {
         debug('api returned data')
         cache = Object.assign(cache, ts)
@@ -27,7 +28,7 @@ const getTimeseries = (cantons, indicators) => {
 }
 
 const getSeriesFromCache = (keys) => {
-  const series = keys.map((k) => cached[k])
+  const series = keys.map((k) => cache[k])
   return new Promise((res, rej) => res(series))
 }
 
