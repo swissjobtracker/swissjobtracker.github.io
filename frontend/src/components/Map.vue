@@ -1,5 +1,5 @@
 <template>
-    <e-chart @click="clicked" ref="map"/>
+    <e-chart @selectchanged="onSelectionChanged" ref="map"/>
 </template>
 
 
@@ -18,7 +18,7 @@ export default {
       'e-chart': echarts
     },
     props: ['data'],
-    emite: ['selectCanton'],
+    emite: ['selectCantons'],
     data() {
       return {
         rawOptions: {
@@ -62,27 +62,8 @@ export default {
       })
     },
     methods: {
-      doit: function(x, y, z) {
-        console.log(x)
-        console.log(y)
-        console.log(z)
-        console.log(x.selected[0].dataIndex)
-        if(x.selected[0].dataIndex.length > 3) {
-          console.log('splicing')
-          x.selected[0].dataIndex.splice(0, 1)
-        }
-        /*for(let i of x.selected[0].dataIndex) {
-          console.log(i)
-          console.log(datapoints[i].name)
-        }*/
-      },
-      clicked: function(a, b, c) {
-        console.log(a)
-        this.$refs.map.dispatchAction({
-          type: 'select',
-          seriesIndex: 0,
-          name: 'ZH'
-        })
+      onSelectionChanged: function(e) {
+        this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => this.data[i].name))
       }
     }
 };
