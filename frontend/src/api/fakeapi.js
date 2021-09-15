@@ -28,10 +28,18 @@ export const getFakeData = (keys, n, seq = false) => {
     d.setDate(d.getDate() + 7*i)
     return d
   })
-  const genI = (new Array(keys.length)).fill(0).map((x, i) => i % generators.length)
+  const genI = (new Array(keys.length)).fill(0).map((x, i) => Math.floor(Math.random()*generators.length))
   shuffleArray(genI)
   const gens = genI.map((x) => seq ? ((i, n) => i) : generators[x])
-  return Object.fromEntries(keys.map((k, j) => [k, (new Array(n)).fill(0).map((x, i) => { return {date: formatDate(dates[i]), value: gens[j](i, n)}})]))
+  return Object.fromEntries(keys.map((k, j) => [
+    k,
+    (new Array(n)).fill(0).map((x, i) => {
+      return {
+        date: formatDate(dates[i]),
+        value: gens[j](i, n)
+      }})
+    ])
+  )
 }
 
 const getTimeseries = (keys) => new Promise((resolve, reject) => resolve(getFakeData(keys, 123)))
