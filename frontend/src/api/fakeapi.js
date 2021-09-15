@@ -1,3 +1,5 @@
+import { formatDate } from '../util/dates'
+
 const generators = [
   (i, max) => 10*(i/max),
   (i, max) => 10*Math.sin(4*Math.PI*(i/max)),
@@ -9,6 +11,7 @@ const generators = [
   (i, max) => 10*Math.sin(Math.PI*(i/max))
 ]
 
+// spot the StackOverflow c&p ;P
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -18,30 +21,20 @@ function shuffleArray(array) {
   }
 }
 
-const getFakeData = (keys, n) => {
-  const ncol = keys.length
+export const getFakeData = (keys, n, seq = false) => {
   const d0 = new Date("2021-01-01")
-  dates = (new Array(n)).fill(0).map((x, i) => {
+  const dates = (new Array(n)).fill(0).map((x, i) => {
     let d = new Date(d0)
     d.setDate(d.getDate() + 7*i)
     return d
   })
-  const genI = (new Array(generators.length)).fill(0).map((x, i) => i)
+  const genI = (new Array(keys.length)).fill(0).map((x, i) => i % generators.length)
   shuffleArray(genI)
-  const gens = genI.map((x) => generators[x])
-  return (new Array(n)).fill(0).map((x, i) => {
-    return [formatDate(dates[i]), ...(new Array(ncol)).fill(0).map((x, j) => gens[j](i, n))]
-  })
+  const gens = genI.map((x) => seq ? ((i, n) => i) : generators[x])
+  return Object.fromEntries(keys.map((k, j) => [k, (new Array(n)).fill(0).map((x, i) => { return {date: formatDate(dates[i]), value: gens[j](i, n)}})]))
 }
 
-const formatDate = (x) => {
-  const d = new Date(x)
-  const m = d.getMonth() + 1
-  const D = d.getDate()
-  return `${d.getFullYear()}-${(m < 10 ? '0' : '') + m}-${(D < 10 ? '0' : '') + D}`
-}
-
-const getTimeseries = (keys) => getFakeData(keys, 123)
+const getTimeseries = (keys) => new Promise((resolve, reject) => resolve(getFakeData(keys, 123)))
 
 export default {
   getTimeseries

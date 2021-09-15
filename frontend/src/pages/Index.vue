@@ -24,19 +24,18 @@
 
 <script>
 import ComparisonCard from "../components/ComparisonCard";
-
 import { v4 as uuidv4 } from 'uuid';
-
-
 
 export default {
   name: 'PageIndex',
   components: {
     "comp-card": ComparisonCard
   },
-  data(){
+  mounted() {
+  },
+  data() {
     return{
-      cards: [],
+      cards: []
     }
   },
   methods: {

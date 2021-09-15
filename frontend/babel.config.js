@@ -2,6 +2,11 @@
 
 module.exports = api => {
   return {
+    env: {
+      test: {
+        plugins: ["@babel/plugin-transform-modules-commonjs"]
+      }
+    },
     presets: [
       [
         '@quasar/babel-preset-app',
