@@ -25,10 +25,10 @@ export default {
           visualMap: {
             left: 'center',
             bottom: '10%',
-            min: 5,
-            max: 30,
+            min: 0,
+            max: 10,
             orient: 'horizontal',
-            text: [null, 'Price'],
+            text: [],
             realtime: true,
             calculable: true,
             inRange: {
