@@ -63,8 +63,15 @@ export default {
        o.dataset.source = this.data
 
        if(this.data.length > 0) {
-         const nSeries = this.data[0].length
-         o.series = (new Array(nSeries)).fill(0).map((_, i) => ({ type: 'line', encode: { x: 0, y: i+1 }}))
+         // First column is date
+         const nSeries = this.data[0].length - 1
+         o.series = (new Array(nSeries)).fill(0).map((_, i) => (
+           {
+             type: 'line',
+             name: this.data[0][i+1],
+             encode: { x: 0, y: i+1 }
+            }
+          ))
        }
        return o
      }
