@@ -1,4 +1,4 @@
-import * as d from 'debug'
+import d from 'debug'
 import ts from '../api'
 import cantons from '../util/cantons'
 import { getKeys } from '../util/keys'
@@ -28,7 +28,8 @@ const getTimeseries = (cantons, indicators) => {
 }
 
 const getSeriesFromCache = (keys) => {
-  const series = keys.map((k) => cache[k])
+  let series = {}
+  keys.forEach((k) => series[k] = cache[k])
   return new Promise((res, rej) => res(series))
 }
 
