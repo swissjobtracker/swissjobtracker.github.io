@@ -49,7 +49,11 @@ export default {
               dataset: {
                 source: []
               },
-              series: []
+              series: [],
+              tooltip: {
+                show: true,
+                trigger: 'axis'
+              }
           }
        }
    },
