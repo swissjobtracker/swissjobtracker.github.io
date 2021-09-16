@@ -28,7 +28,8 @@ export const tsToLine = (data) => {
     data[keys[i]].forEach(({ date, value }) => data_obj[date][i] = value)
   }
 
-  return Object.entries(data_obj).sort((a, b) => a[0] > b[0] ? 1 : -1).map(([d, v]) => [d, ...v])
+  const values =  Object.entries(data_obj).sort((a, b) => a[0] > b[0] ? 1 : -1).map(([d, v]) => [d, ...v])
+  return [['date', ...keys], ...values]
 }
 
 export default {
