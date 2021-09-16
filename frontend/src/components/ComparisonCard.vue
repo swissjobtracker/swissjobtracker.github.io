@@ -68,7 +68,6 @@ export default {
         // TODO this.lineLoading = TRUE or some such
         getLineSeries(this.selectedCantons, this.indicator)
         .then((data) => {
-          console.log(data)
           this.lineData = data
         })
       }
