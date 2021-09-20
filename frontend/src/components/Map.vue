@@ -63,7 +63,12 @@ export default {
     },
     methods: {
       onSelectionChanged: function(e) {
-        this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => this.data[i].name))
+        if(e.selected.length > 0) {
+          this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => this.data[i].name))
+        } else {
+          // empty selection
+          this.$emit('selectCantons', [])
+        }
       }
     }
 };
