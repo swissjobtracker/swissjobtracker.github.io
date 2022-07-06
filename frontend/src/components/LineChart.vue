@@ -1,5 +1,7 @@
 <template>
-     <e-chart :option="option"/>
+<div>
+     <e-chart :option="lines" ref="chart"/>
+</div>
 </template>
 
 <style scoped>
@@ -56,6 +58,31 @@ export default {
               }
           }
        }
+   },
+   watch: {
+     data: {
+       handler: function() {
+         this.update()
+       },
+       deep: true
+     }
+   },
+   methods: {
+     update: function() {
+       const nSeries = this.data[0].length - 1
+
+       this.lines.dataset = {
+         source: this.data
+       }
+
+       this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
+           {
+             type: 'line',
+             name: this.data[0][i+1],
+             encode: { x: 0, y: i+1 }
+            }
+          ))
+     }
    },
    computed: {
      option: function() {
