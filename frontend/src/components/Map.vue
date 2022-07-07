@@ -38,6 +38,9 @@ export default {
           series: [{
             name: 'stuff',
             type: 'map',
+            zoom: 2.2,
+            left: 220,
+            top: 100,
             map: 'el_schweiz',
             selectedMode: 'multiple',
             data: []
