@@ -1,28 +1,48 @@
 import keys from './keys'
 
 test('getSingleKey', () => {
-  expect(keys.getSingleKey('zh', 'main')).toBe('ch.kof.x28.stuff.zh.main')
+  expect(keys.getSingleKey({
+    type: 'canton',
+    id: 'zh'
+  }, 'main')).toBe('ch.kof.x28.stuff.canton.zh.main')
 })
 
 test('getKeys with 2 arrays', () => {
-  expect(keys.getKeys(['ag', 'zh'], ['main', 'other'])).toEqual([
-    'ch.kof.x28.stuff.ag.main',
-    'ch.kof.x28.stuff.ag.other',
-    'ch.kof.x28.stuff.zh.main',
-    'ch.kof.x28.stuff.zh.other',
+  expect(keys.getKeys([{
+    type: 'canton',
+    id: 'ag'
+  },
+  {
+    type: 'canton',
+    id: 'zh'
+  }], ['main', 'other'])).toEqual([
+    'ch.kof.x28.stuff.canton.ag.main',
+    'ch.kof.x28.stuff.canton.ag.other',
+    'ch.kof.x28.stuff.canton.zh.main',
+    'ch.kof.x28.stuff.canton.zh.other',
   ])
 })
 
-test('getKeys with string canton', () => {
-  expect(keys.getKeys('ag', ['main', 'other'])).toEqual([
-    'ch.kof.x28.stuff.ag.main',
-    'ch.kof.x28.stuff.ag.other'
-  ])
+test('getKeys with single series', () => {
+  expect(keys.getKeys({
+      type: 'canton',
+      id: 'ag'
+    }, ['main', 'other'])).toEqual([
+      'ch.kof.x28.stuff.canton.ag.main',
+      'ch.kof.x28.stuff.canton.ag.other'
+    ])
 })
 
-test('getKeys with string indicator', () => {
-  expect(keys.getKeys(['ag', 'zh'], 'otter')).toEqual([
-    'ch.kof.x28.stuff.ag.otter',
-    'ch.kof.x28.stuff.zh.otter'
+test('getKeys with single indicator', () => {
+  expect(keys.getKeys([{
+    type: 'canton',
+    id: 'ag'
+  },
+  {
+    type: 'canton',
+    id: 'zh'
+  }], 'otter')).toEqual([
+    'ch.kof.x28.stuff.canton.ag.otter',
+    'ch.kof.x28.stuff.canton.zh.otter'
   ])
 })

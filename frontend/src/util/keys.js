@@ -1,14 +1,18 @@
-const getSingleKey = (canton, indicator) => `ch.kof.x28.stuff.${canton}.${indicator}`
+const getSingleKey = (series, indicator) => {
+  if(series.type == 'canton') {
+    return `ch.kof.x28.stuff.canton.${series.id}.${indicator}`
+  }
+}
 
-export const getKeys = (cantons, indicators) => {
-  if(!Array.isArray(cantons)) {
-    cantons = [cantons]
+export const getKeys = (series, indicators) => {
+  if(!Array.isArray(series)) {
+    series = [series]
   }
   if(!Array.isArray(indicators)) {
     indicators = [indicators]
   }
 
-  return (cantons.map((c) => indicators.map((i) => getSingleKey(c, i)))).flat()
+  return (series.map((s) => indicators.map((i) => getSingleKey(s, i)))).flat()
 }
 
 export default {

@@ -3,7 +3,7 @@
         <q-card flat square bordered class="q-card q-mb-xl  col-12">
           <div class="row">
           <div class="col-4">
-            <map-comp :data="mapData" @selectCantons="updateSelection"/>
+            <map-comp :data="mapData" @selectionChanged="updateSelection"/>
           </div>
           <div class="col-7">
             <linechart :data="lineData"/>
@@ -51,7 +51,7 @@ export default {
       return {
         mapData: [],
         lineData: [],
-        selectedCantons: [],
+        selectedSeries: [],
         indicator: 'main'
       }
     },
@@ -61,12 +61,12 @@ export default {
     },
     methods: {
       updateSelection: function(newSelection) {
-        this.selectedCantons = newSelection
+        this.selectedSeries = newSelection
         this.loadLineData()
       },
       loadLineData: function() {
         // TODO this.lineLoading = TRUE or some such
-        getLineSeries(this.selectedCantons, this.indicator)
+        getLineSeries(this.selectedSeries, this.indicator)
         .then((data) => {
           this.lineData = data
         })

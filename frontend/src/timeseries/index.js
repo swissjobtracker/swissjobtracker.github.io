@@ -8,8 +8,8 @@ const debug = d('dashboard:backend_ts')
 
 let cache = {}
 
-const getTimeseries = (cantons, indicators) => {
-  const keys = getKeys(cantons, indicators)
+const getTimeseries = (series, indicators) => {
+  const keys = getKeys(series, indicators)
   debug('getting keys: %o', keys)
   const cached = Object.keys(cache)
   const missing = keys.filter((k) => cached.indexOf(k) < 0)

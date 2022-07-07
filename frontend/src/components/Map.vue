@@ -9,11 +9,13 @@ import { use, registerMap } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
+import seriesSelector from './mixins/SeriesSelector.vue'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
 export default {
     name: "Map",
+    mixins: [seriesSelector],
     components: {
       'e-chart': echarts
     },
@@ -67,10 +69,15 @@ export default {
     methods: {
       onSelectionChanged: function(e) {
         if(e.selected.length > 0) {
-          this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => this.data[i].name))
+          this.setSelection(e.selected[0].dataIndex.map((i) => {
+            return {
+              type: 'canton',
+              id: this.data[i].name
+            }
+          }))
         } else {
           // empty selection
-          this.$emit('selectCantons', [])
+          this.clearSelection()
         }
       }
     }
