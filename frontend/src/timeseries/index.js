@@ -40,7 +40,7 @@ const getSeriesFromCache = (keys) => {
  * @returns [{name: '2 letter canton', value: 123}, ...]
  */
 export const getMapSeries = (indicator, t) => {
-  return getTimeseries(cantons, indicator)
+  return getTimeseries(cantons.map((c) => ({ type: 'canton', id: c })), indicator)
           .then((data) => tsToMap(data, t))
 }
 
