@@ -15,11 +15,11 @@
     }
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.14.2",
     "core-js": "^3.6.5",
     "debug": "^4.3.2",
     "jest": "^27.2.0",
-    "quasar": "^2.0.0",
+    "quasar": "^2.7.5",
     "vue-echarts": "^6.0.0",
     "vue-i18n": "^9.1.7"
   },
@@ -27,7 +27,7 @@
     "@babel/core": "^7.15.5",
     "@babel/eslint-parser": "^7.13.14",
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
-    "@quasar/app": "^3.0.0",
+    "@quasar/app": "^3.3.3",
     "babel-jest": "^27.2.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
