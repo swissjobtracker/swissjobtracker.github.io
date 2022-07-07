@@ -1,5 +1,8 @@
 import { formatDate } from '../util/dates'
 
+/**
+ * Some nice generator functions for test data
+ */
 const generators = [
   (i, max) => 10*(i/max),
   (i, max) => 10*Math.sin(4*Math.PI*(i/max)),
@@ -21,6 +24,15 @@ function shuffleArray(array) {
   }
 }
 
+/**
+ *
+ * @param {strig[]} keys ts keys to load
+ * @param {integer} n number of observations per series
+ * @param {boolean} seq if seq == true, returned series will be sequences of 0:(n-1),
+ *                      otherwise they are generated from a randomly chosen generator
+ * @returns timeseries data equivalent to timeseriesdb-api's json format
+ *          all series have the same length and start at 2021-01-01 with weekly frequency
+ */
 export const getFakeData = (keys, n, seq = false) => {
   const d0 = new Date("2021-01-01")
   const dates = (new Array(n)).fill(0).map((x, i) => {
@@ -42,6 +54,12 @@ export const getFakeData = (keys, n, seq = false) => {
   )
 }
 
+/**
+ * Fakes a timeseriesdb-api call
+ * @param {string[]} keys
+ *
+ * @returns
+ */
 const getTimeseries = (keys) => new Promise((resolve, reject) => resolve(getFakeData(keys, 123)))
 
 export default {

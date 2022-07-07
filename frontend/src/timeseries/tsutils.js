@@ -1,9 +1,16 @@
 import cantons from '../util/cantons'
 import { formatDate } from '../util/dates'
 
+/**
+ * Transform api timeseries data to echarts map input at time t
+ * @param {tsdata} data
+ * @param {string} t
+ * @returns [{ name: 'XX', value: yy }, ...] for all cantons
+ */
 export const tsToMap = (data, t) => {
   const date = formatDate(t)
-  const tsKeys = Object.keys(data).sort() // kinda assuming that everything before canton is constant...
+  // keys are identical up to canton chunk so sorting by the whole key effectively means sorting by canton
+  const tsKeys = Object.keys(data).sort()
   return cantons.map((c, i) => ({
     name: c.toUpperCase(),
     // TODO: Do better e.g. handle date not in array
@@ -11,6 +18,11 @@ export const tsToMap = (data, t) => {
   }))
 }
 
+/**
+ * Transforms api timeseries data to echarts line chart format
+ * @param {tsdata} data
+ * @returns
+ */
 export const tsToLine = (data) => {
   const keys = Object.keys(data)
   const nSeries = keys.length
