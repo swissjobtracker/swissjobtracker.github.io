@@ -9,30 +9,33 @@ import { use, registerMap } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
-import seriesSelector from './mixins/SeriesSelector.vue'
+import seriesSelector from './mixins/SeriesSelectorMixin.vue'
+
+import { getMapSeries } from '../timeseries'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
 export default {
     name: "Map",
-    mixins: [seriesSelector],
     components: {
       'e-chart': echarts
     },
-    props: ['data'],
-    emite: ['selectCantons'],
+    // very least: rename this to something better than conflicting "data"
+    // also:       possibly use a getMapData and only have date as prop
+    props: ['mapData'],
+    emits: ['selectCantons', 'clearSelection'],
     data() {
       return {
         rawOptions: {
           visualMap: {
-            left: 'center',
-            bottom: '10%',
+            left: 0,
+            top: 'center',
             min: 0,
             max: 10,
-            orient: 'horizontal',
+            orient: 'vertical',
             text: [],
             realtime: true,
-            calculable: true,
+            calculable: false,
             inRange: {
                 color: ['#dbac00', '#db6e00', '#cf0000']
             }
@@ -53,7 +56,7 @@ export default {
     computed: {
       options: function() {
         let options = Object.assign({}, this.rawOptions)
-        options.series[0].data = this.data
+        options.series[0].data = this.mapData
         return options
       }
     },
@@ -69,15 +72,14 @@ export default {
     methods: {
       onSelectionChanged: function(e) {
         if(e.selected.length > 0) {
-          this.setSelection(e.selected[0].dataIndex.map((i) => {
+          this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => {
             return {
               type: 'canton',
-              id: this.data[i].name
+              id: this.mapData[i].name
             }
           }))
         } else {
-          // empty selection
-          this.clearSelection()
+          this.$emit('clearSelection')
         }
       }
     }

@@ -3,7 +3,7 @@
         <q-card flat square bordered class="q-card q-mb-xl  col-12">
           <div class="row">
           <div class="col-4">
-            <map-comp :data="mapData" @selectionChanged="updateSelection"/>
+            <series-selector @selectionChanged="updateSelection"/>
           </div>
           <div class="col-7">
             <linechart :data="lineData"/>
@@ -37,7 +37,7 @@
 
 <script>
 
-import Map from "../components/Map";
+import SeriesSelector from './SeriesSelector.vue'
 import LineChart from "../components/LineChart";
 import { getLineSeries, getMapSeries } from '../timeseries'
 
@@ -45,7 +45,7 @@ export default {
     name: "comp-card",
     components: {
       linechart: LineChart,
-     'map-comp': Map
+     'series-selector': SeriesSelector
     },
     data() {
       return {
