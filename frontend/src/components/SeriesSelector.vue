@@ -18,8 +18,16 @@
     <a>job title kA</a>
   </div>
 
-  <div class="row map">
-    <ch-map @selectCantons="setSelection" @clearSelection="clearSelection" :mapData="mapData"/>
+  <div class="row selector">
+    <div class="col-12">
+      <ch-map
+        v-if="mode == 'canton'"
+        @selectCantons="setSelection"
+        @clearSelection="clearSelection"
+        :mapData="mapData"/>
+      <list-selector
+        v-if="mode == 'isco'" />
+    </div>
   </div>
 
   <div class="row">
@@ -38,12 +46,14 @@
 <script>
 import { getMapSeries } from 'src/timeseries'
 import Map from './Map.vue'
+import ListSelector from './ListSelector.vue'
 import SeriesSelectorMixin from './mixins/SeriesSelectorMixin.vue'
 
 export default {
   name: 'SeriesSelector',
   components: {
-    'ch-map': Map
+    'ch-map': Map,
+    'list-selector': ListSelector
   },
   emits: ['select'],
   mixins: [SeriesSelectorMixin],
@@ -55,7 +65,7 @@ export default {
     return {
       mapData: null,
       showTotal: true,
-      mode: 'canton',
+      mode: 'isco',
       indexOptions: [
         {
           label: 'CH Labor Market Index',
@@ -81,7 +91,7 @@ export default {
     background-color: brown;
   }
 
-  .map {
+  .selector {
     height: 300px;
   }
 </style>
