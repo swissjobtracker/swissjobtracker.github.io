@@ -13,9 +13,9 @@
 
   <div class="row">
     by
-    <a>canton</a>
-    <a>industry</a>
-    <a>job title kA</a>
+    <a @click="() => mode = 'canton'">canton</a>
+    <a @click="() => mode = 'noga'">industry</a>
+    <a @click="() => mode = 'isco'">job title kA</a>
   </div>
 
   <div class="row selector">
