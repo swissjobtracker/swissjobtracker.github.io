@@ -6,27 +6,12 @@
             <series-selector @selectionChanged="updateSelection"/>
           </div>
           <div class="col-7">
-            <linechart :data="lineData"/>
+            <linechart :lineData="lineData"/>
           </div>
           <div class="col-1">
               <div class="row">
                   <div class="col-10"></div>
                   <div class="col-1">
-
-                          <q-btn
-                            flat
-                            dense
-                            icon="delete" />
-                          <q-btn
-                            flat
-                            dense
-                            icon="delete" />
-                          <q-btn
-                            flat
-                            dense
-                            icon="delete" />
-
-
                   </div>
               </div>
           </div>

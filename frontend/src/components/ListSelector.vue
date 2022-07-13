@@ -75,6 +75,7 @@ const rawOptions = [
 
 export default {
   name: "ListSelector",
+  props: ["type"],
   data() {
     return {
       model: null,
@@ -97,7 +98,13 @@ export default {
         newSelection[newSelection.length - 1] = x
         this.selected = newSelection
       }
-     this.model = null
+      this.$emit('select', this.selected.map((x) => {
+        return {
+          type: this.type,
+          id: x.value
+        }
+      }))
+      this.model = null
     },
     deselect: function(item) {
       this.selected = this.selected.filter((s) => s.value != item.value)

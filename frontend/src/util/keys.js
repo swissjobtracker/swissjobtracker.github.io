@@ -1,7 +1,5 @@
 const getSingleKey = (series, indicator) => {
-  if(series.type == 'canton') {
-    return `ch.kof.x28.stuff.canton.${series.id}.${indicator}`
-  }
+    return `ch.kof.x28.stuff.${series.type}.${series.id}.${indicator}`
 }
 
 export const getKeys = (series, indicators) => {

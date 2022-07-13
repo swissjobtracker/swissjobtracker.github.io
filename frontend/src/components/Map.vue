@@ -9,9 +9,6 @@ import { use, registerMap } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
-import seriesSelector from './mixins/SeriesSelectorMixin.vue'
-
-import { getMapSeries } from '../timeseries'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 

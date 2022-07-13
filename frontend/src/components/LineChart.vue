@@ -37,7 +37,7 @@ export default {
    components: {
        'e-chart': echarts
    },
-   props: ['data'],
+   props: ['lineData'],
    emits: ['selectDate'],
    data() {
        return{
@@ -60,7 +60,7 @@ export default {
        }
    },
    watch: {
-     data: {
+     lineData: {
        handler: function() {
          this.update()
        },
@@ -69,39 +69,20 @@ export default {
    },
    methods: {
      update: function() {
-       const nSeries = this.data[0].length - 1
+       const nSeries = this.lineData[0].length - 1
 
        this.lines.dataset = {
-         source: this.data
+         source: this.lineData
        }
 
        this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
            {
              type: 'line',
-             name: this.data[0][i+1],
+             name: this.lineData[0][i+1],
              encode: { x: 0, y: i+1 }
             }
           ))
      }
    },
-   computed: {
-     option: function() {
-       let o = Object.assign({}, this.lines)
-       o.dataset.source = this.data
-
-       if(this.data.length > 0) {
-         // First column is date
-         const nSeries = this.data[0].length - 1
-         o.series = (new Array(nSeries)).fill(0).map((_, i) => (
-           {
-             type: 'line',
-             name: this.data[0][i+1],
-             encode: { x: 0, y: i+1 }
-            }
-          ))
-       }
-       return o
-     }
-   }
 }
 </script>

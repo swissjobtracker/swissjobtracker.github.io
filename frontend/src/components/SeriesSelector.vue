@@ -13,9 +13,9 @@
 
   <div class="row">
     by
-    <a @click="() => mode = 'canton'">canton</a>
-    <a @click="() => mode = 'noga'">industry</a>
-    <a @click="() => mode = 'isco'">job title kA</a>
+    <a @click="() => setMode('canton')">canton</a>
+    <a @click="() => setMode('noga')">industry</a>
+    <a @click="() => setMode('isco')">job title kA</a>
   </div>
 
   <div class="row selector">
@@ -26,7 +26,13 @@
         @clearSelection="clearSelection"
         :mapData="mapData"/>
       <list-selector
-        v-if="mode == 'isco'" />
+        v-if="mode == 'noga'"
+        type="noga"
+        @select="setSelection" />
+      <list-selector
+        v-if="mode == 'isco'"
+        type="isco"
+        @select="setSelection" />
     </div>
   </div>
 
@@ -49,6 +55,17 @@ import Map from './Map.vue'
 import ListSelector from './ListSelector.vue'
 import SeriesSelectorMixin from './mixins/SeriesSelectorMixin.vue'
 
+const indexOptionsRaw = [
+  {
+    label: 'CH Labor Market Index',
+    value: 'idx'
+  },
+  {
+    label: 'Mean Ad Lifetime',
+    value: 't'
+  }
+]
+
 export default {
   name: 'SeriesSelector',
   components: {
@@ -65,22 +82,15 @@ export default {
     return {
       mapData: null,
       showTotal: true,
-      mode: 'isco',
-      indexOptions: [
-        {
-          label: 'CH Labor Market Index',
-          value: 'idx'
-        },
-        {
-          label: 'Mean Ad Lifetime',
-          value: 't'
-        }
-      ],
-      // WET!
-      selectedIndex: {
-        label: 'CH Labor Marked Index',
-        value: 'idx'
-      }
+      mode: 'canton',
+      indexOptions: indexOptionsRaw,
+      selectedIndex: indexOptionsRaw[0]
+    }
+  },
+  methods: {
+    setMode: function(newMode) {
+      this.clearSelection()
+      this.mode = newMode
     }
   }
 }
