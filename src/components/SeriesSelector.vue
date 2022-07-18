@@ -11,11 +11,24 @@
     </div>
   </div>
 
-  <div class="row">
-    by
-    <a @click="() => setMode('canton')">canton</a>
-    <a @click="() => setMode('noga')">industry</a>
-    <a @click="() => setMode('isco')">job title kA</a>
+  <div class="row q-pt-sm q-pb-sm">
+    <div class="col-8">
+      by
+      <q-btn-group flat>
+      <q-btn outline  flat color="grey" label="canton" @click="() => setMode('canton')"/>
+      <q-btn outline  flat color="grey" label="industry" @click="() => setMode('noga')" />
+      <q-btn outline  flat color="grey" label="job title" @click="() => setMode('isco')"/>
+    </q-btn-group>
+    </div>
+    <div class="col-4">
+      <q-toggle
+      label="Show Total"
+      color="gray"
+      keep-color
+      v-model="showTotal">
+    </q-toggle>
+
+    </div>
   </div>
 
   <div class="row selector">
@@ -40,16 +53,7 @@
     </div>
   </div>
 
-  <div class="row">
-    <q-toggle
-      label="Show Total"
-      color="blue"
-      keep-color
-      v-model="showTotal">
-
-    </q-toggle>
-  </div>
-
+  
 
 </template>
 
@@ -97,7 +101,7 @@ export default {
       mapData: null,
       showTotal: true,
       selection: [],
-      mode: 'noga',
+      mode: 'canton',
       indexOptions: indexOptionsRaw,
       selectedIndex: indexOptionsRaw[0]
     }
