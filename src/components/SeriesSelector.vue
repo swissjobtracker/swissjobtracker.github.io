@@ -22,7 +22,7 @@
     <div class="col-12">
       <ch-map
         v-if="mode == 'canton'"
-        @selectCantons="setSelection"
+        @selectCantons="onSelect"
         @clearSelection="clearSelection"
         :mapData="mapData"/>
       <list-selector
@@ -86,13 +86,17 @@ export default {
   },
   emits: ['select'],
   mounted() {
-    getMapSeries('main', '2021-01-01')
+    // Emit an event indicating total is selected
+    this.emitSelection()
+
+    getMapSeries(this.selectedIndex.value, '2021-01-01')
     .then((data) => this.mapData = data)
   },
   data() {
     return {
       mapData: null,
       showTotal: true,
+      selection: [],
       mode: 'noga',
       indexOptions: indexOptionsRaw,
       selectedIndex: indexOptionsRaw[0]
@@ -103,8 +107,15 @@ export default {
       this.clearSelection()
       this.mode = newMode
     },
+    clearSelection: function() {
+      this.onSelect([])
+    },
     onSelect: function(selection) {
-      const toEmit = selection.map((s) => {
+      this.selection = selection
+      this.emitSelection()
+    },
+    emitSelection: function() {
+      const toEmit = this.selection.map((s) => {
         return {
           ...s,
           type: this.selectedIndex.value
@@ -121,6 +132,11 @@ export default {
       }
 
       this.$emit('select', toEmit)
+    }
+  },
+  watch: {
+    showTotal: function() {
+      this.emitSelection()
     }
   }
 }

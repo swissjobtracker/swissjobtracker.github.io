@@ -99,6 +99,7 @@ export default {
     onSelect: function(x) {
       this.selectItem({
         label: x.label,
+        by: this.type,
         byvalue: x.value
       })
       this.model = null

@@ -6,7 +6,7 @@
             <series-selector @select="onSelect" :colors="colors"/>
           </div>
           <div class="col-7">
-            <linechart :lineData="lineData" :colors="colors"/>
+            <linechart :series="selectedSeries" :colors="colors"/>
           </div>
           <div class="col-1">
               <div class="row">
@@ -24,7 +24,6 @@
 
 import SeriesSelector from './SeriesSelector.vue'
 import LineChart from "../components/LineChart";
-import { getLineSeries, getMapSeries } from '../timeseries'
 
 export default {
     name: "comp-card",
@@ -34,29 +33,13 @@ export default {
     },
     data() {
       return {
-        mapData: [],
-        lineData: [],
         selectedSeries: [],
         colors: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'] // tbd
       }
     },
-    mounted() {
-      getMapSeries(this.indicator, new Date('2021-01-01'))
-      .then((data) => this.mapData = data)
-    },
     methods: {
-      updateSelection: function(newSelection) {
-        this.selectedSeries = newSelection
-        this.loadLineData()
-      },
-      loadLineData: function() {
-        // TODO this.lineLoading = TRUE or some such
-        getLineSeries(this.selectedSeries, this.indicator)
-        .then((data) => {
-          this.lineData = data
-        })
-      },
       onSelect: function(newSelection) {
+        this.selectedSeries = newSelection
       }
     }
 };

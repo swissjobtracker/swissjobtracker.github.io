@@ -1,6 +1,6 @@
 <template>
 <div>
-     <e-chart :option="lines" ref="chart"/>
+     <e-chart :option="lines" :loading="loading" ref="chart"/>
 </div>
 </template>
 
@@ -24,13 +24,15 @@ import { GridComponent,
           DatasetComponent } from 'echarts/components'
 
 
+import { getLineSeries } from '../timeseries'
+
 use([CanvasRenderer,
-LineChart,
-GridComponent,
-TitleComponent,
-TooltipComponent,
-TimelineComponent,
-DatasetComponent])
+      LineChart,
+      GridComponent,
+      TitleComponent,
+      TooltipComponent,
+      TimelineComponent,
+      DatasetComponent])
 
 export default {
    name: 'lineChart',
@@ -38,7 +40,7 @@ export default {
        'e-chart': echarts
    },
    props: {
-    lineData: {
+    series: {
       required: true
     },
     colors: {
@@ -46,28 +48,32 @@ export default {
     }
    },
    emits: ['selectDate'],
+   mounted() {
+    this.update()
+   },
    data() {
        return{
-           lines: {
-              xAxis: {
-                  type: 'time',
-              },
-              yAxis: {
-                  type: 'value'
-              },
-              dataset: {
-                source: []
-              },
-              series: [],
-              tooltip: {
-                show: true,
-                trigger: 'axis'
-              }
+          loading: false,
+          lines: {
+            xAxis: {
+                type: 'time',
+            },
+            yAxis: {
+                type: 'value'
+            },
+            dataset: {
+              source: []
+            },
+            series: [],
+            tooltip: {
+              show: true,
+              trigger: 'axis'
+            }
           }
        }
    },
    watch: {
-     lineData: {
+     series: {
        handler: function() {
          this.update()
        },
@@ -76,21 +82,25 @@ export default {
    },
    methods: {
      update: function() {
-       const nSeries = this.lineData[0].length - 1
+      this.loading = true
+      getLineSeries(this.series)
+        .then((data) => {
+          const nSeries = data[0].length - 1
 
-       this.lines.dataset = {
-         source: this.lineData
-       }
+          this.lines.dataset = {
+            source: data
+          }
 
-       this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
-           {
-             type: 'line',
-             color: this.colors[i], // TODO!
-             name: this.lineData[0][i+1],
-             encode: { x: 0, y: i+1 }
-            }
-          ))
-     }
+          this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
+              {
+                type: 'line',
+                color: this.colors[this.series[i].index],
+                name: data[0][i+1],
+                encode: { x: 0, y: i+1 }
+              }))
+          this.loading = false
+        })
+     },
    },
 }
 </script>

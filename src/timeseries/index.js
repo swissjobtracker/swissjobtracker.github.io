@@ -8,8 +8,8 @@ const debug = d('dashboard:backend_ts')
 
 let cache = {}
 
-const getTimeseries = (series, indicators) => {
-  const keys = getKeys(series, indicators)
+const getTimeseries = (series) => {
+  const keys = getKeys(series)
   debug('getting keys: %o', keys)
   const cached = Object.keys(cache)
   const missing = keys.filter((k) => cached.indexOf(k) < 0)
@@ -40,12 +40,17 @@ const getSeriesFromCache = (keys) => {
  * @returns [{name: '2 letter canton', value: 123}, ...]
  */
 export const getMapSeries = (indicator, t) => {
-  return getTimeseries(cantons.map((c) => ({ type: 'canton', id: c })), indicator)
+  const series = cantons.map((c) => ({
+    type: indicator,
+    by: 'canton',
+    byvalue: c
+  }))
+  return getTimeseries(series)
           .then((data) => tsToMap(data, t))
 }
 
-export const getLineSeries = (cantons, indicators) => {
-  return getTimeseries(cantons, indicators)
+export const getLineSeries = (series) => {
+  return getTimeseries(series)
           .then(tsToLine)
 }
 

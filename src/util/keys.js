@@ -1,16 +1,13 @@
-const getSingleKey = (series, indicator) => {
-    return `ch.kof.x28.stuff.${series.type}.${series.id}.${indicator}`
+const getSingleKey = (series) => {
+    return `ch.kof.x28.stuff.${series.by}.${series.byvalue}.${series.type}`
 }
 
-export const getKeys = (series, indicators) => {
+export const getKeys = (series) => {
   if(!Array.isArray(series)) {
     series = [series]
   }
-  if(!Array.isArray(indicators)) {
-    indicators = [indicators]
-  }
 
-  return (series.map((s) => indicators.map((i) => getSingleKey(s, i)))).flat()
+  return (series.map((s) => getSingleKey(s))).flat()
 }
 
 export default {
