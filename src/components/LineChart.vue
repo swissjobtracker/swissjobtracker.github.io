@@ -94,6 +94,8 @@ export default {
           this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
               {
                 type: 'line',
+                width: 3.5,
+                showSymbol: false,
                 color: this.colors[this.series[i].index],
                 name: data[0][i+1],
                 encode: { x: 0, y: i+1 }
