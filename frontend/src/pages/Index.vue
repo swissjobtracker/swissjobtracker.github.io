@@ -37,8 +37,6 @@ export default {
   data() {
     return{
       cards: [],
-      indicator: 'main',
-      mapData: []
     }
   },
   methods: {

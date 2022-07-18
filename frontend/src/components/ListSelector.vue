@@ -14,13 +14,17 @@
 
   <q-list>
     <q-item
-    v-for="s in selected"
-    :key="s.value">
+    v-for="s in selection"
+    :key="s.byvalue">
+      <q-item-section>
+        <div :style="{backgroundColor: colors[s.index], height: '100%'}">
+        </div>
+      </q-item-section>
       <q-item-section>
         {{s.label}}
       </q-item-section>
       <q-item-section side >
-        <q-btn flat @click="deselect(s)">X</q-btn>
+        <q-btn flat @click="() => deselectItem(s)">X</q-btn>
       </q-item-section>
     </q-item>
   </q-list>
@@ -28,6 +32,8 @@
 </template>
 
 <script>
+import SelectorMixin from './mixins/SelectorMixin.vue'
+
 const rawOptions = [
   {label: 'Bauhandlanger 1', value: 1},
   {label: 'Bauhandlanger 2', value: 2},
@@ -75,39 +81,27 @@ const rawOptions = [
 
 export default {
   name: "ListSelector",
+  mixins: [SelectorMixin],
   props: ["type"],
   data() {
     return {
       model: null,
-      selected: [],
       options: rawOptions,
       maxSelect: 3
     }
   },
   computed: {
     availableOptions: function() {
-       return this.options.filter((o) => this.selected.map((s) => s.value).indexOf(o.value) < 0)
+       return this.options.filter((o) => this.selection.map((s) => s.byvalue).indexOf(o.value) < 0)
     }
   },
   methods: {
     onSelect: function(x) {
-      if(this.selected.length < this.maxSelect) {
-        this.selected = [...this.selected, x]
-      } else {
-        const newSelection = [...this.selected]
-        newSelection[newSelection.length - 1] = x
-        this.selected = newSelection
-      }
-      this.$emit('select', this.selected.map((x) => {
-        return {
-          type: this.type,
-          id: x.value
-        }
-      }))
+      this.selectItem({
+        label: x.label,
+        byvalue: x.value
+      })
       this.model = null
-    },
-    deselect: function(item) {
-      this.selected = this.selected.filter((s) => s.value != item.value)
     },
     filterFn: function(val, update) {
       update(() => {

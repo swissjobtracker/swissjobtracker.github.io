@@ -28,11 +28,15 @@
       <list-selector
         v-if="mode == 'noga'"
         type="noga"
-        @select="setSelection" />
+        @select="onSelect"
+        :colors="colors"
+        :maxSelections="maxSelections"/>
       <list-selector
         v-if="mode == 'isco'"
         type="isco"
-        @select="setSelection" />
+        @select="onSelect"
+        :colors="colors"
+        :maxSelections="maxSelections"/>
     </div>
   </div>
 
@@ -53,7 +57,6 @@
 import { getMapSeries } from 'src/timeseries'
 import Map from './Map.vue'
 import ListSelector from './ListSelector.vue'
-import SeriesSelectorMixin from './mixins/SeriesSelectorMixin.vue'
 
 const indexOptionsRaw = [
   {
@@ -68,12 +71,20 @@ const indexOptionsRaw = [
 
 export default {
   name: 'SeriesSelector',
+  props: {
+    maxSelections: {
+      required: false,
+      default: 3
+    },
+    colors: {
+      required: true
+    }
+  },
   components: {
     'ch-map': Map,
     'list-selector': ListSelector
   },
   emits: ['select'],
-  mixins: [SeriesSelectorMixin],
   mounted() {
     getMapSeries('main', '2021-01-01')
     .then((data) => this.mapData = data)
@@ -82,7 +93,7 @@ export default {
     return {
       mapData: null,
       showTotal: true,
-      mode: 'canton',
+      mode: 'noga',
       indexOptions: indexOptionsRaw,
       selectedIndex: indexOptionsRaw[0]
     }
@@ -91,6 +102,25 @@ export default {
     setMode: function(newMode) {
       this.clearSelection()
       this.mode = newMode
+    },
+    onSelect: function(selection) {
+      const toEmit = selection.map((s) => {
+        return {
+          ...s,
+          type: this.selectedIndex.value
+        }
+      })
+
+      if(this.showTotal) {
+        toEmit.push({
+          index: this.maxSelections, // indices of selections go from 0 - maxSelections-1
+          type: this.selectedIndex.value,
+          by: 'total',
+          byvalue: 'total'
+        })
+      }
+
+      this.$emit('select', toEmit)
     }
   }
 }

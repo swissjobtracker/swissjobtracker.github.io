@@ -3,10 +3,10 @@
         <q-card flat square bordered class="q-card q-mb-xl  col-12">
           <div class="row">
           <div class="col-4">
-            <series-selector @selectionChanged="updateSelection"/>
+            <series-selector @select="onSelect" :colors="colors"/>
           </div>
           <div class="col-7">
-            <linechart :lineData="lineData"/>
+            <linechart :lineData="lineData" :colors="colors"/>
           </div>
           <div class="col-1">
               <div class="row">
@@ -37,7 +37,7 @@ export default {
         mapData: [],
         lineData: [],
         selectedSeries: [],
-        indicator: 'main'
+        colors: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'] // tbd
       }
     },
     mounted() {
@@ -55,6 +55,8 @@ export default {
         .then((data) => {
           this.lineData = data
         })
+      },
+      onSelect: function(newSelection) {
       }
     }
 };

@@ -37,7 +37,14 @@ export default {
    components: {
        'e-chart': echarts
    },
-   props: ['lineData'],
+   props: {
+    lineData: {
+      required: true
+    },
+    colors: {
+      required: true
+    }
+   },
    emits: ['selectDate'],
    data() {
        return{
@@ -78,6 +85,7 @@ export default {
        this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
            {
              type: 'line',
+             color: this.colors[i], // TODO!
              name: this.lineData[0][i+1],
              encode: { x: 0, y: i+1 }
             }
