@@ -6,6 +6,7 @@
       <comp-card
         v-for="(card) in cards"
         :key="card.id"
+        @close="() => removeCard(card.id)"
        />
 
      <q-btn  color="blue" class="full-width add_chart" @click="newCard">
@@ -36,7 +37,9 @@ export default {
   },
   data() {
     return{
-      cards: [],
+      cards: [
+        {id: uuidv4()}
+      ],
     }
   },
   methods: {
@@ -45,6 +48,9 @@ export default {
         id: uuidv4()
       })
     },
+    removeCard: function(id){
+      this.cards = this.cards.filter((c) => c.id != id )
+    }
   }
 }
 </script>

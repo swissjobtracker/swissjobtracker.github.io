@@ -10,8 +10,10 @@
           </div>
           <div class="col-1">
               <div class="row">
-                  <div class="col-10"></div>
-                  <div class="col-1">
+                  <div>
+                    <q-btn @click="closeCard" flat>
+                      <q-icon name="close"></q-icon>
+                    </q-btn>
                   </div>
               </div>
           </div>
@@ -31,6 +33,7 @@ export default {
       linechart: LineChart,
      'series-selector': SeriesSelector
     },
+    emits: ['close'],
     data() {
       return {
         selectedSeries: [],
@@ -40,6 +43,9 @@ export default {
     methods: {
       onSelect: function(newSelection) {
         this.selectedSeries = newSelection
+      },
+      closeCard: function(){
+        this.$emit('close')
       }
     }
 };
