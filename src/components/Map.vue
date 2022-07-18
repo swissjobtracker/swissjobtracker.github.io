@@ -71,8 +71,8 @@ export default {
         if(e.selected.length > 0) {
           this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => {
             return {
-              type: 'canton',
-              id: this.mapData[i].name
+              by: 'canton',
+              byvalue: this.mapData[i].name
             }
           }))
         } else {
