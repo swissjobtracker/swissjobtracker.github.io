@@ -137,6 +137,9 @@ export default {
   watch: {
     showTotal: function() {
       this.emitSelection()
+    },
+    selectedIndex: function() {
+      this.emitSelection()
     }
   }
 }
