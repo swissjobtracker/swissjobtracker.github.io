@@ -3,11 +3,12 @@
 
     <q-header class="bg-primary text-white">
       <q-toolbar class="lmm-bar">
-    <div class="title-text">.. SWISS Job Tracker .. </div>
-      <q-tabs>
-        <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
-      </q-tabs>
-
+        <div>
+          <a class="q-btn q-btn-item non-selectable no-outline q-btn--flat" href="/">.. SWISS Job Tracker .. </a>
+        </div>
+        <q-tabs>
+          <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 
