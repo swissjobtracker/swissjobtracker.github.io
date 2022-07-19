@@ -1,5 +1,8 @@
 <template>
-    <e-chart @selectchanged="onSelectionChanged" ref="map"/>
+    <e-chart
+      autoresize
+      @selectchanged="onSelectionChanged"
+      ref="map"/>
 </template>
 
 

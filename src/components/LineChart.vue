@@ -1,6 +1,11 @@
 <template>
 <div>
-     <e-chart :option="lines" :update-options="{ replaceMerge: ['series'] }" :loading="loading" ref="chart"/>
+     <e-chart
+        autoresize
+      	:option="lines"
+        :update-options="{ replaceMerge: ['series'] }"
+        :loading="loading"
+        ref="chart"/>
 </div>
 </template>
 
