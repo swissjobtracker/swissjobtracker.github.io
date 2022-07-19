@@ -1,11 +1,16 @@
 <template>
 <div>
+<div class="chart-title q-pa-lg">
+  Chart title goes here
+</div>
+<div class="q-pa-sm">
      <e-chart
         autoresize
       	:option="lines"
         :update-options="{ replaceMerge: ['series'] }"
         :loading="loading"
         ref="chart"/>
+</div>
 </div>
 </template>
 
@@ -60,6 +65,9 @@ export default {
        return{
           loading: false,
           lines: {
+            grid: {
+              top: 5
+            },
             xAxis: {
                 type: 'time',
             },
