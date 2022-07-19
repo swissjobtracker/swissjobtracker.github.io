@@ -1,6 +1,6 @@
 <template>
 <div>
-     <e-chart :option="lines" :loading="loading" ref="chart"/>
+     <e-chart :option="lines" :update-options="{ replaceMerge: ['series'] }" :loading="loading" ref="chart"/>
 </div>
 </template>
 
@@ -61,9 +61,6 @@ export default {
             yAxis: {
                 type: 'value'
             },
-            dataset: {
-              source: []
-            },
             series: [],
             tooltip: {
               show: true,
@@ -87,19 +84,19 @@ export default {
         .then((data) => {
           const nSeries = data[0].length - 1
 
-          this.lines.dataset = {
-            source: data
-          }
-
-          this.lines.series = (new Array(nSeries)).fill(0).map((_, i) => (
+          this.lines = {
+            series: (new Array(nSeries)).fill(0).map((_, i) => (
               {
                 type: 'line',
                 width: 3.5,
                 showSymbol: false,
                 color: this.colors[this.series[i].index],
                 name: data[0][i+1],
-                encode: { x: 0, y: i+1 }
+                // first row is the header, slice that right off
+                data: data.slice(1).map((row) => [row[0], row[i + 1]])
               }))
+          }
+
           this.loading = false
         })
      },
