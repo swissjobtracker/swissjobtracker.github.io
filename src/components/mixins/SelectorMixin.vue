@@ -20,10 +20,10 @@ export default {
     selectItem: function(item) {
       // in case there are already as many elements selected as allowed
       // replace the last one
-      const nextSlot = this.slots.indexOf(true)
       if(this.selection.length == this.maxSelections) {
-        this.selection = [...this.selection.slice(0, -1), this.makeSelectionItem(item, nextSlot)]
+        this.selection = [...this.selection.slice(0, -1), this.makeSelectionItem(item, this.maxSelections - 1)]
       } else {
+        const nextSlot = this.slots.indexOf(true)
         this.slots[nextSlot] = false
         this.selection = [...this.selection, this.makeSelectionItem(item, nextSlot)]
       }
