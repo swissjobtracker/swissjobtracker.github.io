@@ -41,19 +41,21 @@
       <list-selector
         v-if="mode == 'noga'"
         type="noga"
+        :options="nogaOptions"
         @select="onSelect"
         :colors="colors"
         :maxSelections="maxSelections"/>
       <list-selector
         v-if="mode == 'isco'"
         type="isco"
+        :options="iscoOptions"
         @select="onSelect"
         :colors="colors"
         :maxSelections="maxSelections"/>
     </div>
   </div>
 
-  
+
 
 </template>
 
@@ -61,6 +63,8 @@
 import { getMapSeries } from 'src/timeseries'
 import Map from './Map.vue'
 import ListSelector from './ListSelector.vue'
+import nogaOptions from '../util/nogaoptions'
+import iscoOptions from '..//util/iscooptions'
 
 const indexOptionsRaw = [
   {
@@ -103,7 +107,9 @@ export default {
       selection: [],
       mode: 'canton',
       indexOptions: indexOptionsRaw,
-      selectedIndex: indexOptionsRaw[0]
+      selectedIndex: indexOptionsRaw[0],
+      nogaOptions,
+      iscoOptions
     }
   },
   methods: {
