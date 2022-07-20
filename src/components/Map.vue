@@ -32,7 +32,6 @@ export default {
         option: {
           geo: {
             map: 'ch',
-            roam: true,
             zoom: 2.5,
             left: 250,
             top: 100,
