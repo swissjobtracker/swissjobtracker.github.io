@@ -1,6 +1,7 @@
 <template>
     <e-chart
       autoresize
+      :option="options"
       @selectchanged="onSelectionChanged"
       ref="map"/>
 </template>
@@ -8,7 +9,7 @@
 
 <script>
 import echarts from 'vue-echarts'
-import { use, registerMap } from 'echarts/core'
+import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
@@ -46,7 +47,7 @@ export default {
             zoom: 2.2,
             left: 220,
             top: 100,
-            map: 'el_schweiz',
+            map: 'ch',
             selectedMode: 'multiple',
             data: []
           }]
@@ -59,15 +60,6 @@ export default {
         options.series[0].data = this.mapData
         return options
       }
-    },
-    mounted() {
-      fetch('ch.svg')
-      .then((r) => r.text())
-      .then((svg) => {
-        // TODO: could this be done at some higher level and only once?
-        registerMap('el_schweiz', { svg: svg })
-        this.$refs.map.setOption(this.options)
-      })
     },
     methods: {
       onSelectionChanged: function(e) {
