@@ -35,8 +35,9 @@
     <div class="col-12">
       <ch-map
         v-if="mode == 'canton'"
-        @selectCantons="onSelect"
-        @clearSelection="clearSelection"
+        @select="onSelect"
+        :colors="colors"
+        :maxSelections="maxSelections"
         :mapData="mapData"/>
       <list-selector
         v-if="mode == 'noga'"

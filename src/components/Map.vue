@@ -1,8 +1,9 @@
 <template>
     <e-chart
       autoresize
-      :option="options"
-      @selectchanged="onSelectionChanged"
+      :option="option"
+      :update-options="{ replaceMerge: ['series'] }"
+      @click="onClick"
       ref="map"/>
 </template>
 
@@ -13,6 +14,7 @@ import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
+import SelectorMixin from './mixins/SelectorMixin.vue'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
@@ -24,10 +26,23 @@ export default {
     // very least: rename this to something better than conflicting "data"
     // also:       possibly use a getMapData and only have date as prop
     props: ['mapData'],
-    emits: ['selectCantons', 'clearSelection'],
+    mixins: [SelectorMixin],
     data() {
       return {
-        rawOptions: {
+        option: {
+          geo: {
+            map: 'ch',
+            roam: true,
+            zoom: 2.5,
+            left: 250,
+            top: 100,
+            regions: [],
+            emphasis: {
+              label: {
+                show: false
+              }
+            }
+          },
           visualMap: {
             left: 0,
             top: 'center',
@@ -42,37 +57,42 @@ export default {
             }
           },
           series: [{
-            name: 'stuff',
             type: 'map',
-            zoom: 2.2,
-            left: 220,
-            top: 100,
-            map: 'ch',
-            selectedMode: 'multiple',
-            data: []
+            geoIndex: 0,
+            data: this.mapData,
+            selectedMode: false,
           }]
         }
       }
     },
-    computed: {
-      options: function() {
-        let options = Object.assign({}, this.rawOptions)
-        options.series[0].data = this.mapData
-        return options
+    methods: {
+      onClick: function(e) {
+        this.toggleItem({
+          by: 'canton',
+          byvalue: e.data.name
+        })
       }
     },
-    methods: {
-      onSelectionChanged: function(e) {
-        if(e.selected.length > 0) {
-          this.$emit('selectCantons', e.selected[0].dataIndex.map((i) => {
-            return {
-              by: 'canton',
-              byvalue: this.mapData[i].name
+    watch: {
+      selection: function() {
+        const regions = this.selection.map((s) => {
+          return {
+            name: s.byvalue,
+            itemStyle: {
+              borderColor: this.colors[s.index],
+              borderWidth: 5
             }
-          }))
-        } else {
-          this.$emit('clearSelection')
-        }
+          }
+        })
+        this.option.geo.regions = regions
+      },
+      mapData: function() {
+        this.option.series = [{
+          type: 'map',
+          geoIndex: 0,
+          data: this.mapData,
+          selectedMode: false,
+        }]
       }
     }
 };

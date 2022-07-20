@@ -37,6 +37,13 @@ export default {
       this.selection = [...this.selection.slice(0, slot), ...this.selection.slice(slot + 1)]
       this.slots[removed.index] = true
     },
+    toggleItem: function(item) {
+      if(this.selection.findIndex((x) => x.byvalue == item.byvalue) >= 0) {
+        this.deselectItem(item)
+      } else {
+        this.selectItem(item)
+      }
+    },
     clearSelection: function() {
       this.selection = []
       this.slots = this.slots.map(() => true)
