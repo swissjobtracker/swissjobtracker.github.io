@@ -17,7 +17,7 @@
       <q-btn-group flat>
       <q-btn outline  flat color="grey" label="canton" @click="() => setMode('canton')"/>
       <q-btn outline  flat color="grey" label="industry" @click="() => setMode('noga')" />
-      <q-btn outline  flat color="grey" label="job title" @click="() => setMode('isco')"/>
+      <q-btn outline  flat color="grey" label="occupation" @click="() => setMode('isco')"/>
     </q-btn-group>
     </div>
     <div class="col-4">

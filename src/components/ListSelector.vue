@@ -4,7 +4,7 @@
     dense
     square
     outlined
-    :label="type == 'noga' ? 'Select sector' : 'Select job'"
+    :label="type == 'noga' ? 'Select sector' : 'Select occupation'"
     v-model="model"
     use-input
     @filter="filterFn"
