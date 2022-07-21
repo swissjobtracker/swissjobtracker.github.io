@@ -42,7 +42,10 @@ const getSeriesFromCache = (keys) => {
 export const getMapSeries = (indicator, t) => {
   const series = cantons.map((c) => ({
     type: indicator,
-    by: 'canton',
+    by: {
+      label: 'Canton',
+      value: 'canton',
+    },
     byvalue: c
   }))
   return getTimeseries(series)

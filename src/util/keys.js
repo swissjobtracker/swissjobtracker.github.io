@@ -1,5 +1,5 @@
 const getSingleKey = (series) => {
-    return `ch.kof.x28.stuff.${series.by}.${series.byvalue}.${series.type}`
+    return `ch.kof.x28.stuff.${series.by.value}.${series.byvalue.value}.${series.type.value}`
 }
 
 export const getKeys = (series) => {
@@ -7,7 +7,7 @@ export const getKeys = (series) => {
     series = [series]
   }
 
-  return (series.map((s) => getSingleKey(s))).flat()
+  return series.map((s) => getSingleKey(s))
 }
 
 export default {

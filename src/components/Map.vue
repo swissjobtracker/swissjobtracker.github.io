@@ -15,6 +15,7 @@ import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
 import SelectorMixin from './mixins/SelectorMixin.vue'
+import cantons from '../util/cantons'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
@@ -67,8 +68,14 @@ export default {
     methods: {
       onClick: function(e) {
         this.toggleItem({
-          by: 'canton',
-          byvalue: e.data.name
+          by: {
+            label: 'Canton',
+            value: 'canton',
+          },
+          byvalue: {
+            label: cantons.filter(({ value }) => value.toUpperCase() == e.data.name)[0].label,
+            value: e.data.name
+          }
         })
       }
     },
@@ -76,7 +83,7 @@ export default {
       selection: function() {
         const regions = this.selection.map((s) => {
           return {
-            name: s.byvalue,
+            name: s.byvalue.value,
             itemStyle: {
               borderColor: this.colors[s.index],
               borderWidth: 5

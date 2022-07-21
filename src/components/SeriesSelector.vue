@@ -98,7 +98,7 @@ export default {
     // Emit an event indicating total is selected
     this.emitSelection()
 
-    getMapSeries(this.selectedIndex.value, '2021-01-01')
+    getMapSeries(this.selectedIndex, '2021-01-01')
     .then((data) => this.mapData = data)
   },
   data() {
@@ -129,16 +129,22 @@ export default {
       const toEmit = this.selection.map((s) => {
         return {
           ...s,
-          type: this.selectedIndex.value
+          type: this.selectedIndex
         }
       })
 
       if(this.showTotal) {
         toEmit.push({
           index: this.maxSelections, // indices of selections go from 0 - maxSelections-1
-          type: this.selectedIndex.value,
-          by: 'total',
-          byvalue: 'total'
+          type: this.selectedIndex,
+          by: {
+            label: 'Total',
+            value: 'total',
+          },
+          byvalue: {
+            label: 'Total',
+            value: 'total'
+          }
         })
       }
 

@@ -12,7 +12,7 @@ export const tsToMap = (data, t) => {
   // keys are identical up to canton chunk so sorting by the whole key effectively means sorting by canton
   const tsKeys = Object.keys(data).sort()
   return cantons.map((c, i) => ({
-    name: c.toUpperCase(),
+    name: c.value.toUpperCase(),
     // TODO: Do better e.g. handle date not in array
     value: data[tsKeys[i]].filter((x) => x.date == date)[0].value
   }))

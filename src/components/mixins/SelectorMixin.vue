@@ -31,14 +31,14 @@ export default {
     },
     deselectItem: function(item) {
       const slot = this.selection.findIndex((x) => {
-        return x.byvalue == item.byvalue
+        return x.byvalue.value == item.byvalue.value
       })
       const removed = this.selection[slot]
       this.selection = [...this.selection.slice(0, slot), ...this.selection.slice(slot + 1)]
       this.slots[removed.index] = true
     },
     toggleItem: function(item) {
-      if(this.selection.findIndex((x) => x.byvalue == item.byvalue) >= 0) {
+      if(this.selection.findIndex((x) => x.byvalue.value == item.byvalue.value) >= 0) {
         this.deselectItem(item)
       } else {
         this.selectItem(item)

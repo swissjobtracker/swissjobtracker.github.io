@@ -54,15 +54,17 @@ export default {
   },
   computed: {
     availableOptions: function() {
-       return this.activeOptions.filter((o) => this.selection.map((s) => s.byvalue).indexOf(o.value) < 0)
+       return this.activeOptions.filter((o) => this.selection.map((s) => s.byvalue.value).indexOf(o.value) < 0)
     }
   },
   methods: {
     onSelect: function(x) {
       this.selectItem({
-        label: x.label,
-        by: this.type,
-        byvalue: x.value
+        by: {
+          label: this.type == 'noga' ? 'Sector' : 'Occupation',
+          value: this.type,
+        },
+        byvalue: {...x}
       })
       this.model = null
     },
