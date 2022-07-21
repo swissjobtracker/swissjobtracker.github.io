@@ -21,7 +21,7 @@
         </div>
       </q-item-section>
       <q-item-section>
-        {{s.label}}
+        {{s.byvalue.label}}
       </q-item-section>
       <q-item-section side >
         <q-btn flat @click="() => deselectItem(s)">X</q-btn>
