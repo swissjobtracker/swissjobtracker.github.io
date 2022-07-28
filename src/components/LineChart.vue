@@ -9,6 +9,8 @@
       	:option="lines"
         :update-options="{ replaceMerge: ['series'] }"
         :loading="loading"
+        @updateAxisPointer="onUpdateAxisPointer"
+        @zr:click="onClick"
         ref="chart"/>
 </div>
 </div>
@@ -57,7 +59,7 @@ export default {
       required: true
     }
    },
-   emits: ['selectDate'],
+   emits: ['setActiveDate'],
    mounted() {
     this.update()
    },
@@ -79,7 +81,8 @@ export default {
               show: true,
               trigger: 'axis'
             }
-          }
+          },
+          activeDate: null
        }
    },
    watch: {
@@ -113,6 +116,14 @@ export default {
           this.loading = false
         })
      },
+     onUpdateAxisPointer: function(e) {
+      if(e.axesInfo && e.axesInfo[0] && e.axesInfo[0].value) {
+        this.activeDate = e.axesInfo[0].value
+      }
+     },
+     onClick: function() {
+      this.$emit('setActiveDate', new Date(this.activeDate))
+     }
    },
 }
 </script>

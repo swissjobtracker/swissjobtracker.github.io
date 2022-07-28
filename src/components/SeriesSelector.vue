@@ -87,6 +87,10 @@ export default {
     },
     colors: {
       required: true
+    },
+    activeDate: {
+      required: false,
+      default: null
     }
   },
   components: {
@@ -98,8 +102,7 @@ export default {
     // Emit an event indicating total is selected
     this.emitSelection()
 
-    getMapSeries(this.selectedIndex)
-    .then((data) => this.mapData = data)
+    this.updateMap()
   },
   data() {
     return {
@@ -149,6 +152,12 @@ export default {
       }
 
       this.$emit('select', toEmit)
+    },
+    updateMap: function() {
+      getMapSeries(this.selectedIndex, this.activeDate)
+        .then((data) => {
+          this.mapData = data
+        })
     }
   },
   watch: {
@@ -157,6 +166,9 @@ export default {
     },
     selectedIndex: function() {
       this.emitSelection()
+    },
+    activeDate: function() {
+      this.updateMap()
     }
   }
 }
