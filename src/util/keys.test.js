@@ -71,3 +71,17 @@ test('getSingleKey returns proper total key', () => {
     }
   })).toEqual('ch.kof.jobtracker.total.idx')
 })
+
+test('getSingleKey lowercases the result', () => {
+  expect(keys.getSingleKey({
+    by: {
+      value: 'noga'
+    },
+    byvalue: {
+      value: 3
+    },
+    type: {
+      value: 'BIG'
+    }
+  })).toEqual('ch.kof.jobtracker.noga.3.big')
+})
