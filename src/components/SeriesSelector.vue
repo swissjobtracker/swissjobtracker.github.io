@@ -98,7 +98,7 @@ export default {
     // Emit an event indicating total is selected
     this.emitSelection()
 
-    getMapSeries(this.selectedIndex, '2021-01-01')
+    getMapSeries(this.selectedIndex)
     .then((data) => this.mapData = data)
   },
   data() {

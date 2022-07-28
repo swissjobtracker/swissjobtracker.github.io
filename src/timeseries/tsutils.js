@@ -8,8 +8,15 @@ import { formatDate } from '../util/dates'
  * @returns [{ name: 'XX', value: yy }, ...] for all cantons
  */
 export const tsToMap = (data, t) => {
+  if(t === null) {
+    const dates = Object.entries(data)
+                        .map(([_, ts]) => (new Date(ts[ts.length - 1].date)))
+    t = Math.max(...dates)
+  }
+
   const date = formatDate(t)
   // keys are identical up to canton chunk so sorting by the whole key effectively means sorting by canton
+  // e.g. ch.kof.jobtracker.canton...
   const tsKeys = Object.keys(data).sort()
   return cantons.map((c, i) => ({
     name: c.value.toUpperCase(),

@@ -39,7 +39,7 @@ const getSeriesFromCache = (keys) => {
  * @param {Date} t the time at which to get data
  * @returns [{name: '2 letter canton', value: 123}, ...]
  */
-export const getMapSeries = (indicator, t) => {
+export const getMapSeries = (indicator, t = null) => {
   const series = cantons.map((c) => ({
     type: indicator,
     by: {
