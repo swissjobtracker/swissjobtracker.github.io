@@ -1,7 +1,11 @@
-// TODO: conditional import of fake or real api based on env var
-//       mayhaps need to conditionally EXport tho, or top level await here
-import ts from './fakeapi'
+import fake from './fakeapi'
+import real from './api.js'
 
-export default {
-  ...ts
+let thing;
+if(false) {
+    thing = ts
+} else {
+    thing = real
 }
+export default thing;
+

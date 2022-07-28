@@ -47,13 +47,13 @@ export default {
             left: 0,
             top: 'center',
             min: 0,
-            max: 10,
+            max: 400,
             orient: 'vertical',
             text: [],
             realtime: true,
             calculable: false,
             inRange: {
-                color: ['#dbac00', '#db6e00', '#cf0000']
+                color: ['#dbac00', '#0000ff', '#cf0000']
             }
           },
           series: [{
