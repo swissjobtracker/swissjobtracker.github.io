@@ -1,5 +1,9 @@
 const getSingleKey = (series) => {
-    return `ch.kof.x28.stuff.${series.by.value}.${series.byvalue.value}.${series.type.value}`
+  if(series.by.value == 'total') {
+    return `ch.kof.jobtracker.total.${series.type.value}`
+  } else {
+    return `ch.kof.jobtracker.${series.by.value}.${series.byvalue.value}.${series.type.value}`
+  }
 }
 
 export const getKeys = (series) => {

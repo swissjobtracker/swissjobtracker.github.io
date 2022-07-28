@@ -9,9 +9,9 @@ test('getSingleKey', () => {
       value: 'zh'
     },
     type: {
-      value: 'main'
+      value: 'idx'
     }
-  })).toBe('ch.kof.x28.stuff.canton.zh.main')
+  })).toBe('ch.kof.jobtracker.canton.zh.idx')
 })
 
 test('getKeys with single series', () => {
@@ -23,10 +23,10 @@ test('getKeys with single series', () => {
       value: 'zh'
     },
     type: {
-      value: 'main'
+      value: 'idx'
     }
   })).toEqual([
-      'ch.kof.x28.stuff.canton.zh.main'
+      'ch.kof.jobtracker.canton.zh.idx'
     ])
 })
 
@@ -39,7 +39,7 @@ test('getKeys with single indicator', () => {
       value: 'ag'
     },
     type: {
-      value: 'main'
+      value: 'idx'
     }
   },
   {
@@ -50,10 +50,24 @@ test('getKeys with single indicator', () => {
       value: 'zh'
     },
     type: {
-      value: 'main'
+      value: 'idx'
     }
-  }], 'otter')).toEqual([
-    'ch.kof.x28.stuff.canton.ag.main',
-    'ch.kof.x28.stuff.canton.zh.main'
+  }])).toEqual([
+    'ch.kof.jobtracker.canton.ag.idx',
+    'ch.kof.jobtracker.canton.zh.idx'
   ])
+})
+
+test('getSingleKey returns proper total key', () => {
+  expect(keys.getSingleKey({
+    by: {
+      value: 'total'
+    },
+    byvalue: {
+      value: 'total'
+    },
+    type: {
+      value: 'idx'
+    }
+  })).toEqual('ch.kof.jobtracker.total.idx')
 })
