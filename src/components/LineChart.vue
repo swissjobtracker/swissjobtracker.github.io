@@ -77,6 +77,7 @@ export default {
             series: [],
             tooltip: {
               show: true,
+              valueFormatter: (x) => x.toFixed(2),
               trigger: 'axis'
             }
           }
