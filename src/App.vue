@@ -3,7 +3,7 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
-import { registerMap } from 'echarts/core'
+import { registerMap } from 'echarts'
 
 
 fetch('ch.svg')
