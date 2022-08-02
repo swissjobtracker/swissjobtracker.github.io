@@ -99,13 +99,13 @@ export default {
           const nSeries = data[0].length - 1
 
           this.lines = {
-            series: (new Array(nSeries)).fill(0).map((_, i) => (
+            series: Array.from({length: nSeries}).map((_, i) => (
               {
                 type: 'line',
                 width: 3.5,
                 showSymbol: false,
                 color: this.colors[this.series[i].index],
-                name: data[0][i+1],
+                name: this.series[i].byvalue.label,
                 // first row is the header, slice that right off
                 data: data.slice(1).map((row) => [row[0], row[i + 1]])
               }))
