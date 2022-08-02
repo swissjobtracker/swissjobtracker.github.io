@@ -66,7 +66,7 @@ export default {
           loading: false,
           lines: {
             grid: {
-              top: 5
+              top: 15
             },
             xAxis: {
                 type: 'time',
