@@ -165,6 +165,9 @@ export default {
         .then((data) => {
           this.mapData = data
         })
+        .catch((e) => {
+          this.mapDataError = true
+        })
 
       // Update range of map
       // TODO: Only do this on mount and when indicator changes would be more eleganter
@@ -173,6 +176,9 @@ export default {
         .then(({min, max}) => {
           this.mapRangeMin = min
           this.mapRangeMax = max
+        })
+        .catch((e) => {
+          this.mapDataError = true
         })
     }
   },

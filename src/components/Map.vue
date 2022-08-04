@@ -30,7 +30,7 @@ export default {
       mapData: {
         required: true
       },
-      mapDataError: {
+      showError: {
         required: false,
         default: false
       },
@@ -44,20 +44,14 @@ export default {
       }
     },
     mixins: [SelectorMixin],
+    mounted() {
+      if(this.showError) {
+        this.setError()
+      }
+    },
     data() {
       return {
         option: {
-          graphic: {
-            type: 'text',
-            left: 'center',
-            top: '10%',
-            z: 100,
-            style: {
-              fill: '#999',
-              text: 'Error while loading data',
-              font: 'bold 20px sans-serif'
-            }
-          },
           geo: {
             map: 'ch',
             zoom: 2.5,
@@ -104,6 +98,19 @@ export default {
             value: e.data.name
           }
         })
+      },
+      setError: function() {
+        this.option.graphic = {
+            type: 'text',
+            left: 'center',
+            top: '10%',
+            z: 100,
+            style: {
+              fill: '#999',
+              text: 'Error while loading data',
+              font: 'bold 20px sans-serif'
+            }
+          }
       }
     },
     watch: {
@@ -132,6 +139,11 @@ export default {
       },
       rangeMax: function() {
         this.option.visualMap.max = this.rangeMax
+      },
+      showError: function() {
+        if(this.showError) {
+          this.setError()
+        }
       }
     }
 };
