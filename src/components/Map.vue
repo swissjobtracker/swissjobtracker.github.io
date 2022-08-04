@@ -31,6 +31,17 @@ export default {
     data() {
       return {
         option: {
+          graphic: {
+            type: 'text',
+            left: 'center',
+            top: '10%',
+            z: 100,
+            style: {
+              fill: '#999',
+              text: 'Error while loading data',
+              font: 'bold 20px sans-serif'
+            }
+          },
           geo: {
             map: 'ch',
             zoom: 2.5,

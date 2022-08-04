@@ -113,6 +113,22 @@ export default {
 
           this.loading = false
         })
+        .catch((e) => {
+          this.loading = false
+          this.lines = {
+            graphic: {
+              type: 'text',
+              left: 'center',
+              top: 'center',
+              z: 100,
+              style: {
+                fill: '#999',
+                text: 'Error while loading data',
+                font: 'bold 20px sans-serif'
+              }
+            }
+          }
+        })
      },
    },
 }

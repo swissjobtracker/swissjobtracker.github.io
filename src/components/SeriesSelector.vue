@@ -38,7 +38,8 @@
         @select="onSelect"
         :colors="colors"
         :maxSelections="maxSelections"
-        :mapData="mapData"/>
+        :mapData="mapData"
+        :showError="mapDataError"/>
       <list-selector
         v-if="mode == 'noga'"
         type="noga"
@@ -100,17 +101,19 @@ export default {
 
     getMapSeries(this.selectedIndex)
     .then((data) => this.mapData = data)
+    .catch((e) => this.mapDataError = true)
   },
   data() {
     return {
       mapData: null,
+      mapDataError: false,
       showTotal: true,
       selection: [],
       mode: 'canton',
       indexOptions: indexOptionsRaw,
       selectedIndex: indexOptionsRaw[0],
       nogaOptions,
-      iscoOptions
+      iscoOptions,
     }
   },
   methods: {
