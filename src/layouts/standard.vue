@@ -4,7 +4,7 @@
     <q-header class="bg-primary text-white">
       <q-toolbar class="lmm-bar">
         <div>
-          <a class="q-btn q-btn-item non-selectable no-outline q-btn--flat" href="/">.. SWISS Job Tracker .. </a>
+          <a class="q-btn q-btn-item non-selectable no-outline q-btn--flat cursor-pointer" href="/">.. SWISS Job Tracker .. </a>
         </div>
         <q-tabs>
           <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
@@ -50,10 +50,10 @@
       <hr>
       <div class="row q-col-gutter-lg logo-row q-mt-md">
         <div class="col-12">Dieses Dashboard entstand im Rahmen des Nationalen Forschungsprogramms NFP 77.</div>
-      
+
       </div>
-      
-      
+
+
     </q-footer>
 
   </q-layout>
