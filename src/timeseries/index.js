@@ -34,12 +34,11 @@ const getSeriesFromCache = (keys) => {
 }
 
 /**
- *
- * @param {text} indicator the indicator for which to get data
- * @param {Date} t the time at which to get data
- * @returns [{name: '2 letter canton', value: 123}, ...]
+ * Get Series for indicator of all Cantons
+ * @param {text} indicator
+ * @returns
  */
-export const getMapSeries = (indicator, t = null) => {
+export const getCantonalSeries = (indicator) => {
   const series = cantons.map((c) => ({
     type: indicator,
     by: {
@@ -49,7 +48,16 @@ export const getMapSeries = (indicator, t = null) => {
     byvalue: c
   }))
   return getTimeseries(series)
-          .then((data) => tsToMap(data, t))
+}
+
+/**
+ *
+ * @param {text} indicator the indicator for which to get data
+ * @param {Date} t the time at which to get data
+ * @returns [{name: '2 letter canton', value: 123}, ...]
+ */
+export const getMapSeries = (indicator, t = null) => {
+  return getCantonalSeries(indicator).then((data) => tsToMap(data, t))
 }
 
 export const getLineSeries = (series) => {
@@ -59,5 +67,6 @@ export const getLineSeries = (series) => {
 
 export default {
   getMapSeries,
-  getLineSeries
+  getLineSeries,
+  getCantonalSeries
 }

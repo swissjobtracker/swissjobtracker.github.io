@@ -51,7 +51,29 @@ export const tsToLine = (data) => {
   return [['date', ...keys], ...values]
 }
 
+export const getTsRange = (data, nObs = undefined) => {
+  // cast the data into a rectangular form as we are interested in a
+  // window of the entire bunch of series, not each individually
+  // i.e. should one end earlier than the others we only want to take into
+  // accounts its values that fall into the last nObs values of the longest
+  const rectangular = tsToLine(data).slice(1) // chop off header (ts keys)
+
+  if(nObs === undefined) {
+    nObs = rectangular.length
+  }
+
+  const values = rectangular.slice(rectangular.length - nObs)
+    .map(([date, ...values]) => [...values])
+    .flat()
+
+  return {
+    min: Math.floor(Math.min(...values)),
+    max: Math.ceil(Math.max(...values))
+  }
+}
+
 export default {
   tsToMap,
-  tsToLine
+  tsToLine,
+  getTsRange
 }

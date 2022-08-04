@@ -33,6 +33,14 @@ export default {
       mapDataError: {
         required: false,
         default: false
+      },
+      rangeMin: {
+        required: false,
+        default: 0
+      },
+      rangeMax: {
+        required: false,
+        default: 100
       }
     },
     mixins: [SelectorMixin],
@@ -65,14 +73,14 @@ export default {
           visualMap: {
             left: 0,
             top: 'center',
-            min: 0,
-            max: 400,
+            min: this.rangeMin,
+            max: this.rangeMax,
             orient: 'vertical',
             text: [],
             realtime: true,
             calculable: false,
             inRange: {
-                color: ['#dbac00', '#0000ff', '#cf0000']
+                color: ['rgb(254, 126, 14)', 'rgb(250, 241, 225)', 'rgb(0, 190, 179)']
             }
           },
           series: [{
@@ -118,6 +126,12 @@ export default {
           data: this.mapData,
           selectedMode: false,
         }]
+      },
+      rangeMin: function() {
+        this.option.visualMap.min = this.rangeMin
+      },
+      rangeMax: function() {
+        this.option.visualMap.max = this.rangeMax
       }
     }
 };

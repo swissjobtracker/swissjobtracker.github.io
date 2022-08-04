@@ -39,6 +39,8 @@
         :colors="colors"
         :maxSelections="maxSelections"
         :mapData="mapData"
+        :rangeMin="mapRangeMin"
+        :rangeMax="mapRangeMax"
         :showError="mapDataError"/>
       <list-selector
         v-if="mode == 'noga'"
@@ -62,11 +64,12 @@
 </template>
 
 <script>
-import { getMapSeries } from 'src/timeseries'
+import { getMapSeries, getCantonalSeries } from 'src/timeseries'
 import Map from './Map.vue'
 import ListSelector from './ListSelector.vue'
 import nogaOptions from '../util/nogaoptions'
 import iscoOptions from '..//util/iscooptions'
+import { getTsRange } from 'src/timeseries/tsutils'
 
 const indexOptionsRaw = [
   {
@@ -109,6 +112,8 @@ export default {
     return {
       mapData: null,
       mapDataError: false,
+      mapRangeMin: 0,
+      mapRangeMax: 100,
       showTotal: true,
       selection: [],
       mode: 'canton',
@@ -159,6 +164,15 @@ export default {
       getMapSeries(this.selectedIndex, this.activeDate)
         .then((data) => {
           this.mapData = data
+        })
+
+      // Update range of map
+      // TODO: Only do this on mount and when indicator changes would be more eleganter
+      getCantonalSeries(this.selectedIndex)
+        .then(getTsRange)
+        .then(({min, max}) => {
+          this.mapRangeMin = min
+          this.mapRangeMax = max
         })
     }
   },
