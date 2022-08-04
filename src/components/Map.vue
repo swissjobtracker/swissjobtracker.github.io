@@ -26,7 +26,15 @@ export default {
     },
     // very least: rename this to something better than conflicting "data"
     // also:       possibly use a getMapData and only have date as prop
-    props: ['mapData'],
+    props: {
+      mapData: {
+        required: true
+      },
+      mapDataError: {
+        required: false,
+        default: false
+      }
+    },
     mixins: [SelectorMixin],
     data() {
       return {
