@@ -9,7 +9,7 @@
         @close="() => removeCard(card.id)"
        />
 
-     <q-btn  color="blue" class="full-width add_chart" @click="newCard">
+     <q-btn  color="secondary" class="full-width add_chart" @click="newCard">
        {{ $t('common.add_chart')}}
       </q-btn>
 

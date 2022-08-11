@@ -1,6 +1,6 @@
 <template>
      <div class="row">
-        <q-card flat square bordered class="q-card q-mb-xl  col-12">
+        <q-card square bordered class="shadow-1 q-card q-mb-xl  col-12">
           <div class="row">
           <div class="col-4">
             <series-selector @select="onSelect" :colors="colors" :activeDate="activeDate"/>
@@ -38,7 +38,7 @@ export default {
       return {
         activeDate: null,
         selectedSeries: [],
-        colors: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'] // tbd
+        colors: ['#31688EFF', '#35B779FF', '#FDE725FF', '#440154FF']
       }
     },
     methods: {
@@ -55,3 +55,4 @@ export default {
 };
 
 </script>
+
