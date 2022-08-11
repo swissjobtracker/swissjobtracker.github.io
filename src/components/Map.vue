@@ -54,8 +54,8 @@ export default {
         option: {
           geo: {
             map: 'ch',
-            zoom: 2.5,
-            left: 250,
+            zoom: 2.8,
+            left: 260,
             top: 100,
             regions: [],
             emphasis: {
@@ -65,11 +65,12 @@ export default {
             }
           },
           visualMap: {
-            left: 0,
-            top: 'center',
+            left: 'center',
+            bottom: 0,
             min: this.rangeMin,
             max: this.rangeMax,
-            orient: 'vertical',
+            orient: 'horizontal',
+            itemHeight: 300,
             text: [],
             realtime: true,
             calculable: false,
