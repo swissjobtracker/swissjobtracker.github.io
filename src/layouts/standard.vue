@@ -9,6 +9,17 @@
         <q-tabs>
           <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
         </q-tabs>
+        <q-space/>
+        <q-btn flat icon="download">
+          <q-tooltip>
+            Download Full Dataset
+          </q-tooltip>
+        </q-btn>
+        <q-btn flat icon="description">
+          <q-tooltip>
+            Download Data Description
+          </q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
