@@ -105,7 +105,9 @@ export default {
             series: Array.from({length: nSeries}).map((_, i) => (
               {
                 type: 'line',
-                width: 3.5,
+                lineStyle: {
+                  width: 3,
+                },
                 showSymbol: false,
                 color: this.colors[this.series[i].index],
                 name: this.series[i].byvalue.label,
