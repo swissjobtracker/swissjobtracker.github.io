@@ -1,33 +1,20 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <q-select
-        dense
-        square
-        outlined
-        :options="indexOptions"
-        v-model="selectedIndex">
-      </q-select>
-    </div>
-  </div>
-
   <div class="row q-pt-sm q-pb-sm">
-    <div class="col-8">
-      by
-      <q-btn-group flat>
-      <q-btn outline  flat color="grey" label="canton" @click="() => setMode('canton')"/>
-      <q-btn outline  flat color="grey" label="industry" @click="() => setMode('noga')" />
-      <q-btn outline  flat color="grey" label="occupation" @click="() => setMode('isco')"/>
-    </q-btn-group>
-    </div>
-    <div class="col-4">
-      <q-toggle
-      label="Show Total"
-      color="gray"
-      keep-color
-      v-model="showTotal">
-    </q-toggle>
-
+    <div class="col-12">
+      <q-tabs
+        v-model="mode"
+        @update:model-value="setMode"
+      >
+        <q-tab name="canton" label="Canton" />
+        <q-tab name="noga" label="NOGA" />
+        <q-tab name="isco" label="ISCO" />
+        <q-toggle
+          label="Show Total"
+          color="gray"
+          keep-color
+          v-model="showTotal">
+        </q-toggle>
+      </q-tabs>
     </div>
   </div>
 
@@ -126,7 +113,6 @@ export default {
   methods: {
     setMode: function(newMode) {
       this.clearSelection()
-      this.mode = newMode
     },
     clearSelection: function() {
       this.onSelect([])
@@ -191,6 +177,11 @@ export default {
     },
     activeDate: function() {
       this.updateMap()
+    },
+    mode: function(newMode, oldMode) {
+      if(newMode != oldMode) {
+        this.clearSelection()
+      }
     }
   }
 }
