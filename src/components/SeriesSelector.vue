@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-pt-sm q-pb-sm">
+  <div class="row">
     <div class="col-12">
       <q-tabs
         dense

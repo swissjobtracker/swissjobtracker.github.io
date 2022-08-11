@@ -20,6 +20,12 @@
             Download Data Description
           </q-tooltip>
         </q-btn>
+        <q-btn flat>
+          <q-icon class="github"></q-icon>
+          <q-tooltip>
+            GitHub Repository
+          </q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 

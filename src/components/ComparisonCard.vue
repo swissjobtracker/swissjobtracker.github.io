@@ -1,7 +1,7 @@
 <template>
      <div class="row">
-        <q-card square bordered class="shadow-1 q-card q-mb-xl  col-12">
-          <div class="row">
+        <q-card square bordered class="shadow-1 q-card q-mb-xl col-12">
+          <div class="row q-col-gutter-lg">
           <div class="col-4">
             <series-selector @select="onSelect" :colors="colors" :activeDate="activeDate"/>
           </div>
@@ -9,13 +9,33 @@
             <linechart :series="selectedSeries" @setActiveDate="onSetActiveDate" :colors="colors"/>
           </div>
           <div class="col-1">
-              <div class="row">
-                  <div>
+              <q-card-actions vertical align="evenly" class="justify-around q-px-sm">
                     <q-btn @click="closeCard" flat>
+                    <q-tooltip>Close Card</q-tooltip>
                       <q-icon name="close"></q-icon>
                     </q-btn>
-                  </div>
-              </div>
+                    <br />
+                    <q-btn flat>
+                      <q-tooltip>R Code Snippet to Retrieve Chart Data</q-tooltip>
+                      <q-icon name="terminal"></q-icon>
+                    </q-btn>
+                    <q-btn flat>
+                      <q-icon name="ssid_chart"></q-icon>
+                      <q-tooltip>Download Chart</q-tooltip>
+                    </q-btn>
+                    <br />
+                    <q-btn flat class="flip-vertical">
+                      <q-tooltip>Rearranger Order: Card Up</q-tooltip>
+                      <q-icon name="filter_list"></q-icon>
+                    </q-btn>
+                    <q-btn flat>
+                      <q-tooltip>Rearranger Order: Card Down</q-tooltip>
+                      <q-icon name="filter_list"></q-icon>
+                    </q-btn>
+              </q-card-actions>
+
+
+              
           </div>
           </div>
         </q-card>
