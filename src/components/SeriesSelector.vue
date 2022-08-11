@@ -2,6 +2,7 @@
   <div class="row q-pt-sm q-pb-sm">
     <div class="col-12">
       <q-tabs
+        dense
         v-model="mode"
         @update:model-value="setMode"
       >
