@@ -57,10 +57,10 @@
         <div class="col-12 col-md-6">
           <h6>{{$t("footer.links.title")}}</h6>
           <a href="https://kof.ethz.ch" target="_blank">{{$t("footer.links.kof_main")}}</a><br>
-          <a href="/about">{{ $t('nav.about') }}</a><br>
-          <a href="https://www.nfp77.ch/en/portfolio/strategies-for-job-hunting-on-online-job-platforms">{{$t("footer.links.nrp77.title")}}</a><br>
-          <a href="/blog">{{ $t('nav.blog') }}</a><br>
-          <a href="/faq">{{ $t('nav.faq') }}</a><br>
+          <router-link to="/about">{{ $t('nav.about') }}</router-link><br>
+          <a href="https://www.nfp77.ch/en/portfolio/strategies-for-job-hunting-on-online-job-platforms" target="_blank">{{$t("footer.links.nrp77.title")}}</a><br>
+          <router-link to="/blog">{{ $t('nav.blog') }}</router-link><br>
+          <router-link to="/faq">{{ $t('nav.faq') }}</router-link><br>
         </div>
       </div>
       <br>
