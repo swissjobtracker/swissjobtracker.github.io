@@ -6,11 +6,11 @@
         v-model="mode"
         @update:model-value="setMode"
       >
-        <q-tab name="canton" label="Canton" />
-        <q-tab name="noga" label="NOGA" />
-        <q-tab name="isco" label="ISCO" />
+        <q-tab name="canton" :label="$t('selector.by.canton')" />
+        <q-tab name="noga" :label="$t('selector.by.noga')" />
+        <q-tab name="isco" :label="$t('selector.by.isco')" />
         <q-toggle
-          label="Show Total"
+          :label="$t('selector.show_total')"
           color="gray"
           keep-color
           v-model="showTotal">

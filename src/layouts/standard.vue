@@ -12,18 +12,18 @@
         <q-space/>
         <q-btn flat icon="download">
           <q-tooltip>
-            Download Full Dataset
+            {{$t("nav.tooltips.download_data")}}
           </q-tooltip>
         </q-btn>
         <q-btn flat icon="description">
           <q-tooltip>
-            Download Data Description
+            {{$t("nav.tooltips.download_metadata")}}
           </q-tooltip>
         </q-btn>
         <q-btn flat>
           <q-icon class="github"></q-icon>
           <q-tooltip>
-            GitHub Repository
+            {{$t("nav.tooltips.github")}}
           </q-tooltip>
         </q-btn>
       </q-toolbar>
@@ -45,19 +45,20 @@
       <hr>
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-md-6">
-          <h6>Contact</h6>
-          <b>ETH Zürich <br>
-          Konjunkturforschungsstelle</b> <br>
-          Sektion Schweizer Arbeitsmarkt <br>
+          <h6>{{$t("footer.contact.title")}}</h6>
+          <b>{{$t("footer.contact.kof")}} <br>
+          {{$t("footer.contact.ethz")}}</b> <br>
+          {{$t("footer.contact.division")}} <br>
           <br>
-          <b>Dr. Michael Siegenthaler</b><br>
-          Anfragen zum Inhalt: labor [at] kof.ethz.ch<br>
-          technische Fragen: data [at] kof.ethz.ch<br>
+          <b>{{$t("footer.contact.content_head")}}</b><br>
+          {{$t("footer.contact.content_email")}}<br>
+          {{$t("footer.contact.data_email")}}<br>
         </div>
         <div class="col-12 col-md-6">
-          <h6>Links</h6>
-          <a href="https://kof.ethz.ch" target="_blank">KOF Hauptseite</a><br>
+          <h6>{{$t("footer.links.title")}}</h6>
+          <a href="https://kof.ethz.ch" target="_blank">{{$t("footer.links.kof_main")}}</a><br>
           <a href="/about">{{ $t('nav.about') }}</a><br>
+          <a href="https://www.nfp77.ch/en/portfolio/strategies-for-job-hunting-on-online-job-platforms">{{$t("footer.links.nrp77.title")}}</a><br>
           <a href="/blog">{{ $t('nav.blog') }}</a><br>
           <a href="/faq">{{ $t('nav.faq') }}</a><br>
         </div>
@@ -66,7 +67,7 @@
       <br>
       <hr>
       <div class="row q-col-gutter-lg logo-row q-mt-md">
-        <div class="col-12">Dieses Dashboard entstand im Rahmen des Nationalen Forschungsprogramms NFP 77.</div>
+        <div class="col-12">{{$t("footer.nrp77.blurb")}}</div>
 
       </div>
 
@@ -99,6 +100,9 @@ export default {
     }
   },
   computed: {
+    nrp_link: function() {
+      return this.$t("footer.links.nrp77.url")
+    }
   }
 }
 

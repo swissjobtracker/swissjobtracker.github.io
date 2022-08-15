@@ -5,20 +5,20 @@ import messages from 'src/i18n'
 
 //Vue.use(VueI18n)
 
-const lang = 'de'
+const lang = 'en'
 
 const locales = {
   de: 'de-ch',
   fr: 'fr-ch',
   it: 'it-ch',
-  en: 'en-gb'
+  en: 'en-us'
 }
 
 
 
 const i18n = createI18n({
   locale: locales[lang],
-  fallbackLocale: 'de-ch',
+  fallbackLocale: 'en-us',
   messages
 })
 

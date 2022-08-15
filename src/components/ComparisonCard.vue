@@ -11,17 +11,17 @@
           <div class="col-1">
               <q-card-actions vertical align="evenly" class="justify-around q-px-sm">
                     <q-btn @click="closeCard" flat>
-                    <q-tooltip>Close Card</q-tooltip>
+                    <q-tooltip>{{$t("card.btn_tooltips.close")}}</q-tooltip>
                       <q-icon name="close"></q-icon>
                     </q-btn>
                     <br />
                     <q-btn flat>
-                      <q-tooltip>R Code Snippet to Retrieve Chart Data</q-tooltip>
+                      <q-tooltip>{{$t("card.btn_tooltips.code_snippet")}}</q-tooltip>
                       <q-icon name="terminal"></q-icon>
                     </q-btn>
                     <q-btn flat>
                       <q-icon name="ssid_chart"></q-icon>
-                      <q-tooltip>Download Chart</q-tooltip>
+                      <q-tooltip>{{$t("card.btn_tooltips.download_chart")}}</q-tooltip>
                     </q-btn>
                     <br />
                     <q-btn flat class="flip-vertical">
@@ -35,7 +35,7 @@
               </q-card-actions>
 
 
-              
+
           </div>
           </div>
         </q-card>
