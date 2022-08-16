@@ -32,14 +32,14 @@
         :showError="mapDataError"/>
       <list-selector
         v-if="mode == 'noga'"
-        type="noga"
+        type="noga_letter"
         :options="nogaOptions"
         @select="onSelect"
         :colors="colors"
         :maxSelections="maxSelections"/>
       <list-selector
         v-if="mode == 'isco'"
-        type="isco"
+        type="isco_1d"
         :options="iscoOptions"
         @select="onSelect"
         :colors="colors"
