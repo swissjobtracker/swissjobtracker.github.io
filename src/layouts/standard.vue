@@ -58,7 +58,7 @@
           <h6>{{$t("footer.links.title")}}</h6>
           <a href="https://kof.ethz.ch" target="_blank">{{$t("footer.links.kof_main")}}</a><br>
           <router-link to="/about">{{ $t('nav.about') }}</router-link><br>
-          <a href="https://www.nfp77.ch/en/portfolio/strategies-for-job-hunting-on-online-job-platforms" target="_blank">{{$t("footer.links.nrp77.title")}}</a><br>
+          <a :href="nrp_link" target="_blank">{{$t("footer.links.nrp77.title")}}</a><br>
           <router-link to="/blog">{{ $t('nav.blog') }}</router-link><br>
           <router-link to="/faq">{{ $t('nav.faq') }}</router-link><br>
         </div>
