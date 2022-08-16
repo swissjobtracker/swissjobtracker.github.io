@@ -10,7 +10,11 @@
           <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :label="menuItem.label" :key="menuItem.to" />
         </q-tabs>
         <q-space/>
-        <q-btn flat icon="download">
+        <q-btn
+         flat
+         icon="download"
+         href="https://datenservice.kof.ethz.ch/api/v1/public/collections/ch.kof.jobtracker?mime=csv"
+         target="_blank">
           <q-tooltip>
             {{$t("nav.tooltips.download_data")}}
           </q-tooltip>
@@ -20,7 +24,10 @@
             {{$t("nav.tooltips.download_metadata")}}
           </q-tooltip>
         </q-btn>
-        <q-btn flat>
+        <q-btn
+         flat
+         href="https://github.com/swissjobtracker"
+         target="_blank">
           <q-icon class="github"></q-icon>
           <q-tooltip>
             {{$t("nav.tooltips.github")}}
