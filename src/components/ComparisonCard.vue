@@ -5,16 +5,8 @@
           <div class="col-4">
             <series-selector @select="onSelect" :colors="colors" :activeDate="activeDate"/>
           </div>
-          <div class="col-7">
-            <linechart :series="selectedSeries" @setActiveDate="onSetActiveDate" :colors="colors"/>
-          </div>
-          <div class="col-1">
-              <q-card-actions vertical align="evenly" class="justify-around q-px-sm">
-                    <q-btn @click="closeCard" flat>
-                    <q-tooltip>{{$t("card.btn_tooltips.close")}}</q-tooltip>
-                      <q-icon name="close"></q-icon>
-                    </q-btn>
-                    <br />
+          <div class="col-8">
+            <q-card-actions align="right" class=" q-px-sm">
                     <q-btn flat>
                       <q-tooltip>{{$t("card.btn_tooltips.code_snippet")}}</q-tooltip>
                       <q-icon name="terminal"></q-icon>
@@ -23,20 +15,14 @@
                       <q-icon name="ssid_chart"></q-icon>
                       <q-tooltip>{{$t("card.btn_tooltips.download_chart")}}</q-tooltip>
                     </q-btn>
-                    <br />
-                    <q-btn flat class="flip-vertical">
-                      <q-tooltip>Rearranger Order: Card Up</q-tooltip>
-                      <q-icon name="filter_list"></q-icon>
-                    </q-btn>
-                    <q-btn flat>
-                      <q-tooltip>Rearranger Order: Card Down</q-tooltip>
-                      <q-icon name="filter_list"></q-icon>
+                    <q-btn @click="closeCard" flat>
+                    <q-tooltip>{{$t("card.btn_tooltips.close")}}</q-tooltip>
+                      <q-icon name="close"></q-icon>
                     </q-btn>
               </q-card-actions>
-
-
-
+            <linechart :series="selectedSeries" @setActiveDate="onSetActiveDate" :colors="colors"/>
           </div>
+      
           </div>
         </q-card>
       </div>
