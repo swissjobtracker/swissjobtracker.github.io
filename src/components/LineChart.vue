@@ -1,7 +1,10 @@
 <template>
 <div>
-<div class="chart-title q-pa-lg">
-  Chart title goes here
+<div class="chart-title ">
+  INDEX OF JOB POSTINGS
+</div>
+<div class="chart-title">
+  Index of weekly unique job postings, Indexed 2018=100
 </div>
 <div class="q-pa-sm">
      <e-chart
@@ -12,6 +15,7 @@
         @updateAxisPointer="onUpdateAxisPointer"
         @zr:click="onClick"
         ref="chart"/>
+        <div align="right">(data source x28)</div>
 </div>
 </div>
 </template>

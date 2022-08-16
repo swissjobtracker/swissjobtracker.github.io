@@ -7,7 +7,7 @@
           </div>
           <div class="col-8">
             <q-card-actions align="right" class=" q-px-sm">
-                    <q-btn flat>
+                    <q-btn flat @click="show_code = true">
                       <q-tooltip>{{$t("card.btn_tooltips.code_snippet")}}</q-tooltip>
                       <q-icon name="terminal"></q-icon>
                     </q-btn>
@@ -21,6 +21,21 @@
                     </q-btn>
               </q-card-actions>
             <linechart :series="selectedSeries" @setActiveDate="onSetActiveDate" :colors="colors"/>
+
+            <q-dialog v-model="show_code">
+            <q-card class="q-pb-lg q-pl-lg q-pr-lg  q-pt-sm" style="width:500px">
+                <q-card-actions align="right">
+                    <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+          </q-btn>
+                </q-card-actions>
+              <div v-html="createSnippet(selectedSeries)"></div>
+            </q-card>
+              
+            
+              
+            </q-dialog>
+
           </div>
       
           </div>
@@ -32,6 +47,7 @@
 
 import SeriesSelector from './SeriesSelector.vue'
 import LineChart from "../components/LineChart";
+import {createSnippet} from "../util/createSnippet"
 
 export default {
     name: "comp-card",
@@ -42,6 +58,7 @@ export default {
     emits: ['close'],
     data() {
       return {
+        show_code: false,
         activeDate: null,
         selectedSeries: [],
         colors: ['#31688EFF', '#35B779FF', '#FDE725FF', '#440154FF']
@@ -56,7 +73,8 @@ export default {
       },
       onSetActiveDate: function(d) {
         this.activeDate = d
-      }
+      },
+      createSnippet
     }
 };
 
