@@ -4,7 +4,7 @@
     dense
     square
     outlined
-    :label="type == 'noga_letter' ? 'Select sector' : 'Select occupation'"
+    :label="type == 'noga_letter' ? $t('selector.dropdowns.industry') : $t('selector.dropdowns.occupation')"
     v-model="model"
     use-input
     @filter="filterFn"
