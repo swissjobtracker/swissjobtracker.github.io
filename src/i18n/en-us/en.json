@@ -54,6 +54,10 @@
       "noga": "NOGA",
       "isco": "ISCO"
     },
-    "show_total": "SHOW TOTAL"
+    "show_total": "SHOW TOTAL",
+    "dropdowns": {
+      "industry": "Select sector",
+      "occupation": "Select occupation"
+    }
   }
 }
