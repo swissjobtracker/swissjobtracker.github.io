@@ -6,7 +6,7 @@
 <div class="chart-title">
   Index of weekly unique job postings, Indexed 2018=100
 </div>
-<div class="q-pa-sm">
+<div>
      <e-chart
         autoresize
       	:option="lines"
@@ -74,7 +74,9 @@ export default {
           loading: false,
           lines: {
             grid: {
-              top: 15
+              top: 15,
+              left: '0%',
+              containLabel: true
             },
             xAxis: {
                 type: 'time',
