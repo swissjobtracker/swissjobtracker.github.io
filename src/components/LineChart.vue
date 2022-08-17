@@ -80,6 +80,15 @@ export default {
             },
             xAxis: {
                 type: 'time',
+                axisLabel: {
+                  showMinLabel: true,
+                  formatter: '{MMM} {yearStyle|{yyyy}}',
+                  rich: {
+                    yearStyle: {
+                      fontWeight: 'bold'
+                    }
+                  }
+                }
             },
             yAxis: {
                 type: 'value',
