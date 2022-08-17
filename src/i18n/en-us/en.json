@@ -51,8 +51,8 @@
   "selector": {
     "by": {
       "canton": "Canton",
-      "noga": "NOGA",
-      "isco": "ISCO"
+      "noga": "Industry",
+      "isco": "Occupation"
     },
     "show_total": "SHOW TOTAL",
     "dropdowns": {
