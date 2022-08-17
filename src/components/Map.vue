@@ -15,7 +15,7 @@ import { CanvasRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
 import SelectorMixin from './mixins/SelectorMixin.vue'
-import cantons from '../util/cantons'
+import {cantons, getCantonByCode} from '../util/cantons'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 
@@ -52,6 +52,9 @@ export default {
     data() {
       return {
         option: {
+          tooltip: {
+            trigger: 'item'
+          },
           geo: {
             map: 'ch',
             zoom: 2.8,
@@ -61,6 +64,11 @@ export default {
             emphasis: {
               label: {
                 show: false
+              }
+            },
+            tooltip: {
+              formatter: function(opt) {
+                return getCantonByCode(opt.name)
               }
             }
           },
