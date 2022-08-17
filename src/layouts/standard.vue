@@ -4,7 +4,7 @@
     <q-header class="bg-primary text-white">
       <q-toolbar class="lmm-bar">
         <q-toolbar-title shrink>
-          Swiss Job Tracker
+          <router-link to="/" style="text-decoration:none; color:white">Swiss Job Tracker</router-link>
         </q-toolbar-title>
         <q-tabs>
           <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :href="menuItem.href" :label="menuItem.label" :key="menuItem.to" />
