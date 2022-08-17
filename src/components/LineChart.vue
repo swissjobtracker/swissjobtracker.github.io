@@ -46,6 +46,8 @@ use([CanvasRenderer,
       TimelineComponent,
       DatasetComponent])
 
+const ticksize = 20;
+
 export default {
    name: 'lineChart',
    components: {
@@ -74,7 +76,14 @@ export default {
                 type: 'time',
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                min: function({min}) {
+                  return ticksize*Math.floor(min/ticksize)
+                },
+                max: function({max}) {
+                  return ticksize*Math.ceil(max/ticksize)
+                },
+                interval: ticksize
             },
             series: [],
             tooltip: {
