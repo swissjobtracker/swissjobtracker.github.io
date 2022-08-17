@@ -1,4 +1,4 @@
-export default [
+export const cantons = [
   {
     label: 'Aargau',
     value: 'ag',
@@ -104,3 +104,9 @@ export default [
     value: 'zh'
   }
 ].sort((a, b) => a.value > b.value ? 1 : -1)
+
+export const getCantonByCode = (code) => {
+  return cantons.find(({value}) => value == code.toLowerCase())?.label || undefined
+}
+
+export default cantons
