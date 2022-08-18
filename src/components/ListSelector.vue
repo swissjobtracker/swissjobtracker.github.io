@@ -4,7 +4,7 @@
     dense
     square
     outlined
-    :label="type == 'noga_letter' ? $t('selector.dropdowns.industry') : $t('selector.dropdowns.occupation')"
+    :label="type == 'noga' ? $t('selector.dropdowns.industry') : $t('selector.dropdowns.occupation')"
     v-model="model"
     use-input
     @filter="filterFn"
@@ -61,7 +61,7 @@ export default {
     onSelect: function(x) {
       this.selectItem({
         by: {
-          label: this.type == 'noga_letter' ? 'Sector' : 'Occupation',
+          label: this.type == 'noga' ? 'Sector' : 'Occupation',
           value: this.type,
         },
         byvalue: {...x}

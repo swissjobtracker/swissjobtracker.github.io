@@ -32,14 +32,14 @@
         :showError="mapDataError"/>
       <list-selector
         v-if="mode == 'noga'"
-        type="noga_letter"
+        type="noga"
         :options="nogaOptions"
         @select="onSelect"
         :colors="colors"
         :maxSelections="maxSelections"/>
       <list-selector
         v-if="mode == 'isco'"
-        type="isco_1d"
+        type="isco"
         :options="iscoOptions"
         @select="onSelect"
         :colors="colors"
@@ -160,7 +160,7 @@ export default {
         })
         .catch((e) => {
           this.mapDataError = true
-        })      
+        })
       // Update range of map
       // TODO: Only do this on mount and when indicator changes would be more eleganter
       getCantonalSeries(this.selectedIndex)
