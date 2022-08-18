@@ -4,7 +4,7 @@
   INDEX OF JOB POSTINGS
 </div>
 <div class="chart-title">
-  Index of weekly unique job postings, Indexed 2018=100
+  By {{ displayMode }}, weekly unique job postings, (Indexed 2018=100)
 </div>
 <div>
      <e-chart
@@ -58,6 +58,9 @@ export default {
        'e-chart': echarts
    },
    props: {
+    mode: {
+      required: true
+    },
     series: {
       required: true
     },
@@ -109,6 +112,18 @@ export default {
           },
           activeDate: null
        }
+   },
+   computed: {
+      displayMode: function() {
+        const modeLabels = {
+          canton : "canton",
+          noga : "industry",
+          isco : "occupation"
+        }
+
+        return modeLabels[this.mode]
+
+      }
    },
    watch: {
      series: {

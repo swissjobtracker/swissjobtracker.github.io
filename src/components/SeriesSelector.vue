@@ -70,6 +70,8 @@ const indexOptionsRaw = [
   }
 ]
 
+const emittedMode = 'canton'
+
 export default {
   name: 'SeriesSelector',
   props: {
@@ -89,11 +91,11 @@ export default {
     'ch-map': Map,
     'list-selector': ListSelector
   },
-  emits: ['select'],
+  emits: ['select','changeMode'],
   mounted() {
     // Emit an event indicating total is selected
     this.emitSelection()
-
+    this.emitMode()
     this.updateMap()
   },
   data() {
@@ -114,6 +116,7 @@ export default {
   methods: {
     setMode: function(newMode) {
       this.clearSelection()
+      this.emitMode()
     },
     clearSelection: function() {
       this.onSelect([])
@@ -147,6 +150,9 @@ export default {
 
       this.$emit('select', toEmit)
     },
+    emitMode: function() {
+      this.$emit('changeMode', this.mode)
+    },
     updateMap: function() {
       getMapSeries(this.selectedIndex, this.activeDate)
         .then((data) => {
@@ -154,8 +160,7 @@ export default {
         })
         .catch((e) => {
           this.mapDataError = true
-        })
-
+        })      
       // Update range of map
       // TODO: Only do this on mount and when indicator changes would be more eleganter
       getCantonalSeries(this.selectedIndex)
