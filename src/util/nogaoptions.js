@@ -18,6 +18,6 @@ export default [
   { value: 'q', label: 'Q - Human Health and Social Work Activities' },
   { value: 'r', label: 'R - Arts, Entertainment and Recreation' },
   { value: 's', label: 'S - Other Service Activities' },
-  { value: 't', label: 'T - Activities of Households As Employers; Undifferentiated Goods- and Services-Producing Activities of Households For Own Use' },
+  { value: 't', label: 'T - Activities of Households' },
   { value: 'u', label: 'U - Activities of Extraterritorial Organisations and Bodies' },
 ]
