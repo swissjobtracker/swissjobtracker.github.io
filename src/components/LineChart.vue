@@ -53,6 +53,7 @@ import { GridComponent,
 
 
 import { getLineSeries } from '../timeseries'
+import { datetime } from '@intlify/core-base'
 
 use([CanvasRenderer,
       LineChart,
@@ -230,7 +231,7 @@ export default {
         const b64png = this.$refs.dlchart.getDataURL({
           backgroundColor: '#fff'
         })
-        const fname = 'moo.png';
+        const fname = 'swissjobtracker_export_' + Date.now() + '.png';
 
         // IE version
         if(window.navigator && window.navigator.msSaveOrOpenBlob) {
