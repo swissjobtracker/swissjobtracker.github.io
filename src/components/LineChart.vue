@@ -1,10 +1,10 @@
 <template>
 <div>
 <div class="chart-title ">
-  INDEX OF JOB POSTINGS
+  {{chartTitle}}
 </div>
 <div class="chart-title">
-  By {{ displayMode }}, weekly unique job postings, (Indexed 2018=100)
+  {{chartSubtitle}}
 </div>
 <div>
      <e-chart
@@ -15,13 +15,11 @@
         @updateAxisPointer="onUpdateAxisPointer"
         @zr:click="onClick"
         ref="chart"/>
-         <e-chart
-      class="offscreen"
-      ref="dlchart"
-      :options="offScreenOptions"
-      hidden="true"
-    />
-        <div align="right">(data source x28)</div>
+      <e-chart
+        class="offscreen"
+        ref="dlchart"
+        :option="offScreenOptions"/>
+      <div align="right">(data source x28)</div>
 </div>
 </div>
 </template>
@@ -33,8 +31,9 @@
 }
 
 .echarts.offscreen {
-  width: 600px;
+  width: 800px;
   height: 400px;
+  display: none;
 }
 
 
@@ -134,9 +133,13 @@ export default {
           noga : "industry",
           isco : "occupation"
         }
-
         return modeLabels[this.mode]
-
+      },
+      chartTitle: function() {
+        return 'INDEX OF JOB POSTINGS'
+      },
+      chartSubtitle: function() {
+        return `By ${this.displayMode}, weekly unique job postings, (Indexed 2018=100)`
       }
    },
    watch: {
@@ -168,7 +171,6 @@ export default {
                 data: data.slice(1).map((row) => [row[0], row[i + 1]])
               }))
           }
-
           this.loading = false
         })
         .catch((e) => {
@@ -194,25 +196,42 @@ export default {
       }
      },
      downloadChart() {
-      this.offScreenOptions = JSON.parse(JSON.stringify(this.lines));
-      this.offScreenOptions.title = {
-        text: 'moo',
-      };
-      // this.offScreenOptions.grid.top = 80
-      // this.offScreenOptions.grid.bottom = 50
-      // this.offScreenOptions.legend.top = 40
-      // this.offScreenOptions.graphic = [
-      //   {
-      //     type: "text",
-      //     right: 0,
-      //     bottom: 0,
-      //     z: 100,
-      //     style: {
-      //       fill: "#000",
-      //       text: this.$t('common.source'),
-      //     },
-      //   },
-      // ]
+      let dlOptions = this.$refs.chart.getOption()
+
+      dlOptions.series = dlOptions.series.map((s) => {
+        return {
+          ...s,
+          animation: false
+        }
+      })
+
+      dlOptions.title = {
+        text: this.chartTitle,
+        subtext: this.chartSubtitle
+      }
+      console.log(dlOptions)
+      dlOptions.grid[0].top = 60
+      dlOptions.grid[0].bottom = 50
+      dlOptions.graphic = [
+        {
+          type: "text",
+          right: 0,
+          bottom: 0,
+          z: 100,
+          style: {
+            fill: "#000",
+            text: this.$t('common.source'),
+          },
+        },
+      ]
+
+      dlOptions.legend = {
+        type: 'plain',
+        icon: 'rect',
+        top: 'bottom'
+      }
+
+      this.offScreenOptions = dlOptions
 
       window.setTimeout(() => {
         const b64png = this.$refs.dlchart.getDataURL({
@@ -228,16 +247,13 @@ export default {
           const blob = new Blob([bytes], { type: 'image/png' })
           window.navigator.msSaveOrOpenBlob(blob, fname)
         } else {
-          // TODO: Handling this with openURL or something would probably be better
           const a = document.createElement("a");
-          a.href = this.$refs.dlchart.getDataURL({
-            backgroundColor: '#fff'
-          });
+          a.href = b64png
           a.download = fname
-          a.click();
-          a.remove();
+          a.click()
+          a.remove()
         }
-      }, 500);
+      }, 500)
     },
      onClick: function() {
       this.$emit('setActiveDate', new Date(this.activeDate))

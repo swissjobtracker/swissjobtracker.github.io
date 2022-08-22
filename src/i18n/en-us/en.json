@@ -1,6 +1,7 @@
 {
   "common": {
-    "add_chart": "Add chart"
+    "add_chart": "Add chart",
+    "source": "KOF / x28"
   },
   "nav": {
     "about": "About this Dashboard",
