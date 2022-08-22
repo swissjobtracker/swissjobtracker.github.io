@@ -5,7 +5,7 @@
       :update-options="{ replaceMerge: ['series'] }"
       @click="onClick"
       ref="map"/>
-   
+
 
 
 </template>
@@ -21,7 +21,6 @@ import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
 import SelectorMixin from './mixins/SelectorMixin.vue'
 import {cantons, getCantonByCode} from '../util/cantons'
-import { userInfo } from 'os'
 
 use([CanvasRenderer, MapChart, VisualMapComponent])
 export default {
