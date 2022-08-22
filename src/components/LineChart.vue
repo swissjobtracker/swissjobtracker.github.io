@@ -203,7 +203,6 @@ export default {
         text: this.$t('graphs.line_chart.title'),
         subtext: this.$t('graphs.line_chart.subtitle', {displayMode: this.displayMode})
       }
-      console.log(dlOptions)
       dlOptions.grid[0].top = 60
       dlOptions.grid[0].bottom = 50
       dlOptions.graphic = [
