@@ -16,15 +16,14 @@
     <q-item
     v-for="s in selection"
     :key="s.byvalue">
-      <q-item-section>
-        <div :style="{backgroundColor: colors[s.index], height: '100%'}">
-        </div>
+      <q-item-section avatar>
+        <q-avatar :style="{backgroundColor: colors[s.index]}" />
       </q-item-section>
       <q-item-section>
         {{s.byvalue.label}}
       </q-item-section>
       <q-item-section side >
-        <q-btn flat @click="() => deselectItem(s)">X</q-btn>
+        <q-btn flat dense icon="close" @click="() => deselectItem(s)"></q-btn>
       </q-item-section>
     </q-item>
   </q-list>
