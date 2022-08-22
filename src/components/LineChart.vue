@@ -1,10 +1,10 @@
 <template>
 <div>
 <div class="chart-title ">
-  {{chartTitle}}
+  {{ $t('graphs.line_chart.title') }}
 </div>
 <div class="chart-title">
-  {{chartSubtitle}}
+  {{ $t('graphs.line_chart.subtitle', {displayMode: displayMode}) }}
 </div>
 <div>
      <e-chart
@@ -19,7 +19,7 @@
         class="offscreen"
         ref="dlchart"
         :option="offScreenOptions"/>
-      <div align="right">(data source x28)</div>
+      <div align="right">{{ $t('card.source') }}</div>
 </div>
 </div>
 </template>
@@ -134,12 +134,6 @@ export default {
           isco : "occupation"
         }
         return modeLabels[this.mode]
-      },
-      chartTitle: function() {
-        return 'INDEX OF JOB POSTINGS'
-      },
-      chartSubtitle: function() {
-        return `By ${this.displayMode}, weekly unique job postings, (Indexed 2018=100)`
       }
    },
    watch: {
@@ -206,8 +200,8 @@ export default {
       })
 
       dlOptions.title = {
-        text: this.chartTitle,
-        subtext: this.chartSubtitle
+        text: this.$t('graphs.line_chart.title'),
+        subtext: this.$t('graphs.line_chart.subtitle', {displayMode: this.displayMode})
       }
       console.log(dlOptions)
       dlOptions.grid[0].top = 60
@@ -220,7 +214,7 @@ export default {
           z: 100,
           style: {
             fill: "#000",
-            text: this.$t('common.source'),
+            text: this.$t('graphs.line_chart.source'),
           },
         },
       ]
