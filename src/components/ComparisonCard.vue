@@ -11,7 +11,7 @@
                       <q-tooltip>{{$t("card.btn_tooltips.code_snippet")}}</q-tooltip>
                       <q-icon name="terminal"></q-icon>
                     </q-btn>
-                    <q-btn flat>
+                    <q-btn flat @click="$refs.linechart.downloadChart()">
                       <q-icon name="ssid_chart"></q-icon>
                       <q-tooltip>{{$t("card.btn_tooltips.download_chart")}}</q-tooltip>
                     </q-btn>
@@ -20,7 +20,7 @@
                       <q-icon name="close"></q-icon>
                     </q-btn>
               </q-card-actions>
-            <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors"/>
+            <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors" ref="linechart"/>
 
             <q-dialog v-model="show_code">
             <q-card class="q-pb-lg q-pl-lg q-pr-lg  q-pt-sm" style="width:500px">

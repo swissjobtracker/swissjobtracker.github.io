@@ -15,6 +15,12 @@
         @updateAxisPointer="onUpdateAxisPointer"
         @zr:click="onClick"
         ref="chart"/>
+         <e-chart
+      class="offscreen"
+      ref="dlchart"
+      :options="offScreenOptions"
+      hidden="true"
+    />
         <div align="right">(data source x28)</div>
 </div>
 </div>
@@ -25,6 +31,13 @@
   width: 100%;
   height: 400px;
 }
+
+.echarts.offscreen {
+  width: 600px;
+  height: 400px;
+}
+
+
 </style>
 
 
@@ -74,6 +87,7 @@ export default {
    },
    data() {
        return{
+          offScreenOptions: {},
           loading: false,
           lines: {
             grid: {
@@ -179,6 +193,52 @@ export default {
         this.activeDate = e.axesInfo[0].value
       }
      },
+     downloadChart() {
+      this.offScreenOptions = JSON.parse(JSON.stringify(this.lines));
+      this.offScreenOptions.title = {
+        text: 'moo',
+      };
+      // this.offScreenOptions.grid.top = 80
+      // this.offScreenOptions.grid.bottom = 50
+      // this.offScreenOptions.legend.top = 40
+      // this.offScreenOptions.graphic = [
+      //   {
+      //     type: "text",
+      //     right: 0,
+      //     bottom: 0,
+      //     z: 100,
+      //     style: {
+      //       fill: "#000",
+      //       text: this.$t('common.source'),
+      //     },
+      //   },
+      // ]
+
+      window.setTimeout(() => {
+        const b64png = this.$refs.dlchart.getDataURL({
+          backgroundColor: '#fff'
+        })
+        const fname = 'moo.png';
+
+        // IE version
+        if(window.navigator && window.navigator.msSaveOrOpenBlob) {
+          const b64dta = b64png.split(',')[1]
+          const byteChars = atob(b64dta)
+          const bytes = new Uint8Array((new Array(byteChars.length)).fill(0).map((x, i) => byteChars.charCodeAt(i)))
+          const blob = new Blob([bytes], { type: 'image/png' })
+          window.navigator.msSaveOrOpenBlob(blob, fname)
+        } else {
+          // TODO: Handling this with openURL or something would probably be better
+          const a = document.createElement("a");
+          a.href = this.$refs.dlchart.getDataURL({
+            backgroundColor: '#fff'
+          });
+          a.download = fname
+          a.click();
+          a.remove();
+        }
+      }, 500);
+    },
      onClick: function() {
       this.$emit('setActiveDate', new Date(this.activeDate))
      }
