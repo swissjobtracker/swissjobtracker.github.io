@@ -5,9 +5,6 @@
       :update-options="{ replaceMerge: ['series'] }"
       @click="onClick"
       ref="map"/>
-
-
-
 </template>
 
 
@@ -57,13 +54,13 @@ export default {
       return {
         option: {
           tooltip: {
-            trigger: 'item'
+            trigger: 'item',
           },
           geo: {
             map: 'ch',
             zoom: 2.8,
-            left: 260,
-            top: 100,
+            left: '55%',
+            top: 90,
             regions: [],
             emphasis: {
               label: {
@@ -82,7 +79,7 @@ export default {
             min: this.rangeMin,
             max: this.rangeMax,
             orient: 'horizontal',
-            itemHeight: 300,
+            itemHeight: 320,
             text: [],
             realtime: true,
             calculable: false,

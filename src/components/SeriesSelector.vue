@@ -20,7 +20,7 @@
   </div>
 
   <div class="row selector">
-    <div class="col-12">
+    <div class="col-12 q-pa-md">
       <ch-map
         v-if="mode == 'canton'"
         @select="onSelect"
