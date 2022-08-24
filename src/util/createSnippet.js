@@ -15,11 +15,6 @@ tsl <- get_time_series(
 ${getKeys(series).map((key) => `'${key}'`).join(',')}
     )
 tsl`
-$q.notify(
-    {
-        message: 'moo'
-    }
-)
     // might want to add a document.execCommand('copy') based fallback
     // but let's leave this to out future selves or others for now... 
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
