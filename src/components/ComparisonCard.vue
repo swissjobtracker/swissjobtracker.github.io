@@ -24,6 +24,9 @@
             <q-dialog v-model="show_code">
               <q-card class="q-pb-lg q-pl-lg q-pr-lg  q-pt-sm" style="width:500px">
                   <q-card-actions align="right">
+                    <q-btn dense flat @click="copySnippet(selectedSeries)" icon="ios_share">
+                        <q-tooltip class="bg-white text-primary">Copy R Code to clipboard</q-tooltip>
+                      </q-btn>
                       <q-btn dense flat icon="close" v-close-popup>
                         <q-tooltip class="bg-white text-primary">Close</q-tooltip>
                       </q-btn>
@@ -43,6 +46,7 @@
 import SeriesSelector from './SeriesSelector.vue'
 import LineChart from "../components/LineChart";
 import {createSnippet} from "../util/createSnippet"
+import {copySnippet} from "../util/createSnippet"
 
 export default {
     name: "comp-card",
@@ -70,7 +74,8 @@ export default {
       onSetActiveDate: function(d) {
         this.activeDate = d
       },
-      createSnippet
+      createSnippet,
+      copySnippet
     }
 };
 
