@@ -230,7 +230,7 @@ export default {
         const b64png = this.$refs.dlchart.getDataURL({
           backgroundColor: '#fff'
         })
-        const fname = 'moo.png';
+        const fname = `jobtracker_plot_${(new Date()).toISOString()}.png`;
 
         // IE version
         if(window.navigator && window.navigator.msSaveOrOpenBlob) {
