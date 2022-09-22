@@ -19,7 +19,7 @@
         class="offscreen"
         ref="dlchart"
         :option="offScreenOptions"/>
-      <div align="right">{{ $t('card.source') }}</div>
+      <div align="right" class="q-mr-md q-mb-sm">{{ $t('card.source') }}</div>
 </div>
 </div>
 </template>
