@@ -1,6 +1,8 @@
 <template>
     <e-chart
+      class="selector-map"
       autoresize
+      :init-options="{renderer: 'svg'}"
       :option="option"
       :update-options="{ replaceMerge: ['series'] }"
       @click="onClick"
@@ -13,13 +15,13 @@
 <script>
 import echarts from 'vue-echarts'
 import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
+import { SVGRenderer } from 'echarts/renderers'
 import { MapChart } from 'echarts/charts'
 import { VisualMapComponent } from 'echarts/components'
 import SelectorMixin from './mixins/SelectorMixin.vue'
 import {cantons, getCantonByCode} from '../util/cantons'
 
-use([CanvasRenderer, MapChart, VisualMapComponent])
+use([SVGRenderer, MapChart, VisualMapComponent])
 export default {
     name: "Map",
     components: {
@@ -159,3 +161,8 @@ export default {
 };
 
 </script>
+
+<style>
+.selector-map text {
+}
+</style>

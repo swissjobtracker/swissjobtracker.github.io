@@ -17,7 +17,7 @@
     v-for="s in selection"
     :key="s.byvalue">
       <q-item-section avatar>
-        <q-avatar :style="{backgroundColor: colors[s.index]}" />
+        <q-avatar size="md" :style="{backgroundColor: colors[s.index]}" />
       </q-item-section>
       <q-item-section>
         {{s.byvalue.label}}

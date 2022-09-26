@@ -19,7 +19,7 @@
         class="offscreen"
         ref="dlchart"
         :option="offScreenOptions"/>
-      <div align="right">{{ $t('card.source') }}</div>
+      <div align="right" class="q-mr-md q-mb-sm">{{ $t('card.source') }}</div>
 </div>
 </div>
 </template>
@@ -232,7 +232,7 @@ export default {
           backgroundColor: '#fff'
         })
         const fname = 'swissjobtracker_export_' + Date.now() + '.png';
-
+W
         // IE version
         if(window.navigator && window.navigator.msSaveOrOpenBlob) {
           const b64dta = b64png.split(',')[1]
