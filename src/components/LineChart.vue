@@ -204,13 +204,15 @@ export default {
         text: this.$t('graphs.line_chart.title'),
         subtext: this.$t('graphs.line_chart.subtitle', {displayMode: this.displayMode})
       }
-      dlOptions.grid[0].top = 60
-      dlOptions.grid[0].bottom = 50
+      dlOptions.grid[0].top = 65
+      dlOptions.grid[0].bottom = 70
+      dlOptions.grid[0].left = '7%'
+      dlOptions.grid[0].right = '7%'
       dlOptions.graphic = [
         {
           type: "text",
-          right: 0,
-          bottom: 0,
+          right: 5,
+          bottom: 5,
           z: 100,
           style: {
             fill: "#000",
