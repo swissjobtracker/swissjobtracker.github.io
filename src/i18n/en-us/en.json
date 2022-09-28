@@ -70,6 +70,7 @@
   },
   "copy_code": {
     "success": "Copied!",
-    "error": "Error copying. Please copy code manually."
+    "error": "Error copying. Please copy code manually.",
+    "title": "Get data in R"
   }
 }

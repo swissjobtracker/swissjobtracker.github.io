@@ -22,19 +22,7 @@
                 </q-card-actions>
               <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors" ref="linechart"/>
             <q-dialog v-model="show_code">
-              <q-card class="q-pb-lg q-pl-lg q-pr-lg  q-pt-sm">
-                <q-card-actions align="right">
-                  <q-btn dense flat @click="handleCopy" icon="content_copy">
-                      <q-tooltip class="bg-white text-primary">Copy R Code to clipboard</q-tooltip>
-                    </q-btn>
-                    <q-btn dense flat icon="close" v-close-popup>
-                      <q-tooltip class="bg-white text-primary">Close</q-tooltip>
-                    </q-btn>
-                </q-card-actions>
-                <q-card-section>
-                  <div v-html="createSnippet(selectedSeries)" id="code_snippet"></div>
-                </q-card-section>
-              </q-card>
+              <code-popup :series="selectedSeries" />
             </q-dialog>
           </div>
 
@@ -44,16 +32,16 @@
 </template>
 
 <script>
-
 import SeriesSelector from './SeriesSelector.vue'
-import LineChart from "../components/LineChart";
-import {createSnippet, copySnippet} from "../util/createSnippet"
+import LineChart from "../components/LineChart"
+import codePopup from '../components/CodePopup'
 
 export default {
     name: "comp-card",
     components: {
       linechart: LineChart,
-     'series-selector': SeriesSelector
+     'series-selector': SeriesSelector,
+     codePopup
     },
     emits: ['close'],
     data() {
@@ -75,27 +63,6 @@ export default {
       onSetActiveDate: function(d) {
         this.activeDate = d
       },
-      handleCopy: function() {
-        copySnippet('code_snippet')
-        .then(() => {
-          this.$q.notify({
-            message: this.$t('copy_code.success'),
-            color: 'positive',
-            position: 'top',
-            timeout: 1000
-          })
-        })
-        .catch((e) => {
-          this.$q.notify({
-            message: this.$t('copy_code.error'),
-            color: 'negative',
-            position: 'top',
-            timeout: 2000
-          })
-        })
-      },
-      createSnippet,
-      copySnippet
     }
 };
 
