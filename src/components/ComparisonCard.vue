@@ -79,7 +79,7 @@ export default {
         copySnippet('code_snippet')
         .then(() => {
           this.$q.notify({
-            message: 'Copied!',
+            message: this.$t('copy_code.success'),
             color: 'positive',
             position: 'top',
             timeout: 1000
@@ -87,7 +87,7 @@ export default {
         })
         .catch((e) => {
           this.$q.notify({
-            message: 'Error copying. Please copy code manually.',
+            message: this.$t('copy_code.error'),
             color: 'negative',
             position: 'top',
             timeout: 2000

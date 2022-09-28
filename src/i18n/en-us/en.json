@@ -27,7 +27,7 @@
     },
     "source": "source: KOF / x28"
   },
-  "graphs":{
+  "graphs": {
     "line_chart": {
       "title": "INDEX OF JOB POSTINGS",
       "subtitle": "By {displayMode}, weekly unique job postings, (Indexed 2018=100)",
@@ -67,5 +67,9 @@
       "industry": "Select sector",
       "occupation": "Select occupation"
     }
+  },
+  "copy_code": {
+    "success": "Copied!",
+    "error": "Error copying. Please copy code manually."
   }
 }
