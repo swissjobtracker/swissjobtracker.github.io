@@ -71,6 +71,9 @@
   "copy_code": {
     "success": "Copied!",
     "error": "Error copying. Please copy code manually.",
-    "title": "Get data in R"
+    "title": "Get data in R",
+    "copy_button": "Copy R Code to clipboard",
+    "select_button": "Select all",
+    "select_error": "Error selecting. Please copy code manually."
   }
 }
