@@ -19,8 +19,8 @@
             {{$t("nav.tooltips.download_data")}}
           </q-tooltip>
         </q-btn>
-        <q-btn 
-          flat 
+        <q-btn
+          flat
           icon="description"
           href="https://datenservice.kof.ethz.ch/api/v1/public/metadata/collections/ch.kof.jobtracker?mime=csv"
           target="_blank">
@@ -101,7 +101,7 @@ export default {
         },
          {
           label: this.$t('nav.blog'),
-          href: 'https://swissjobtracker/github.io/blog'
+          href: 'https://swissjobtracker.github.io/blog'
         }
       ],
     }
