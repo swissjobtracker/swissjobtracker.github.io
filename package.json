@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "jest",
     "test-update": "jest --updateSnapshot",
-    "predeploy": "quasar build && touch dist/spa/.nojekyll",
+    "predeploy": "quasar build",
     "deploy": "push-dir --dir=dist/spa --branch=gh-pages"
   },
   "jest": {
