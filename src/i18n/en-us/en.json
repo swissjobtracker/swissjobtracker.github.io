@@ -17,7 +17,9 @@
     "project_title": "The Project",
     "project_text": "Swiss Job Tracker is a labor market dashboard that publishes time series aggregated from large-scale online data. The dashboard results from a collaboration between the KOF Swiss Economic Institute of ETH Zurich, the University of Lausanne, and the private company x28 AG. The dashboard contains weekly data on the development of job postings published online in Switzerland. The time series allow monitoring the Swiss labor market in real time. They can be broken down by industry, broad occupation, and canton. Swiss Job Tracker was created as part of the project 'What Workers Want' within the Swiss National Science Foundation's (SNSF) National Research Program on \"Digital Transformation\" (NRP-77).",
     "partner_title": "The Project Partners",
-    "partner_text": "x28 continuously collects job postings advertised online in Switzerland. The company crawls them from all major online job boards and from company websites. x28 also systematizes each job posting. These data form the raw material for the vacancy indices published on Swiss Job Tracker. Researchers at KOF Swiss Economic Institute at ETH Zurich and the University of Lausanne developed the necessary tools to aggregate and publish these vast data weekly."
+    "partner_text": "x28 continuously collects job postings advertised online in Switzerland. The company crawls them from all major online job boards and from company websites. x28 also systematizes each job posting. These data form the raw material for the vacancy indices published on Swiss Job Tracker. Researchers at KOF Swiss Economic Institute at ETH Zurich and the University of Lausanne developed the necessary tools to aggregate and publish these vast data weekly.",
+    "methodology_title": "Methodology",
+    "methodology_text": "lorem ipsum blabliblablubb"
   },
   "card": {
     "btn_tooltips": {
