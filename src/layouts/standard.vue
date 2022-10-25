@@ -46,12 +46,12 @@
 
     <q-footer>
      <div class="row q-col-gutter-lg logo-row">
-      <div class="col-12 col-md-2"><a href="https://kof.ethz.ch"><img src="kof-neg.png" height=25></a></div>
-      <div class="col-12 col-md-2"><a href="https://ethz.ch"><img src="eth-neg.png" height=25></a></div>
-      <div class="col-12 col-md-2"><a href="https://"><img src="nfp_en.png" height=25></a></div>
-      <div class="col-12 col-md-2"><a href="https://"><img src="snf_en.svg" height=25></a></div>
-      <div class="col-12 col-md-2"><a href="https://unil.ch"><img src="unil-neg.png" height=25></a></div>
-      <div class="col-12 col-md-2"><a href="https://"><img src="x28-neg.png" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://kof.ethz.ch"><img src="kof-neg.png" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://ethz.ch"><img src="eth-neg.png" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://www.snf.ch/en/hRMuYd5Qqjpl1goQ/page/researchinFocus/nrp/nrp77"><img src="nfp_en.png" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://www.snf.ch"><img src="snf_en.svg" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://unil.ch"><img src="unil-neg.png" height=25></a></div>
+      <div class="col-12 col-md-2"><a target="_blank" href="https://x28.ch"><img src="x28-neg.png" height=25></a></div>
       </div>
       <hr>
       <div class="row q-col-gutter-lg">
