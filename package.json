@@ -10,7 +10,7 @@
     "test": "jest",
     "test-update": "jest --updateSnapshot",
     "predeploy": "quasar build",
-    "deploy": "push-dir --dir=dist/spa --branch=gh-pages"
+    "deploy": "push-dir --dir=dist/spa --branch=gh-pages --cleanup"
   },
   "jest": {
     "transform": {
