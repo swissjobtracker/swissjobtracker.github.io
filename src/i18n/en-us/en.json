@@ -31,7 +31,7 @@
   "graphs": {
     "line_chart": {
       "title": "INDEX OF JOB POSTINGS",
-      "subtitle": "By {displayMode}, weekly unique job postings, (Indexed 2018=100)",
+      "subtitle": "By {displayMode}, weekly unique job postings, indexed Jan 2020=100",
       "source": "source: KOF / UNIL / x28"
     }
   },
