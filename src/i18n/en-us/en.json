@@ -26,14 +26,13 @@
       "close": "Close Card",
       "code_snippet": "R Code Snippet to Retrieve Chart Data",
       "download_chart": "Download Chart"
-    },
-    "source": "source: KOF / x28"
+    }
   },
   "graphs": {
     "line_chart": {
       "title": "INDEX OF JOB POSTINGS",
       "subtitle": "By {displayMode}, weekly unique job postings, (Indexed 2018=100)",
-      "source": "source: KOF / x28"
+      "source": "source: KOF / UNIL / x28"
     }
   },
   "footer": {
