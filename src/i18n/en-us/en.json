@@ -65,8 +65,8 @@
     },
     "show_total": "SHOW TOTAL",
     "dropdowns": {
-      "industry": "Select sector",
-      "occupation": "Select occupation"
+      "industry": "Select industry (NACE)",
+      "occupation": "Select occupation (ISCO)"
     }
   },
   "copy_code": {
