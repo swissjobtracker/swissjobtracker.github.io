@@ -10,7 +10,8 @@
       "download_data": "Download Full Dataset",
       "download_metadata": "Download Data Description",
       "github": "Github Repository"
-    }
+    },
+    "subtitle": "Track the Swiss job market in real time"
   },
   "about": {
     "title": "About this Dashboard",

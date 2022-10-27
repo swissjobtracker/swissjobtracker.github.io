@@ -38,6 +38,9 @@
           </q-tooltip>
         </q-btn>
       </q-toolbar>
+      <q-toolbar class="lmm-bar subtitle-bar">
+        {{ $t('nav.subtitle') }}
+      </q-toolbar>
     </q-header>
 
     <q-page-container>
@@ -112,6 +115,15 @@ export default {
     }
   }
 }
-
-
 </script>
+
+<style scoped>
+.lmm-bar {
+    padding-left: 32px;
+}
+
+.subtitle-bar {
+  min-height: 0px;
+  padding-bottom: 10px;
+}
+</style>
