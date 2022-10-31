@@ -15,7 +15,6 @@
                   <q-icon name="close"></q-icon>
                 </q-btn>
             </q-card-actions>
-            <q-card-section>
               <div class="row q-col-gutter-xl">
                 <div class="col-12 col-md-5">
                   <series-selector @select="onSelect" @changeMode="(newMode) => selectedMode = newMode" :colors="colors" :activeDate="activeDate"/>
@@ -27,7 +26,6 @@
                 </q-dialog>
               </div>
             </div>
-          </q-card-section>
         </q-card>
       </div>
 </template>
