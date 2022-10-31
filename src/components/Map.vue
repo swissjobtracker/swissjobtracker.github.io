@@ -61,7 +61,7 @@ export default {
           geo: {
             map: 'ch',
             zoom: 2.8,
-            left: '55%',
+            left: '60%',
             top: 90,
             regions: [],
             emphasis: {
