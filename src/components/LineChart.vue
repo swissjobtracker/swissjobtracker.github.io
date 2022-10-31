@@ -97,6 +97,8 @@ export default {
             },
             xAxis: {
                 type: 'time',
+                maxInterval: 3600*1000*24*7*52,
+                minInterval: 3600*1000*24*7*52,
                 axisLabel: {
                   showMinLabel: true,
                   formatter: '{MMM} {yearStyle|{yyyy}}',
