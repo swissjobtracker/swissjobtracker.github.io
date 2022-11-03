@@ -20,7 +20,9 @@
     "partner_title": "The Project Partners",
     "partner_text": "x28 continuously collects job postings advertised online in Switzerland. The company crawls them from all major online job boards and from company websites. x28 also systematizes each job posting. These data form the raw material for the vacancy indices published on Swiss Job Tracker. Researchers at KOF Swiss Economic Institute at ETH Zurich and the University of Lausanne developed the necessary tools to aggregate and publish these vast data weekly.",
     "methodology_title": "Methodology",
-    "methodology_text": "lorem ipsum blabliblablubb"
+    "methodology_text1": "Swiss Job Tracker provides indices that reveal the development of unique online job postings in Switzerland. The underlying data represent the near-universe of job postings in Switzerland. They cover both firm websites and all major Swiss job portals. These data are collected by x28 AG and cover at least 72% of all vacancies and at least 90% of all vacancies posted online in Switzerland.",
+    "methodology_text2": "The indices are constructed from the raw vacancy data. Each week, we access this data via x28's API, remove duplicates as identified by x28, impute certain missing information, and account for the entry and exit of job portals. The aggregate index and the indices by occupation, industry, and cantons are then computed based on weekly growth rates of this cleaned data set (reference day: Friday).",
+    "methodology_text3": "The time series are published weekly. Hence, in contrast to extant job indices and indicators of the state of the job market, the indices allow monitoring the state of the Swiss job market at a very high temporal frequency."
   },
   "card": {
     "btn_tooltips": {

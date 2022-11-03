@@ -30,7 +30,11 @@
           </q-card-section>
           <q-card-section>
             <div>
-              {{ $t('about.methodology_text') }}
+              {{ $t('about.methodology_text1') }}
+              <br/>
+              {{ $t('about.methodology_text2')}}
+              <br/>
+              {{ $t('about.methodology_text3') }}
             </div>
           </q-card-section>
         </q-card-section>
