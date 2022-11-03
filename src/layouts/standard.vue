@@ -7,7 +7,14 @@
           <router-link to="/" style="text-decoration:none; color:white">Swiss Job Tracker</router-link>
         </q-toolbar-title>
         <q-tabs>
-          <q-route-tab  v-for="(menuItem) in menuList" :to="menuItem.to" :href="menuItem.href" :label="menuItem.label" :key="menuItem.to" />
+          <q-route-tab
+            to="/about"
+            :label="$t(`nav.about`)"
+            ></q-route-tab>
+          <q-route-tab
+            href="/blog"
+            target="_blank"
+            :label="$t(`nav.blog`)"></q-route-tab>
         </q-tabs>
         <q-space/>
         <q-btn
@@ -73,8 +80,7 @@
           <a href="https://kof.ethz.ch" target="_blank">{{$t("footer.links.kof_main")}}</a><br>
           <router-link to="/about">{{ $t('nav.about') }}</router-link><br>
           <a :href="nrp_link" target="_blank">{{$t("footer.links.nrp77.title")}}</a><br>
-          <router-link to="/blog">{{ $t('nav.blog') }}</router-link><br>
-          <router-link to="/faq">{{ $t('nav.faq') }}</router-link><br>
+          <a href="/blog" target="_blank">{{ $t('nav.blog') }}</a><br>
         </div>
       </div>
       <br>
@@ -94,21 +100,6 @@
 <script>
 
 export default {
-  data () {
-    return {
-      drawer: true,
-      menuList: [
-        {
-          label: this.$t('nav.about'),
-          to: '/about'
-        },
-         {
-          label: this.$t('nav.blog'),
-          href: 'https://swissjobtracker.github.io/blog'
-        }
-      ],
-    }
-  },
   computed: {
     nrp_link: function() {
       return this.$t("footer.links.nrp77.url")
