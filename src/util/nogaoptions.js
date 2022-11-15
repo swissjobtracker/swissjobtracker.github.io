@@ -1,5 +1,5 @@
 export default [
-  { value: 'a', label: 'A - Agriculture, Forestry and Fishing' },
+  { value: 'ab', label: 'A/B - Agriculture and Mining' },
   { value: 'c', label: 'C - Manufacturing' },
   { value: 'd', label: 'D - Electricity, Gas, Steam and Air-Conditioning Supply' },
   { value: 'e', label: 'E - Water Supply; Sewerage, Waste Management and Remediation Activities' },
@@ -16,6 +16,6 @@ export default [
   { value: 'p', label: 'P - Education' },
   { value: 'q', label: 'Q - Human Health and Social Work Activities' },
   { value: 'r', label: 'R - Arts, Entertainment and Recreation' },
-  { value: 's', label: 'S - Other Service Activities' },
+  { value: 'st', label: 'S/T - Activities of Households, Other Services' },
   { value: 'u', label: 'U - Activities of Extraterritorial Organisations and Bodies' },
 ]
