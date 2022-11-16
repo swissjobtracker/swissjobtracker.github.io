@@ -17,33 +17,35 @@
             :label="$t(`nav.blog`)"></q-route-tab>
         </q-tabs>
         <q-space/>
-        <q-btn
-         flat
-         icon="download"
-         href="https://datenservice.kof.ethz.ch/api/v1/public/collections/ch.kof.jobtracker?mime=csv"
-         target="_blank">
-          <q-tooltip>
-            {{$t("nav.tooltips.download_data")}}
-          </q-tooltip>
-        </q-btn>
-        <q-btn
-          flat
-          icon="description"
-          href="https://datenservice.kof.ethz.ch/api/v1/public/metadata/collections/ch.kof.jobtracker?mime=csv"
-          target="_blank">
-          <q-tooltip>
-            {{$t("nav.tooltips.download_metadata")}}
-          </q-tooltip>
-        </q-btn>
-        <q-btn
-         flat
-         href="https://github.com/swissjobtracker"
-         target="_blank">
-          <q-icon class="github"></q-icon>
-          <q-tooltip>
-            {{$t("nav.tooltips.github")}}
-          </q-tooltip>
-        </q-btn>
+        <div class="gt-xs">
+          <q-btn
+           flat
+           icon="download"
+           href="https://datenservice.kof.ethz.ch/api/v1/public/collections/ch.kof.jobtracker?mime=csv"
+           target="_blank">
+            <q-tooltip>
+              {{$t("nav.tooltips.download_data")}}
+            </q-tooltip>
+          </q-btn>
+          <q-btn
+            flat
+            icon="description"
+            href="https://datenservice.kof.ethz.ch/api/v1/public/metadata/collections/ch.kof.jobtracker?mime=csv"
+            target="_blank">
+            <q-tooltip>
+              {{$t("nav.tooltips.download_metadata")}}
+            </q-tooltip>
+          </q-btn>
+          <q-btn
+           flat
+           href="https://github.com/swissjobtracker"
+           target="_blank">
+            <q-icon class="github"></q-icon>
+            <q-tooltip>
+              {{$t("nav.tooltips.github")}}
+            </q-tooltip>
+          </q-btn>
+        </div>
       </q-toolbar>
       <q-toolbar class="lmm-bar subtitle-bar">
         {{ $t('nav.subtitle') }}
