@@ -24,21 +24,6 @@
 </div>
 </template>
 
-<style scoped>
-.echarts {
-  width: 100%;
-  height: 400px;
-}
-
-.echarts.offscreen {
-  width: 800px;
-  height: 400px;
-  display: none;
-}
-
-
-</style>
-
 
 <script>
 import echarts from 'vue-echarts'
@@ -92,7 +77,12 @@ export default {
           lines: {
             grid: {
               top: 15,
-              left: '0%',
+              // Would be more elegant with a resize watcher
+              // that sets lines.grid.xxx but for now let's assume
+              // Peeps with a screeen < 670 come like that on load
+              left: window.innerWidth < 670 ? 8 : 0,
+              bottom: window.innerWidth < 670 ? 8 : 15,
+              right: window.innerWidth < 670 ? 8 : '10%',
               containLabel: true
             },
             xAxis: {
@@ -259,3 +249,27 @@ export default {
    },
 }
 </script>
+
+<style scoped>
+.echarts {
+  width: 100%;
+  height: 350px;
+}
+
+@media(max-width: 670px) {
+  .echarts {
+    width: 100%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.echarts.offscreen {
+  width: 800px;
+  height: 400px;
+  display: none;
+}
+
+
+</style>
