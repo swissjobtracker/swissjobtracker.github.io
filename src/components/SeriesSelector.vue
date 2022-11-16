@@ -10,10 +10,15 @@
         <q-tab name="noga" :label="$t('selector.by.noga')" />
         <q-tab name="isco" :label="$t('selector.by.isco')" />
         <q-toggle
-          :label="$t('selector.show_total')"
           color="gray"
           keep-color
           v-model="showTotal">
+          <div class="gt-xs">
+            {{$t('selector.show_total')}}
+          </div>
+          <q-tooltip>
+            Show Total
+          </q-tooltip>
         </q-toggle>
       </q-tabs>
     </div>
