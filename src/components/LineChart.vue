@@ -10,7 +10,7 @@
      <e-chart
         autoresize
       	:option="lines"
-        :update-options="{ replaceMerge: ['series'] }"
+        :update-options="{ replaceMerge: ['series', 'graphic'] }"
         :loading="loading"
         @updateAxisPointer="onUpdateAxisPointer"
         @zr:click="onClick"
@@ -145,6 +145,8 @@ export default {
           const nSeries = data[0].length - 1
 
           this.lines = {
+            // Reset the error message if it was displayed previously
+            graphic: null,
             series: Array.from({length: nSeries}).map((_, i) => (
               {
                 type: 'line',
