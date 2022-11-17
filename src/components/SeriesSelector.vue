@@ -10,7 +10,7 @@
         <q-tab name="noga" :label="$t('selector.by.noga')" />
         <q-tab name="isco" :label="$t('selector.by.isco')" />
         <q-toggle
-          color="gray"
+          color="deep-purple-10"
           keep-color
           v-model="showTotal">
           <div class="gt-xs">
