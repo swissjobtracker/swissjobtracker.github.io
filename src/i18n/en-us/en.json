@@ -9,7 +9,8 @@
     "tooltips": {
       "download_data": "Download Full Dataset",
       "download_metadata": "Download Data Description",
-      "github": "Github Repository"
+      "github": "Swiss Job Tracker on GitHub",
+      "download_methodology": "Download Methodology Paper"
     },
     "subtitle": "Track the Swiss job market in real time"
   },

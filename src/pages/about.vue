@@ -30,11 +30,10 @@
           </q-card-section>
           <q-card-section>
             <div>
-              {{ $t('about.methodology_text1') }}
-              <br/>
-              {{ $t('about.methodology_text2')}}
-              <br/>
-              {{ $t('about.methodology_text3') }}
+              <p>{{ $t('about.methodology_text1') }}</p>
+              <p>{{ $t('about.methodology_text2')}}</p>
+              <p>{{ $t('about.methodology_text3') }}</p>
+              For more information, refer to the <a href="Methodology Swiss Job Tracker.pdf" target="_blank">full methodology document</a>.
             </div>
           </q-card-section>
         </q-card-section>

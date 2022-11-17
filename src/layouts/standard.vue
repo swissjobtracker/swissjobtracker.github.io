@@ -37,6 +37,16 @@
             </q-tooltip>
           </q-btn>
           <q-btn
+          flat
+          icon="history_edu"
+          href="Methodology Swiss Job Tracker.pdf"
+          target="_blank"
+        >
+          <q-tooltip>
+            {{$t('nav.tooltips.download_methodology')}}
+          </q-tooltip>
+        </q-btn>
+          <q-btn
            flat
            href="https://github.com/swissjobtracker"
            target="_blank">
