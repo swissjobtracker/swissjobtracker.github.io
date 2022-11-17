@@ -33,7 +33,11 @@
               <p>{{ $t('about.methodology_text1') }}</p>
               <p>{{ $t('about.methodology_text2')}}</p>
               <p>{{ $t('about.methodology_text3') }}</p>
-              For more information, refer to the <a href="Methodology Swiss Job Tracker.pdf" target="_blank">full methodology document</a>.
+              <p>
+                For more information, refer to the <a href="Methodology Swiss Job Tracker.pdf" target="_blank">full methodology document</a>.
+                <br/>
+                The R code used to calculate the series can be found on GitHub at <a href="https://github.com/swissjobtracker/chjobtracker" target="_blank">swissjobtracker/chjobtracker</a>.
+              </p>
             </div>
           </q-card-section>
         </q-card-section>
