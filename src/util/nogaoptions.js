@@ -17,5 +17,4 @@ export default [
   { value: 'q', label: 'Q - Human Health and Social Work Activities' },
   { value: 'r', label: 'R - Arts, Entertainment and Recreation' },
   { value: 'st', label: 'S/T - Activities of Households, Other Services' },
-  { value: 'u', label: 'U - Activities of Extraterritorial Organisations and Bodies' },
 ]
