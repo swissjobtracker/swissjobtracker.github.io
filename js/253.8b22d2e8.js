@@ -1,0 +1,1 @@
+"use strict";(globalThis["webpackChunknfp77"]=globalThis["webpackChunknfp77"]||[]).push([[253],{5379:(n,s,a)=>{a.r(s),a.d(s,{default:()=>p});var e=a(3673);const l={class:"lmm-page"},r=(0,e._)("h2",null,"News",-1),u=[r];function c(n,s){return(0,e.wg)(),(0,e.iD)("div",l,u)}var t=a(4260);const h={},i=(0,t.Z)(h,[["render",c]]),p=i}}]);
