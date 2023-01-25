@@ -9,6 +9,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "jest",
     "test-update": "jest --updateSnapshot",
+    "build": "quasar build",
     "predeploy": "quasar build",
     "deploy": "push-dir --dir=dist/spa --branch=gh-pages --cleanup"
   },
