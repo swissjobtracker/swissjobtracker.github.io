@@ -1,108 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cantons definition is intact 1`] = `
-Array [
-  Object {
+[
+  {
     "label": "Aargau",
     "value": "ag",
   },
-  Object {
+  {
     "label": "Appenzell Innerrhoden",
     "value": "ai",
   },
-  Object {
+  {
     "label": "Appenzell Ausserrhoden",
     "value": "ar",
   },
-  Object {
+  {
     "label": "Bern",
     "value": "be",
   },
-  Object {
+  {
     "label": "Basel-Landschaft",
     "value": "bl",
   },
-  Object {
+  {
     "label": "Basel-Stadt",
     "value": "bs",
   },
-  Object {
+  {
     "label": "Fribourg",
     "value": "fr",
   },
-  Object {
+  {
     "label": "Genève",
     "value": "ge",
   },
-  Object {
+  {
     "label": "Glarus",
     "value": "gl",
   },
-  Object {
+  {
     "label": "Graubünden",
     "value": "gr",
   },
-  Object {
+  {
     "label": "Jura",
     "value": "ju",
   },
-  Object {
+  {
     "label": "Luzern",
     "value": "lu",
   },
-  Object {
+  {
     "label": "Neuchâtel",
     "value": "ne",
   },
-  Object {
+  {
     "label": "Nidwalden",
     "value": "nw",
   },
-  Object {
+  {
     "label": "Obwalden",
     "value": "ow",
   },
-  Object {
+  {
     "label": "St. Gallen",
     "value": "sg",
   },
-  Object {
+  {
     "label": "Schaffhausen",
     "value": "sh",
   },
-  Object {
+  {
     "label": "Solothurn",
     "value": "so",
   },
-  Object {
+  {
     "label": "Schwyz",
     "value": "sz",
   },
-  Object {
+  {
     "label": "Thurgau",
     "value": "tg",
   },
-  Object {
+  {
     "label": "Ticino",
     "value": "ti",
   },
-  Object {
+  {
     "label": "Uri",
     "value": "ur",
   },
-  Object {
+  {
     "label": "Vaud",
     "value": "vd",
   },
-  Object {
+  {
     "label": "Valais",
     "value": "vs",
   },
-  Object {
+  {
     "label": "Zug",
     "value": "zg",
   },
-  Object {
+  {
     "label": "Zürich",
     "value": "zh",
   },

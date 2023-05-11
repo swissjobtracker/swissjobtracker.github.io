@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`tsToLine 1`] = `
-Array [
-  Array [
+[
+  [
     "date",
     "ag",
     "ai",
@@ -31,7 +31,7 @@ Array [
     "zg",
     "zh",
   ],
-  Array [
+  [
     "2021-01-01",
     0,
     0,
@@ -60,7 +60,7 @@ Array [
     0,
     0,
   ],
-  Array [
+  [
     "2021-01-08",
     1,
     1,
@@ -89,7 +89,7 @@ Array [
     1,
     1,
   ],
-  Array [
+  [
     "2021-01-15",
     2,
     2,
@@ -118,7 +118,7 @@ Array [
     2,
     2,
   ],
-  Array [
+  [
     "2021-01-22",
     3,
     3,
@@ -147,7 +147,7 @@ Array [
     3,
     3,
   ],
-  Array [
+  [
     "2021-01-29",
     4,
     4,
@@ -176,7 +176,7 @@ Array [
     4,
     4,
   ],
-  Array [
+  [
     "2021-02-05",
     5,
     5,
@@ -205,7 +205,7 @@ Array [
     5,
     5,
   ],
-  Array [
+  [
     "2021-02-12",
     6,
     6,
@@ -234,7 +234,7 @@ Array [
     6,
     6,
   ],
-  Array [
+  [
     "2021-02-19",
     7,
     7,
@@ -263,7 +263,7 @@ Array [
     7,
     7,
   ],
-  Array [
+  [
     "2021-02-26",
     8,
     8,
@@ -292,7 +292,7 @@ Array [
     8,
     8,
   ],
-  Array [
+  [
     "2021-03-05",
     9,
     9,
@@ -325,108 +325,108 @@ Array [
 `;
 
 exports[`tsToMap 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "AG",
     "value": 0,
   },
-  Object {
+  {
     "name": "AI",
     "value": 0,
   },
-  Object {
+  {
     "name": "AR",
     "value": 0,
   },
-  Object {
+  {
     "name": "BE",
     "value": 0,
   },
-  Object {
+  {
     "name": "BL",
     "value": 0,
   },
-  Object {
+  {
     "name": "BS",
     "value": 0,
   },
-  Object {
+  {
     "name": "FR",
     "value": 0,
   },
-  Object {
+  {
     "name": "GE",
     "value": 0,
   },
-  Object {
+  {
     "name": "GL",
     "value": 0,
   },
-  Object {
+  {
     "name": "GR",
     "value": 0,
   },
-  Object {
+  {
     "name": "JU",
     "value": 0,
   },
-  Object {
+  {
     "name": "LU",
     "value": 0,
   },
-  Object {
+  {
     "name": "NE",
     "value": 0,
   },
-  Object {
+  {
     "name": "NW",
     "value": 0,
   },
-  Object {
+  {
     "name": "OW",
     "value": 0,
   },
-  Object {
+  {
     "name": "SG",
     "value": 0,
   },
-  Object {
+  {
     "name": "SH",
     "value": 0,
   },
-  Object {
+  {
     "name": "SO",
     "value": 0,
   },
-  Object {
+  {
     "name": "SZ",
     "value": 0,
   },
-  Object {
+  {
     "name": "TG",
     "value": 0,
   },
-  Object {
+  {
     "name": "TI",
     "value": 0,
   },
-  Object {
+  {
     "name": "UR",
     "value": 0,
   },
-  Object {
+  {
     "name": "VD",
     "value": 0,
   },
-  Object {
+  {
     "name": "VS",
     "value": 0,
   },
-  Object {
+  {
     "name": "ZG",
     "value": 0,
   },
-  Object {
+  {
     "name": "ZH",
     "value": 0,
   },
