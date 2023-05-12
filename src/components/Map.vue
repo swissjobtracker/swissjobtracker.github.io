@@ -1,18 +1,23 @@
 <template>
   <e-chart class="selector-map" autoresize :init-options="{ renderer: 'svg' }" :option="option"
-    :update-options="{ replaceMerge: ['series'] }" @click="onClick" ref="map" />
+    :update-options="{ notMerge: false, replaceMerge: ['series', 'geo'] }" @click="toggleCanton" ref="map"
+    :loading="!mapData" />
 </template>
 
 <script>
 import echarts from "vue-echarts";
-import { use } from "echarts/core";
+import { registerMap, use } from "echarts/core";
 import { SVGRenderer } from "echarts/renderers";
 import { MapChart } from "echarts/charts";
 import { VisualMapComponent } from "echarts/components";
 import SelectorMixin from "./mixins/SelectorMixin.vue";
 import { cantons, getCantonByCode } from "../util/cantons";
+import svgmap from "../assets/ch.svg";
 
 use([SVGRenderer, MapChart, VisualMapComponent]);
+
+registerMap("ch", { svg: svgmap });
+
 export default {
   name: "Map",
   components: {
@@ -38,14 +43,66 @@ export default {
     },
   },
   mixins: [SelectorMixin],
-  mounted() {
-    if (this.showError) {
-      this.setError();
-    }
+  methods: {
+    toggleCanton: function (e) {
+      this.toggleItem({
+        by: {
+          label: "Canton",
+          value: "canton",
+        },
+        byvalue: {
+          label: cantons.filter(
+            ({ value }) => value.toUpperCase() == e.data.name
+          )[0].label,
+          value: e.data.name,
+        },
+      });
+    },
   },
-  data() {
-    return {
-      option: {
+  computed: {
+    option() {
+      const selectedCantons = Object.fromEntries(
+        this.selection.map((selectedCanton) => [
+          selectedCanton.byvalue.value,
+          this.colors[selectedCanton.index],
+        ])
+      );
+
+      const cantons = [
+        ...(this.mapData ? this.mapData.map(({ name }) => name) : []),
+      ];
+
+      const regions = cantons.map((name) => {
+        if (name in selectedCantons) {
+          return {
+            name,
+            itemStyle: {
+              borderWidth: 7,
+              borderColor: selectedCantons[name],
+              color: selectedCantons[name],
+            },
+          };
+        }
+        return { name, itemStyle: { color: "cyan" } };
+      });
+
+      const graphic = this.showError
+        ? {
+          type: "text",
+          left: "center",
+          top: "10%",
+          z: 100,
+          style: {
+            fill: "#999",
+            text: "Error while loading data",
+            font: "bold 20px sans-serif",
+          },
+        }
+        : null;
+
+      console.log(this.mapData);
+      return {
+        animation: false,
         tooltip: {
           trigger: "item",
         },
@@ -54,7 +111,7 @@ export default {
           zoom: 2.8,
           left: "60%",
           top: 90,
-          regions: [],
+          regions,
           emphasis: {
             label: {
               show: false,
@@ -66,6 +123,7 @@ export default {
             },
           },
         },
+        graphic,
         visualMap: {
           left: "center",
           bottom: 0,
@@ -88,75 +146,12 @@ export default {
           {
             type: "map",
             geoIndex: 0,
-            data: this.mapData,
-            selectedMode: false,
+            data: this.mapData
+              ? this.mapData.map(({ name, value }) => ({ name, value }))
+              : null,
           },
         ],
-      },
-    };
-  },
-  methods: {
-    onClick: function (e) {
-      this.toggleItem({
-        by: {
-          label: "Canton",
-          value: "canton",
-        },
-        byvalue: {
-          label: cantons.filter(
-            ({ value }) => value.toUpperCase() == e.data.name
-          )[0].label,
-          value: e.data.name,
-        },
-      });
-    },
-    setError: function () {
-      this.option.graphic = {
-        type: "text",
-        left: "center",
-        top: "10%",
-        z: 100,
-        style: {
-          fill: "#999",
-          text: "Error while loading data",
-          font: "bold 20px sans-serif",
-        },
       };
-    },
-  },
-  watch: {
-    selection: function () {
-      const regions = this.selection.map((s) => {
-        return {
-          name: s.byvalue.value,
-          itemStyle: {
-            borderColor: this.colors[s.index],
-            borderWidth: 5,
-          },
-        };
-      });
-      this.option.geo.regions = regions;
-    },
-    mapData: function () {
-      this.option.series = [
-        {
-          type: "map",
-          geoIndex: 0,
-          data: this.mapData,
-          selectedMode: false,
-        },
-      ];
-    },
-    rangeMin: function () {
-      this.option.visualMap.min = this.rangeMin;
-    },
-    rangeMax: function () {
-      this.option.visualMap.max = this.rangeMax;
-    },
-    showError: function () {
-      if (this.showError) {
-        this.setError();
-      }
     },
   },
 };

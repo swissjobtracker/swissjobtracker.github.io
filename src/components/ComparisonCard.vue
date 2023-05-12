@@ -21,8 +21,8 @@
             :activeDate="activeDate" />
         </div>
         <div class="col-12 col-md-7">
-          <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors"
-            ref="linechart" />
+          <!-- <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors" -->
+          <!--   ref="linechart" /> -->
           <q-dialog v-model="show_code">
             <code-popup :series="selectedSeries" />
           </q-dialog>
@@ -40,7 +40,7 @@ import codePopup from "../components/CodePopup";
 export default {
   name: "comp-card",
   components: {
-    linechart: LineChart,
+    // linechart: LineChart,
     "series-selector": SeriesSelector,
     codePopup,
   },

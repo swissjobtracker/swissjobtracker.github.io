@@ -24,8 +24,10 @@
     "@quasar/extras": "^1.14.2",
     "core-js": "^3.6.5",
     "debug": "^4.3.2",
+    "echarts": "^5.4.2",
     "push-dir": "^0.4.1",
     "quasar": "^2.7.5",
+    "vue": "^3.3.2",
     "vue-echarts": "^6.5.5",
     "vue-i18n": "^9.1.7"
   },

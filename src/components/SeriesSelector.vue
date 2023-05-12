@@ -46,8 +46,6 @@ const indexOptionsRaw = [
   },
 ];
 
-const emittedMode = "canton";
-
 export default {
   name: "SeriesSelector",
   props: {

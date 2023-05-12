@@ -28,10 +28,11 @@ import {
   TooltipComponent,
   TimelineComponent,
   DatasetComponent,
+  GraphicComponent,
+  LegendComponent,
 } from "echarts/components";
 
 import { getLineSeries } from "../timeseries";
-import { datetime } from "@intlify/core-base";
 
 use([
   CanvasRenderer,
@@ -41,6 +42,8 @@ use([
   TooltipComponent,
   TimelineComponent,
   DatasetComponent,
+  GraphicComponent,
+  LegendComponent,
 ]);
 
 const ticksize = 20;
@@ -62,14 +65,26 @@ export default {
     },
   },
   emits: ["setActiveDate"],
-  mounted() {
-    this.update();
-  },
   data() {
     return {
       offScreenOptions: {},
       loading: false,
-      lines: {
+      activeDate: null,
+      seriesDataCache: [],
+      showError: false,
+    };
+  },
+  computed: {
+    displayMode: function () {
+      const modeLabels = {
+        canton: "canton",
+        noga: "industry",
+        isco: "occupation",
+      };
+      return modeLabels[this.mode];
+    },
+    lines() {
+      return {
         grid: {
           top: 15,
           // Would be more elegant with a resize watcher
@@ -104,74 +119,74 @@ export default {
           },
           interval: ticksize,
         },
-        series: [],
+        series: this.seriesData,
         tooltip: {
           show: true,
           valueFormatter: (x) => x.toFixed(2),
           trigger: "axis",
         },
-      },
-      activeDate: null,
-    };
-  },
-  computed: {
-    displayMode: function () {
-      const modeLabels = {
-        canton: "canton",
-        noga: "industry",
-        isco: "occupation",
+        graphic: this.graphic,
       };
-      return modeLabels[this.mode];
+    },
+
+    seriesData() {
+      return this.seriesDataCache.map((seriesInformation) => {
+        return {
+          type: "line",
+          lineStyle: {
+            width: 3,
+          },
+          showSymbol: false,
+          ...seriesInformation,
+        };
+      });
+    },
+    graphic() {
+      if (!this.showError) {
+        return null;
+      }
+      return {
+        type: "text",
+        left: "center",
+        top: "center",
+        z: 100,
+        style: {
+          fill: "#999",
+          text: "Error while loading data",
+          font: "bold 20px sans-serif",
+        },
+      };
     },
   },
   watch: {
     series: {
-      handler: function () {
-        this.update();
-      },
       deep: true,
+      handler(series) {
+        this.fetchSeries(series);
+      },
     },
   },
   methods: {
-    update: function () {
+    async fetchSeries(series) {
+      if (series.length == 0) {
+        // Nothing is selected
+        return;
+      }
+      this.showError = false;
       this.loading = true;
-      getLineSeries(this.series)
-        .then((data) => {
-          const nSeries = data[0].length - 1;
-
-          this.lines = {
-            // Reset the error message if it was displayed previously
-            graphic: null,
-            series: Array.from({ length: nSeries }).map((_, i) => ({
-              type: "line",
-              lineStyle: {
-                width: 3,
-              },
-              showSymbol: false,
-              color: this.colors[this.series[i].index],
-              name: this.series[i].byvalue.label,
-              // first row is the header, slice that right off
-              data: data.slice(1).map((row) => [row[0], row[i + 1]]),
-            })),
-          };
-          this.loading = false;
-        })
-        .catch((e) => {
-          this.loading = false;
-          this.lines = {
-            graphic: {
-              type: "text",
-              left: "center",
-              top: "center",
-              z: 100,
-              style: {
-                fill: "#999",
-                text: "Error while loading data",
-                font: "bold 20px sans-serif",
-              },
-            },
-          };
-        });
+      try {
+        const [header, ...seriesData] = await getLineSeries(series);
+        this.seriesDataCache = header.slice(1).map((_seriesName, i) => ({
+          color: this.colors[series[i].index],
+          name: series[i].byvalue.label,
+          data: seriesData.map((seriesRow) => [seriesRow[0], seriesRow[1 + i]]),
+        }));
+      } catch (error) {
+        console.error(error);
+        this.showError = true;
+      } finally {
+        this.loading = false;
+      }
     },
     onUpdateAxisPointer: function (e) {
       if (e.axesInfo && e.axesInfo[0] && e.axesInfo[0].value) {
@@ -225,24 +240,11 @@ export default {
         });
         const fname = "swissjobtracker_export_" + Date.now() + ".png";
 
-        // IE version
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-          const b64dta = b64png.split(",")[1];
-          const byteChars = atob(b64dta);
-          const bytes = new Uint8Array(
-            new Array(byteChars.length)
-              .fill(0)
-              .map((x, i) => byteChars.charCodeAt(i))
-          );
-          const blob = new Blob([bytes], { type: "image/png" });
-          window.navigator.msSaveOrOpenBlob(blob, fname);
-        } else {
-          const a = document.createElement("a");
-          a.href = b64png;
-          a.download = fname;
-          a.click();
-          a.remove();
-        }
+        const a = document.createElement("a");
+        a.href = b64png;
+        a.download = fname;
+        a.click();
+        a.remove();
       }, 500);
     },
     onClick: function () {
