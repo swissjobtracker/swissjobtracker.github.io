@@ -5,7 +5,6 @@
   "nav": {
     "about": "About this Dashboard",
     "blog": "Blog",
-    "faq": "Background",
     "tooltips": {
       "download_data": "Download Full Dataset",
       "download_metadata": "Download Data Description",
