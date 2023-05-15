@@ -11,21 +11,22 @@
         </q-tabs>
         <q-space />
         <div class="gt-xs">
-          <q-btn flat icon="download"
+          <q-btn flat icon="download" @click="trackDownload('data')"
             href="https://datenservice.kof.ethz.ch/api/v1/public/collections/ch.kof.jobtracker?mime=csv&df=Y-m-d"
             target="_blank">
             <q-tooltip>
               {{ $t("nav.tooltips.download_data") }}
             </q-tooltip>
           </q-btn>
-          <q-btn flat icon="description"
+          <q-btn flat icon="description" @click="trackDownload('metadata')"
             href="https://datenservice.kof.ethz.ch/api/v1/public/metadata/collections/ch.kof.jobtracker?mime=csv"
             target="_blank">
             <q-tooltip>
               {{ $t("nav.tooltips.download_metadata") }}
             </q-tooltip>
           </q-btn>
-          <q-btn flat icon="history_edu" href="Methodology Swiss Job Tracker.pdf" target="_blank">
+          <q-btn flat icon="history_edu" @click="trackDownload('methodology')" href="Methodology Swiss Job Tracker.pdf"
+            target="_blank">
             <q-tooltip>
               {{ $t("nav.tooltips.download_methodology") }}
             </q-tooltip>
@@ -109,6 +110,15 @@ export default {
   computed: {
     nrp_link: function () {
       return this.$t("footer.links.nrp77.url");
+    },
+  },
+  methods: {
+    async trackDownload(type) {
+      try {
+        this.$plausible.trackEvent("download", { props: { type } });
+      } catch (error) {
+        console.log("Could not track download", error);
+      }
     },
   },
 };

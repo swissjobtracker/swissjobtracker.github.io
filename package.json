@@ -23,6 +23,7 @@
     "@quasar/extras": "^1.16.3",
     "core-js": "^3.6.5",
     "debug": "^4.3.2",
+    "plausible-tracker": "^0.3.8",
     "push-dir": "^0.4.1",
     "quasar": "^2.12.0",
     "vue": "^3.3.2",
