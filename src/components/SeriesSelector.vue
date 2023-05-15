@@ -1,24 +1,15 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <q-tabs
-        dense
-        v-model="mode"
-        @update:model-value="setMode"
-      >
+      <q-tabs dense v-model="mode" @update:model-value="setMode">
         <q-tab name="canton" :label="$t('selector.by.canton')" />
         <q-tab name="noga" :label="$t('selector.by.noga')" />
         <q-tab name="isco" :label="$t('selector.by.isco')" />
-        <q-toggle
-          color="deep-purple-10"
-          keep-color
-          v-model="showTotal">
+        <q-toggle color="deep-purple-10" keep-color v-model="showTotal">
           <div class="gt-xs">
-            {{$t('selector.show_total')}}
+            {{ $t("selector.show_total") }}
           </div>
-          <q-tooltip>
-            Show Total
-          </q-tooltip>
+          <q-tooltip> Show Total </q-tooltip>
         </q-toggle>
       </q-tabs>
     </div>
@@ -26,82 +17,62 @@
 
   <div class="row selector">
     <div class="col-12 q-pa-md">
-      <ch-map
-        v-if="mode == 'canton'"
-        @select="onSelect"
-        :colors="colors"
-        :maxSelections="maxSelections"
-        :mapData="mapData"
-        :rangeMin="mapRangeMin"
-        :rangeMax="mapRangeMax"
-        :showError="mapDataError"/>
-      <list-selector
-        v-if="mode == 'noga'"
-        type="noga"
-        :options="nogaOptions"
-        @select="onSelect"
-        :colors="colors"
-        :maxSelections="maxSelections"/>
-      <list-selector
-        v-if="mode == 'isco'"
-        type="isco"
-        :options="iscoOptions"
-        @select="onSelect"
-        :colors="colors"
-        :maxSelections="maxSelections"/>
+      <ch-map v-if="mode == 'canton'" @select="onSelect" :colors="colors" :maxSelections="maxSelections"
+        :mapData="mapData" :rangeMin="mapRangeMin" :rangeMax="mapRangeMax" :showError="mapDataError" />
+      <list-selector v-if="mode == 'noga'" type="noga" :options="nogaOptions" @select="onSelect" :colors="colors"
+        :maxSelections="maxSelections" />
+      <list-selector v-if="mode == 'isco'" type="isco" :options="iscoOptions" @select="onSelect" :colors="colors"
+        :maxSelections="maxSelections" />
     </div>
   </div>
-
-
-
 </template>
 
 <script>
-import { getMapSeries, getCantonalSeries } from 'src/timeseries'
-import Map from './Map.vue'
-import ListSelector from './ListSelector.vue'
-import nogaOptions from '../util/nogaoptions'
-import iscoOptions from '..//util/iscooptions'
-import { getTsRange } from 'src/timeseries/tsutils'
+import { getMapSeries, getCantonalSeries } from "src/timeseries";
+import JobMap from "./JobMap.vue";
+import ListSelector from "./ListSelector.vue";
+import nogaOptions from "../util/nogaoptions";
+import iscoOptions from "..//util/iscooptions";
+import { getTsRange } from "src/timeseries/tsutils";
 
 const indexOptionsRaw = [
   {
-    label: 'CH Labor Market Index',
-    value: 'idx'
+    label: "CH Labor Market Index",
+    value: "idx",
   },
   {
-    label: 'Mean Ad Lifetime',
-    value: 't'
-  }
-]
+    label: "Mean Ad Lifetime",
+    value: "t",
+  },
+];
 
-const emittedMode = 'canton'
+const emittedMode = "canton";
 
 export default {
-  name: 'SeriesSelector',
+  name: "SeriesSelector",
   props: {
     maxSelections: {
       required: false,
-      default: 3
+      default: 3,
     },
     colors: {
-      required: true
+      required: true,
     },
     activeDate: {
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   components: {
-    'ch-map': Map,
-    'list-selector': ListSelector
+    "ch-map": JobMap,
+    "list-selector": ListSelector,
   },
-  emits: ['select','changeMode'],
+  emits: ["select", "changeMode"],
   mounted() {
     // Emit an event indicating total is selected
-    this.emitSelection()
-    this.emitMode()
-    this.updateMap()
+    this.emitSelection();
+    this.emitMode();
+    this.updateMap();
   },
   data() {
     return {
@@ -111,99 +82,99 @@ export default {
       mapRangeMax: 100,
       showTotal: true,
       selection: [],
-      mode: 'canton',
+      mode: "canton",
       indexOptions: indexOptionsRaw,
       selectedIndex: indexOptionsRaw[0],
       nogaOptions,
       iscoOptions,
-    }
+    };
   },
   methods: {
-    setMode: function(newMode) {
-      this.clearSelection()
-      this.emitMode()
+    setMode: function (newMode) {
+      this.clearSelection();
+      this.emitMode();
     },
-    clearSelection: function() {
-      this.onSelect([])
+    clearSelection: function () {
+      this.onSelect([]);
     },
-    onSelect: function(selection) {
-      this.selection = selection
-      this.emitSelection()
+    onSelect: function (selection) {
+      this.selection = selection;
+      this.emitSelection();
     },
-    emitSelection: function() {
+    emitSelection: function () {
       const toEmit = this.selection.map((s) => {
         return {
           ...s,
-          type: this.selectedIndex
-        }
-      })
+          type: this.selectedIndex,
+        };
+      });
 
-      if(this.showTotal) {
+      if (this.showTotal) {
         toEmit.push({
           index: this.maxSelections, // indices of selections go from 0 - maxSelections-1
           type: this.selectedIndex,
           by: {
-            label: 'Total',
-            value: 'total',
+            label: "Total",
+            value: "total",
           },
           byvalue: {
-            label: 'Total',
-            value: 'total'
-          }
-        })
+            label: "Total",
+            value: "total",
+          },
+        });
       }
 
-      this.$emit('select', toEmit)
+      this.$emit("select", toEmit);
     },
-    emitMode: function() {
-      this.$emit('changeMode', this.mode)
+    emitMode: function () {
+      this.$emit("changeMode", this.mode);
     },
-    updateMap: function() {
+    updateMap: function () {
       getMapSeries(this.selectedIndex, this.activeDate)
         .then((data) => {
-          this.mapData = data
+          this.mapData = data;
         })
         .catch((e) => {
-          this.mapDataError = true
-        })
+          this.mapDataError = true;
+        });
       // Update range of map
       // TODO: Only do this on mount and when indicator changes would be more eleganter
       getCantonalSeries(this.selectedIndex)
         .then(getTsRange)
-        .then(({min, max}) => {
-          this.mapRangeMin = min
-          this.mapRangeMax = max
+        .then(({ min, max }) => {
+          this.mapRangeMin = min;
+          this.mapRangeMax = max;
         })
         .catch((e) => {
-          this.mapDataError = true
-        })
-    }
+          this.mapDataError = true;
+        });
+    },
   },
   watch: {
-    showTotal: function() {
-      this.emitSelection()
+    showTotal: function () {
+      this.emitSelection();
     },
-    selectedIndex: function() {
-      this.emitSelection()
+    selectedIndex: function () {
+      this.emitSelection();
     },
-    activeDate: function() {
-      this.updateMap()
+    activeDate: function () {
+      this.updateMap();
     },
-    mode: function(newMode, oldMode) {
-      if(newMode != oldMode) {
-        this.clearSelection()
+    mode: function (newMode, oldMode) {
+      if (newMode != oldMode) {
+        this.clearSelection();
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-  .active {
-    background-color: brown;
-  }
+.active {
+  background-color: brown;
+}
 
-  .selector {
-    height: 300px;
-  }
+.selector {
+  height: 300px;
+}
 </style>

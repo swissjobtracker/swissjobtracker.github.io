@@ -15,7 +15,7 @@ import mapSvg from "../assets/ch.svg";
 
 use([SVGRenderer, MapChart, VisualMapComponent]);
 export default {
-  name: "Map",
+  name: "JobMap",
   components: {
     "e-chart": echarts,
   },
