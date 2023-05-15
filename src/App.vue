@@ -2,17 +2,9 @@
   <router-view />
 </template>
 <script>
-import { defineComponent } from 'vue'
-import { registerMap } from 'echarts'
-
-
-fetch('ch.svg')
-      .then((r) => r.text())
-      .then((svg) => {
-        registerMap('ch', { svg: svg })
-      })
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'App'
-})
+  name: "App",
+});
 </script>
