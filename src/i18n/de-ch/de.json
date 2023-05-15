@@ -1,17 +1,16 @@
 {
   "common": {
-    "add_chart": "Chart Vergleichskarte hinzufügen" 
+    "add_chart": "Chart Vergleichskarte hinzufügen"
   },
   "nav": {
     "about": "Über das Projekt",
-    "blog": "Blog",
-    "faq": "Hilfe"
+    "blog": "Blog"
   },
   "about": {
-    "title" : "Über dieses Dashboard",
-    "project_title" : "Das Projekt",
-    "project_text" : "Das Arbeitsmarktdashboard [richtigen Namen einfügen] ist das Ergebnis einer Kollaboration zwischen der KOF ETH, der Universität Lausanne sowie der online Arbeitsmarktplattform x28. Es enthält wöchentliche Daten zur Entwicklung der online publizierten offenen Stellen in der Schweiz sowie der durchschnittlichen Dauer, während der die Stellen ausgeschrieben sind. Einige der Zeitreihen lassen sich nach Branche, Beruf und Region aufschlüsseln. Das Arbeitsmarktdashboard [richtigen Namen einfügen] entstand im Rahmen des Nationalen Forschungsprogramms «Digitale Transformation» (NFP 77) des Schweizerischen Nationalfonds (SNF).",
-    "partner_title" : "Die Projektpartner",
-    "partner_text" : "Das Unternehmen X28 erfasst und systematisiert laufend alle in der Schweiz online ausgeschriebenen offenen Stellen. Diese Daten bilden den Rohstoff der hier publizierten Indizes. Forscherinnen und Forscher der KOF ETH und der Universität Lausanne entwickeln basierend auf diesen Daten die auf dem Arbeitsmarktdashboard [richtigen Namen einfügen] publizierten Indizes zum aktuellen Stellenangebot in der Schweiz."
+    "title": "Über dieses Dashboard",
+    "project_title": "Das Projekt",
+    "project_text": "Das Arbeitsmarktdashboard [richtigen Namen einfügen] ist das Ergebnis einer Kollaboration zwischen der KOF ETH, der Universität Lausanne sowie der online Arbeitsmarktplattform x28. Es enthält wöchentliche Daten zur Entwicklung der online publizierten offenen Stellen in der Schweiz sowie der durchschnittlichen Dauer, während der die Stellen ausgeschrieben sind. Einige der Zeitreihen lassen sich nach Branche, Beruf und Region aufschlüsseln. Das Arbeitsmarktdashboard [richtigen Namen einfügen] entstand im Rahmen des Nationalen Forschungsprogramms «Digitale Transformation» (NFP 77) des Schweizerischen Nationalfonds (SNF).",
+    "partner_title": "Die Projektpartner",
+    "partner_text": "Das Unternehmen X28 erfasst und systematisiert laufend alle in der Schweiz online ausgeschriebenen offenen Stellen. Diese Daten bilden den Rohstoff der hier publizierten Indizes. Forscherinnen und Forscher der KOF ETH und der Universität Lausanne entwickeln basierend auf diesen Daten die auf dem Arbeitsmarktdashboard [richtigen Namen einfügen] publizierten Indizes zum aktuellen Stellenangebot in der Schweiz."
   }
-} 
+}
