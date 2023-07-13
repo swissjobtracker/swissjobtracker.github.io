@@ -1,6 +1,6 @@
 {
-  "name": "nfp77-dashboard",
-  "short_name": "nfp77-dashboard",
+  "name": "swissjobtracker",
+  "short_name": "Swiss Job Tracker",
   "description": "Dashboard for the National Research Program 77 Dashboard",
   "display": "standalone",
   "orientation": "portrait",
