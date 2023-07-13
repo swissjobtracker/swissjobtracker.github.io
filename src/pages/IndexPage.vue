@@ -1,14 +1,6 @@
 <template>
   <q-page>
     <div class="lmm-page">
-      <div :class="$style['info-box']" class="text-body-1 q-pa-md q-ma-sm">
-        <h6 class="q-ma-sm">NOTE</h6>
-        <p>
-          The newest values of the indicator are often somewhat too low and
-          revised upward in subsequent weeks. We will soon publish a revised
-          indicator without this feature.
-        </p>
-      </div>
       <comp-card
         v-for="card in cards"
         :key="card.id"
@@ -49,14 +41,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" module>
-.info-box {
-  border: 3px solid $info;
-  background: white;
-
-  h6 {
-    color: $info;
-  }
-}
-</style>
