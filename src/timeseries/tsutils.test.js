@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { getFakeData } from "../api/fakeapi";
 import cantons from "../util/cantons";
 import tsutils from "./tsutils";

@@ -43,8 +43,8 @@
 
 <script>
 import SeriesSelector from "./SeriesSelector.vue";
-import LineChart from "../components/LineChart";
-import codePopup from "../components/CodePopup";
+import LineChart from "../components/LineChart.vue";
+import codePopup from "../components/CodePopup.vue";
 
 export default {
   name: "comp-card",

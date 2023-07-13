@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import ts from "./index";
 
 test("getLineSeries has the correct header", () => {

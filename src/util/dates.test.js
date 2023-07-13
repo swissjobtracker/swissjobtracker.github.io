@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import dates from "./dates";
 
 test('formatDate formats new Date("2021-01-01")', () => {

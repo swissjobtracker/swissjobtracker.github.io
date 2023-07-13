@@ -52,8 +52,8 @@ import { getMapSeries, getCantonalSeries } from "src/timeseries";
 import JobMap from "./JobMap.vue";
 import ListSelector from "./ListSelector.vue";
 import nogaOptions from "../util/nogaoptions";
-import iscoOptions from "..//util/iscooptions";
-import { getTsRange } from "src/timeseries/tsutils";
+import iscoOptions from "../util/iscooptions";
+import { getTsRange } from "../timeseries/tsutils";
 
 const indexOptionsRaw = [
   {

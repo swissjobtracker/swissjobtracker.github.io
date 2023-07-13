@@ -1,10 +1,41 @@
-# dashboard
+# Swiss Job Tracker (swissjobtracker)
 
-## Update site
+Dashboard for the National Research Program 77 Dashboard
 
-1. Clone this repository to your local computer. (only needed once)
-2. run `npm install` (once)
-3. make changes to the site
-4. run `npm run deploy` to trigger the build & push script
+## Install the dependencies
+
+```bash
+npm install
+```
+
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+
+```bash
+quasar dev
+```
+
+### Lint the files
+
+```bash
+npm run lint
+```
+
+### Format the files
+
+```bash
+npm run format
+```
+
+### Build the app for production
+
+```bash
+quasar build
+```
+
+### Customize the configuration
+
+See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+## Blog
 
 > note that the blog is in a separate repository of the same organization.

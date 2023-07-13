@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ComparisonCard from "../components/ComparisonCard";
+import ComparisonCard from "../components/ComparisonCard.vue";
 import { v4 as uuidv4 } from "uuid";
 
 export default {

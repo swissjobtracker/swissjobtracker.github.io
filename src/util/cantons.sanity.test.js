@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { cantons, getCantonByCode } from "./cantons";
 
 test("cantons definition is intact", () => {
