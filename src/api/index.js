@@ -1,11 +1,10 @@
-import fake from './fakeapi'
-import real from './api.js'
+import fake from "./fakeapi";
+import real from "./api.js";
 
 let thing;
-if(false) {
-    thing = ts
+if (false) {
+  thing = ts;
 } else {
-    thing = real
+  thing = real;
 }
 export default thing;
-

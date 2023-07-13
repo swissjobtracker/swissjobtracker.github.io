@@ -1,37 +1,36 @@
-import d from 'debug'
-import ts from '../api'
-import cantons from '../util/cantons'
-import { getKeys } from '../util/keys'
-import { tsToMap, tsToLine } from './tsutils'
+import d from "debug";
+import ts from "../api";
+import cantons from "../util/cantons";
+import { getKeys } from "../util/keys";
+import { tsToMap, tsToLine } from "./tsutils";
 
-const debug = d('dashboard:backend_ts')
+const debug = d("dashboard:backend_ts");
 
-let cache = {}
+let cache = {};
 
 const getTimeseries = (series) => {
-  const keys = getKeys(series)
-  debug('getting keys: %o', keys)
-  const cached = Object.keys(cache)
-  const missing = keys.filter((k) => cached.indexOf(k) < 0)
-  if(missing.length > 0) {
-    debug('missed cache on %o', missing)
-    return ts.getTimeseries(missing)
-      .then((ts) => {
-        debug('api returned data')
-        cache = Object.assign(cache, ts)
-        return getSeriesFromCache(keys)
-      })
+  const keys = getKeys(series);
+  debug("getting keys: %o", keys);
+  const cached = Object.keys(cache);
+  const missing = keys.filter((k) => cached.indexOf(k) < 0);
+  if (missing.length > 0) {
+    debug("missed cache on %o", missing);
+    return ts.getTimeseries(missing).then((ts) => {
+      debug("api returned data");
+      cache = Object.assign(cache, ts);
+      return getSeriesFromCache(keys);
+    });
   } else {
-    debug('all in cache, lucky me!')
-    return getSeriesFromCache(keys)
+    debug("all in cache, lucky me!");
+    return getSeriesFromCache(keys);
   }
-}
+};
 
 const getSeriesFromCache = (keys) => {
-  let series = {}
-  keys.forEach((k) => series[k] = cache[k])
-  return new Promise((res, rej) => res(series))
-}
+  let series = {};
+  keys.forEach((k) => (series[k] = cache[k]));
+  return new Promise((res, rej) => res(series));
+};
 
 /**
  * Get Series for indicator of all Cantons
@@ -42,13 +41,13 @@ export const getCantonalSeries = (indicator) => {
   const series = cantons.map((c) => ({
     type: indicator,
     by: {
-      label: 'Canton',
-      value: 'canton',
+      label: "Canton",
+      value: "canton",
     },
-    byvalue: c
-  }))
-  return getTimeseries(series)
-}
+    byvalue: c,
+  }));
+  return getTimeseries(series);
+};
 
 /**
  *
@@ -57,16 +56,15 @@ export const getCantonalSeries = (indicator) => {
  * @returns [{name: '2 letter canton', value: 123}, ...]
  */
 export const getMapSeries = (indicator, t = null) => {
-  return getCantonalSeries(indicator).then((data) => tsToMap(data, t))
-}
+  return getCantonalSeries(indicator).then((data) => tsToMap(data, t));
+};
 
 export const getLineSeries = (series) => {
-  return getTimeseries(series)
-          .then(tsToLine)
-}
+  return getTimeseries(series).then(tsToLine);
+};
 
 export default {
   getMapSeries,
   getLineSeries,
-  getCantonalSeries
-}
+  getCantonalSeries,
+};

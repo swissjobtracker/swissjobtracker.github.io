@@ -4,8 +4,6 @@
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
 
   "vetur.experimental.templateInterpolationService": true,
-  "i18n-ally.localesPaths": [
-    "src/i18n"
-  ],
+  "i18n-ally.localesPaths": ["src/i18n"],
   "i18n-ally.keystyle": "nested"
 }

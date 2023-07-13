@@ -1,5 +1,5 @@
 <template>
-<div class="lmm-page">
+  <div class="lmm-page">
     <h2>News</h2>
-    </div>
+  </div>
 </template>

@@ -12,12 +12,21 @@
     "build": "quasar build",
     "predeploy": "quasar build",
     "deploy": "push-dir --dir=dist/spa --branch=gh-pages --cleanup",
-    "dev": "quasar dev"
+    "dev": "quasar dev",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     }
+  },
+  "lint-staged": {
+    "*.{ts,vue,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,md}": "prettier --write"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.3",
@@ -40,7 +49,10 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.12.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "jest": "^29.5.0"
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0"
   },
   "browserslist": [
     "last 10 Chrome versions",

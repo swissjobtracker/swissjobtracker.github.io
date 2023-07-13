@@ -1,6 +1,13 @@
 <template>
-  <e-chart class="selector-map" autoresize :init-options="{ renderer: 'svg' }" :option="option"
-    :update-options="{ replaceMerge: ['series'] }" @click="onClick" ref="map" />
+  <e-chart
+    class="selector-map"
+    autoresize
+    :init-options="{ renderer: 'svg' }"
+    :option="option"
+    :update-options="{ replaceMerge: ['series'] }"
+    @click="onClick"
+    ref="map"
+  />
 </template>
 
 <script>
@@ -108,7 +115,7 @@ export default {
         },
         byvalue: {
           label: cantons.filter(
-            ({ value }) => value.toUpperCase() == e.data.name
+            ({ value }) => value.toUpperCase() == e.data.name,
           )[0].label,
           value: e.data.name,
         },
@@ -167,5 +174,6 @@ export default {
 </script>
 
 <style>
-.selector-map text {}
+.selector-map text {
+}
 </style>

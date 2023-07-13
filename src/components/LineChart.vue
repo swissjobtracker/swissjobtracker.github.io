@@ -7,8 +7,15 @@
       {{ $t("graphs.line_chart.subtitle", { displayMode: displayMode }) }}
     </div>
     <div>
-      <e-chart autoresize :option="lines" :update-options="{ replaceMerge: ['series', 'graphic'] }" :loading="loading"
-        @updateAxisPointer="onUpdateAxisPointer" @zr:click="onClick" ref="chart" />
+      <e-chart
+        autoresize
+        :option="lines"
+        :update-options="{ replaceMerge: ['series', 'graphic'] }"
+        :loading="loading"
+        @updateAxisPointer="onUpdateAxisPointer"
+        @zr:click="onClick"
+        ref="chart"
+      />
       <e-chart class="offscreen" ref="dlchart" :option="offScreenOptions" />
       <div align="right" class="q-mr-md q-mb-sm">
         {{ $t("graphs.line_chart.source") }}

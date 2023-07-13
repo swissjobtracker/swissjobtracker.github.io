@@ -17,12 +17,21 @@
       </q-card-actions>
       <div class="row q-col-gutter-xl">
         <div class="col-12 col-md-5">
-          <series-selector @select="onSelect" @changeMode="(newMode) => (selectedMode = newMode)" :colors="colors"
-            :activeDate="activeDate" />
+          <series-selector
+            @select="onSelect"
+            @changeMode="(newMode) => (selectedMode = newMode)"
+            :colors="colors"
+            :activeDate="activeDate"
+          />
         </div>
         <div class="col-12 col-md-7">
-          <linechart :series="selectedSeries" :mode="selectedMode" @setActiveDate="onSetActiveDate" :colors="colors"
-            ref="linechart" />
+          <linechart
+            :series="selectedSeries"
+            :mode="selectedMode"
+            @setActiveDate="onSetActiveDate"
+            :colors="colors"
+            ref="linechart"
+          />
           <q-dialog v-model="show_code">
             <code-popup :series="selectedSeries" />
           </q-dialog>
