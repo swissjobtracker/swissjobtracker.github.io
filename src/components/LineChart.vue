@@ -129,7 +129,7 @@ export default {
         series: this.seriesData,
         tooltip: {
           show: true,
-          valueFormatter: (x) => x.toFixed(2),
+          valueFormatter: (x) => (typeof x == "number" ? x.toFixed(2) : x),
           trigger: "axis",
         },
         graphic: this.graphic,
@@ -186,7 +186,19 @@ export default {
         this.seriesDataCache = header.slice(1).map((_seriesName, i) => ({
           color: this.colors[series[i].index],
           name: series[i].byvalue.label,
-          data: seriesData.map((seriesRow) => [seriesRow[0], seriesRow[1 + i]]),
+          data: seriesData.reduce(
+            (currentSeries, seriesRow) => {
+              const value =
+                seriesRow[1 + i] == null
+                  ? currentSeries.lastValue
+                  : seriesRow[1 + i];
+              return {
+                series: [...currentSeries.series, [seriesRow[0], value]],
+                lastValue: value,
+              };
+            },
+            { series: [], lastValue: 0 },
+          ).series,
         }));
       } catch (error) {
         console.error(error);
