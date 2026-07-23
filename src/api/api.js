@@ -9,9 +9,9 @@ const throwStatusTextIfNotOk = (response) => {
 const getTimeseries = (keys) => {
   return (
     fetch(
-      `https://datenservice.kof.ethz.ch/api/v1/public/ts?keys=${keys.join(
+      `https://tsdb-api.kof.ethz.ch/v2/ts?keys=${keys.join(
         ",",
-      )}&df=Y-m-d`,
+      )}&access_type=public`,
     )
       // TODO: Handle errors
       .then(throwStatusTextIfNotOk)

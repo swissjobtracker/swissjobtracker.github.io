@@ -17,6 +17,13 @@ const getTimeseries = (series) => {
     debug("missed cache on %o", missing);
     return ts.getTimeseries(missing).then((ts) => {
       debug("api returned data");
+      // to old API format
+      ts = Object.fromEntries(
+        ts.map((item) => [
+          item.ts_key,
+          item.time.map((date, i) => ({ date, value: item.value[i] })),
+        ]),
+      );
       cache = Object.assign(cache, ts);
       return getSeriesFromCache(keys);
     });

@@ -21,7 +21,7 @@
             flat
             icon="download"
             @click="trackDownload('data')"
-            href="https://datenservice.kof.ethz.ch/api/v1/public/collections/ch.kof.jobtracker?mime=csv&df=Y-m-d"
+            href="https://tsdb-api.kof.ethz.ch/v2/collections/public/ch.kof.jobtracker/ts?mime=csv&access_type=public"
             target="_blank"
           >
             <q-tooltip>
@@ -32,7 +32,7 @@
             flat
             icon="description"
             @click="trackDownload('metadata')"
-            href="https://datenservice.kof.ethz.ch/api/v1/public/metadata/collections/ch.kof.jobtracker?mime=csv"
+            href="https://tsdb-api.kof.ethz.ch/v2/collections/public/ch.kof.jobtracker/ts/metadata?mime=csv&access_type=public"
             target="_blank"
           >
             <q-tooltip>
